@@ -1,0 +1,309 @@
+# Mars instrument reference cards. See ../README.md for schema.
+
+- spacecraft: Perseverance
+  instruments: [MCZ_LEFT, MCZ_RIGHT]
+  name: Mastcam-Z
+  spacecraft_name: Perseverance rover
+  operator: NASA/JPL-Caltech / Arizona State University / Malin Space Science Systems
+  what_it_is: >
+    Mastcam-Z is Perseverance's main science camera: two identical zoom cameras mounted
+    side by side on the mast, one behind each of the rover's "eyes," giving true stereo
+    vision. Each camera has a 3.6:1 optical zoom, equivalent to a 135-400mm lens on a
+    35mm camera, and was built by Malin Space Science Systems with Arizona State
+    University leading the science team.
+  what_it_sees: >
+    Each eye has an 8-position filter wheel behind the zoom lens, producing 1600x1200-pixel
+    frames. Position 0 (L0/R0) is a Bayer color filter for ordinary RGB images. Positions
+    1-6 are narrowband science filters: the left eye at 800, 754, 677, 605, 528 and 442nm,
+    the right eye at 800, 866, 910, 939, 978 and 1022nm, spanning visible light into the
+    near infrared. Position 7 on each eye is a neutral-density filter for looking directly
+    at the sun; those frames are excluded from this feed.
+  why_it_matters: >
+    The narrowband filters let scientists tell minerals and rock coatings apart that look
+    identical in plain color, while the zoom and fixed stereo baseline support 3D terrain
+    mapping and let the team pick targets for the rover's arm instruments from a distance.
+  reading_the_image: >
+    Most raw frames look like an ordinary color landscape photo (the L0/R0 Bayer filter).
+    A narrowband frame (filter name like ZCAM_L5_528NM) is instead a flat greyscale image
+    of a single wavelength - that's expected, not a bug; several such frames sharing a
+    sequence ID are meant to be stacked later into a false-color composite. Frames sharing
+    a sequence ID can also just be tiles of a wider mosaic or panorama.
+  wikipedia: https://en.wikipedia.org/wiki/Mastcam-Z
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
+  links:
+    - title: Mastcam-Z technical specs (Arizona State University)
+      url: https://mastcamz.asu.edu/cameras/tech-specs/
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    filter_name: Filter (e.g. ZCAM_L5_528NM; UNK/None means the Bayer color filter)
+    sequence: Sequence ID (frames from the same observation)
+    product: Product type (ECM = processed image; EBY = raw Bayer frame)
+  picture_types: [color (Bayer), narrowband greyscale, panorama tile]
+  confidence: verified
+
+- spacecraft: Perseverance
+  instruments: [NAVCAM_LEFT, NAVCAM_RIGHT]
+  name: Navcam
+  spacecraft_name: Perseverance rover
+  operator: NASA/JPL-Caltech
+  what_it_is: >
+    Two identical engineering cameras mounted high on the mast, about 42cm apart, giving
+    the rover stereo vision for driving. They belong to the same camera family (nicknamed
+    ECAM) as the Hazcams and share its color sensor - a first for a Mars rover's
+    navigation cameras, which on earlier missions were black and white.
+  what_it_sees: >
+    Each camera covers a 96 x 73 degree field of view at about 0.33 milliradians per
+    pixel, downsampled for downlink from a native 5120x3840-pixel color sensor - sharp
+    enough to make out an object the size of a golf ball 25 meters away. It's a normal
+    wide-angle perspective, not a fisheye.
+  why_it_matters: >
+    The stereo pair lets the rover (and its autonomous-driving software) build a 3D model
+    of the ground ahead to find safe paths, and stitched-together navcam frames make the
+    wide panoramas used to plan each drive.
+  reading_the_image: >
+    Expect an ordinary-looking wide color landscape shot, often one tile of a larger
+    panorama - frames sharing a sequence ID in the metadata are usually taken together as
+    a mosaic.
+  wikipedia: https://en.wikipedia.org/wiki/Navcam
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    sequence: Sequence ID (frames from the same observation, e.g. panorama tiles)
+    product: Product type (ECM = processed image; EBY = raw Bayer frame)
+  picture_types: [color wide-angle, panorama tile]
+  confidence: verified
+
+- spacecraft: Perseverance
+  instruments: [FRONT_HAZCAM_LEFT_A, FRONT_HAZCAM_RIGHT_A, REAR_HAZCAM_LEFT, REAR_HAZCAM_RIGHT]
+  name: Hazcam (Hazard Avoidance Cameras)
+  spacecraft_name: Perseverance rover
+  operator: NASA/JPL-Caltech
+  what_it_is: >
+    Six wide-angle engineering cameras bolted to the rover's body (not the mast): four
+    facing forward as two redundant stereo pairs, each pair wired to one of the rover's
+    two redundant main computers (hence the "_A" suffix on the front pair normally in
+    use), and two facing backward as a single rear pair. They share the same color sensor
+    design as Navcam but use fisheye optics instead of Navcam's normal wide lens.
+  what_it_sees: >
+    A fisheye field of view over 130 degrees, pointed down and out to see the ground and
+    the rover's own wheels close up. Perseverance's Hazcams are color, cropped from the
+    same 20-megapixel sensor as Navcam; Curiosity's equivalent cameras, by contrast, are
+    monochrome at 1024x1024 pixels with a roughly 120-degree fisheye.
+  why_it_matters: >
+    Hazcams spot rocks, drop-offs and sand close to the wheels before the rover moves, and
+    the front pair also frames the robotic arm during sample collection and instrument
+    placement.
+  reading_the_image: >
+    Strongly fisheye: straight lines bow outward toward the edges, and the rover's own
+    wheels, shadow or arm often fill part of the frame. Front frames sometimes show the
+    sample-caching arm at work; rear frames mostly show tracks and ground just driven over.
+  wikipedia: https://en.wikipedia.org/wiki/Hazcam
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    sequence: Sequence ID (frames from the same observation)
+    product: Product type (ECM = processed image; EBY = raw Bayer frame)
+  picture_types: [fisheye color, wheel/arm context]
+  confidence: verified
+
+- spacecraft: Perseverance
+  instruments: [SUPERCAM_RMI]
+  name: SuperCam RMI (Remote Micro-Imager)
+  spacecraft_name: Perseverance rover
+  operator: CNES / IRAP (France) and Los Alamos National Laboratory (USA)
+  what_it_is: >
+    SuperCam is a turret-mounted mast instrument combining a laser (for elemental and
+    mineral analysis from a distance), an infrared spectrometer, a microphone, and a
+    telescope camera called the RMI. It was built jointly by the French space agency CNES
+    and the IRAP institute in Toulouse with Los Alamos National Laboratory, extending
+    ChemCam's approach on Curiosity.
+  what_it_sees: >
+    The RMI shares SuperCam's 110mm-aperture, 563mm-focal-length telescope, recording
+    2048x2048-pixel color images through a narrow circular field of view of about 19
+    milliradians (roughly 1 degree) - resolving detail near 0.24mm per pixel at 3 meters,
+    but also able to pick out crater rims and cliffs kilometers away.
+  why_it_matters: >
+    RMI images document exactly what SuperCam's laser and spectrometers are pointed at,
+    often shot before and after a laser burn so scientists can see the tiny pit left
+    behind, and double as a long-range telescope for geology far beyond the rover's reach.
+  reading_the_image: >
+    A frame shows a small circle of telescopic detail inset in a black square, not a full
+    rectangular photo - that circle is the whole field of view, so zoom in rather than
+    expecting it to fill the frame. Wider scenes are mosaics stitched from several such
+    tiles.
+  wikipedia: https://en.wikipedia.org/wiki/SuperCam
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    sequence: Sequence ID (frames from the same observation)
+    product: Product type (ECM = processed image; EBY = raw Bayer frame)
+  picture_types: [telescopic circle, mosaic tile]
+  confidence: verified
+
+- spacecraft: Perseverance
+  instruments: [SHERLOC_WATSON]
+  name: WATSON (SHERLOC's context camera)
+  spacecraft_name: Perseverance rover
+  operator: NASA/JPL-Caltech
+  what_it_is: >
+    WATSON (Wide Angle Topographic Sensor for Operations and eNgineering) is a color
+    close-up camera on the turret at the end of Perseverance's arm, mounted right next to
+    SHERLOC's ultraviolet Raman spectrometer. It's built from the same heritage design as
+    Curiosity's MAHLI camera, giving SHERLOC's team an ordinary photographic view of
+    whatever rock target the spectrometer is probing.
+  what_it_sees: >
+    A 1600x1200-pixel color sensor behind a fixed macro lens with no optical zoom; instead
+    the arm moves the whole camera to change scale, focusing from about 2cm off the
+    surface out to infinity. Close up it resolves roughly 14 micrometers per pixel,
+    coarsening to around 100 micrometers per pixel farther back.
+  why_it_matters: >
+    WATSON gives geologists an eye-level view of grain size, texture and layering at the
+    exact spot SHERLOC's spectrometer is analyzing for minerals and organic compounds, and
+    the same camera is used for rover self-portraits and hardware checks.
+  reading_the_image: >
+    Close-up, well-lit color shots of rock or soil texture, sometimes taken as a stack at
+    slightly different distances or as a small mosaic; wider, more distant shots are
+    usually rover selfies or arm/instrument inspections rather than science targets.
+  wikipedia: https://en.wikipedia.org/wiki/SHERLOC
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    sequence: Sequence ID (frames from the same observation)
+    product: Product type (ECM = processed image; EBY = raw Bayer frame)
+  picture_types: [macro color close-up, rover selfie]
+  confidence: verified
+
+- spacecraft: Perseverance
+  instruments: [SKYCAM]
+  name: MEDA SkyCam
+  spacecraft_name: Perseverance rover
+  operator: NASA/JPL-Caltech / Centro de Astrobiologia (CSIC-INTA, Spain)
+  what_it_is: >
+    SkyCam is the camera inside the Radiation and Dust Sensor, one part of MEDA (Mars
+    Environmental Dynamics Analyzer), Perseverance's Spanish-built weather station. It's a
+    repurposed flight-spare Hazcam bolted to the rover's deck and pointed straight up
+    instead of down at the ground.
+  what_it_sees: >
+    Monochrome 1024x1024-pixel fisheye images with a 126-degree circular field of view,
+    shot through a red/near-infrared-passing filter (effective wavelength about 691nm).
+    Some sequences instead assemble color mosaics covering most of the sky hemisphere.
+  why_it_matters: >
+    Repeated sky images let scientists track clouds, measure dust and haze opacity, and
+    catch dust devils passing near the rover - part of characterizing Martian weather and
+    dust behavior relevant to future human missions.
+  reading_the_image: >
+    A circular fisheye view of the sky, sometimes with a bit of the rover's own mast or
+    deck hardware poking into the edge of frame. Most frames are a fairly featureless
+    grey or black sky; look closely for faint clouds, twilight haze, or the streak of a
+    passing dust devil.
+  wikipedia: https://en.wikipedia.org/wiki/Mars_Environmental_Dynamics_Analyzer
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    sequence: Sequence ID (frames from the same observation)
+  picture_types: [sky fisheye monochrome, sky mosaic color]
+  confidence: verified
+
+- spacecraft: Curiosity
+  instruments: [NAV_RIGHT_B]
+  name: Navcam (B-side pair)
+  spacecraft_name: Curiosity rover
+  operator: NASA/JPL-Caltech
+  what_it_is: >
+    Curiosity carries two identical stereo pairs of black-and-white navigation cameras on
+    its mast - four cameras in total - each pair hardwired to one of the rover's two
+    redundant main computers, nicknamed the "A-side" and "B-side." NAV_RIGHT_B is the
+    right-eye camera of the backup B-side pair, normally dormant unless the rover has
+    switched computers (as it did after a memory glitch early in the mission).
+  what_it_sees: >
+    Monochrome images with a 45-degree field of view, paired with its left-eye partner
+    (NAV_LEFT_B) for stereo depth; mounted just below the A-side pair on the mast, aimed
+    the same direction.
+  why_it_matters: >
+    Stereo navcam pairs are how the rover and its drivers plan safe paths and build 3D
+    terrain models; a fully redundant B-side pair means a computer-side swap doesn't cost
+    the rover its ability to see where it's going.
+  reading_the_image: >
+    An ordinary-looking greyscale wide landscape shot, indistinguishable in content from
+    the A-side navcams - only the instrument name in the metadata says which computer
+    captured it.
+  wikipedia: https://en.wikipedia.org/wiki/Navcam
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Curiosity_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    mast_az: Mast azimuth (degrees)
+    mast_el: Mast elevation (degrees)
+    lmst: Local Mean Solar Time (Mars clock)
+    sequence: Sequence ID (frames from the same observation)
+  picture_types: [greyscale wide-angle]
+  confidence: verified
+
+- spacecraft: Curiosity
+  instruments: [CHEMCAM_RMI]
+  name: ChemCam RMI (Remote Micro-Imager)
+  spacecraft_name: Curiosity rover
+  operator: Los Alamos National Laboratory (USA) / CNES-IRAP (France)
+  what_it_is: >
+    ChemCam is a mast-mounted instrument that fires an infrared laser (1067nm) at rock and
+    soil targets up to about 7 meters away and reads the flash of vaporized material with
+    a spectrometer - laser-induced breakdown spectroscopy (LIBS), the first use of that
+    technique on another planet. A single laser shot barely dents the surface; ChemCam
+    fires 30 shots at one spot, discards the first 5 (considered dust-contaminated), and
+    averages the rest into a reading of up to 6,144 wavelengths of light. The RMI is
+    ChemCam's telescope camera, sharing the laser's optics so it sees exactly what was hit.
+  what_it_sees: >
+    A 1024x1024-pixel monochrome CCD behind a 110mm telescope with a 700mm effective focal
+    length, giving a narrow field of view of about 20 milliradians - roughly 20cm across
+    at 10 meters, resolving objects about 1mm across at that same distance.
+  why_it_matters: >
+    RMI images confirm exactly where the laser hit and document the tiny pit it burns into
+    the rock over those 30 pulses; being a small telescope in its own right, it also
+    provides long-distance reconnaissance of crater rims and cliffs the rover will never
+    drive to.
+  reading_the_image: >
+    A small circular telescopic view inset in a black square frame, always greyscale.
+    Look for pairs of near-identical frames - taken before and after a LIBS burn, where
+    the only difference is a barely visible dark pit - or a full 1024x1024 frame used for
+    distant-terrain scouting rather than laser targeting.
+  wikipedia: https://en.wikipedia.org/wiki/ChemCam
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Curiosity_(rover)
+  meta_labels:
+    sol: Sol (Mars day of the mission)
+    mast_az: Mast azimuth (degrees)
+    mast_el: Mast elevation (degrees)
+    lmst: Local Mean Solar Time (Mars clock)
+    sequence: Sequence ID (frames from the same observation)
+  picture_types: [telescopic circle greyscale, before/after LIBS pair]
+  confidence: verified
+
+- spacecraft: MRO
+  instruments: [hirise]
+  name: HiRISE (High Resolution Imaging Science Experiment)
+  spacecraft_name: Mars Reconnaissance Orbiter
+  operator: University of Arizona / Ball Aerospace & Technologies Corp.
+  what_it_is: >
+    HiRISE is the highest-resolution camera ever sent to orbit another planet: a 0.5-meter
+    reflecting telescope, the largest ever flown beyond Earth orbit, with a 12-meter focal
+    length. Ball Aerospace built it; the University of Arizona operates it aboard the Mars
+    Reconnaissance Orbiter, which has circled Mars since 2006.
+  what_it_sees: >
+    From MRO's roughly 300km orbit, HiRISE resolves about 0.3 meters per pixel - individual
+    boulders and rover tracks are visible. It scans a long strip as the spacecraft flies
+    overhead; the full-width detector is black and white, but a narrower strip down the
+    center is also imaged in three color bands (blue-green 400-600nm, red 550-850nm,
+    near-infrared 800-1000nm). A full frame can run to about 20,000 x 126,000 pixels.
+  why_it_matters: >
+    HiRISE scouts and characterizes landing sites, tracks seasonal changes like dust
+    devils and dark slope streaks, and provides the ground-truth close-ups that connect
+    rover-scale geology to the orbital picture.
+  reading_the_image: >
+    A top-down, mostly greyscale strip of terrain, sharp enough at full resolution to
+    show rocks, dunes and even rover hardware from orbit; color, when present, only runs
+    down the central portion of the frame. What's published here is normally a cropped,
+    downsized detail rather than a full multi-gigapixel swath.
+  wikipedia: https://en.wikipedia.org/wiki/HiRISE
+  spacecraft_wikipedia: https://en.wikipedia.org/wiki/Mars_Reconnaissance_Orbiter
+  meta_labels:
+    description: Caption from the HiRISE image-of-the-day feed
+  picture_types: [orbital swath greyscale, color center strip]
+  confidence: verified
