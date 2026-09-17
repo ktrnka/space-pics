@@ -1,6 +1,6 @@
 # Vibe day handoff — space image of the day
 
-Read this first. Companion doc: `space-image-of-the-day-research.md` (sources, endpoints, sizes, libraries).
+Read this first. Companion doc: `docs/research/space-image-of-the-day-research.md` (sources, endpoints, sizes, libraries).
 
 ## What today is
 

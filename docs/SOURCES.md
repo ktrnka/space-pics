@@ -1,7 +1,7 @@
 # Sources
 
 One section per adapter. Record the endpoint, what the raw records look like, quirks, and what's in `meta`.
-Research notes for candidate sources not yet built are in `space-image-of-the-day-research.md`.
+Research notes for candidate sources not yet built are in `docs/research/space-image-of-the-day-research.md`.
 
 ## perseverance (`sources/perseverance.py`)
 
