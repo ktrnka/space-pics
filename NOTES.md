@@ -30,7 +30,8 @@
   Also: Helioviewer digest images were saved with the render URL's query string as the extension (404 on Pages).
 - 14:55 all three subject pages reviewed live by Keith and revised: captions, headings, Sun ordering, Earth slimmed
 - 15:09 wigglegram proof of concept (three Perseverance stereo pairs) as an experiment page
-- 15:11 final CI run dispatched; **code freeze 16:00** (no code after the final run's bot commit)
+- 15:11 final CI run dispatched, succeeded (pipeline, bot commit, build, deploy)
+- 15:14 last code push (wigglegram speed from parallax spread); **code freeze** from here, docs only
 - biggest single stall of the day: push-triggered deploys silently skipped for four hours (found 14:30, one-line fix)
 
 ## Scope changes from the must-do note
