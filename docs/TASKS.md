@@ -12,6 +12,11 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
+| Decide the fate of the single-image pick path | `pipeline.pick`, `models.Pick`, `publish.write_post`, `post.md.j2`, `cli pick` | Nobody runs it since the digest; either keep as a documented manual escape hatch or delete it. Code review 2026-09-17. |
+| Source declares its explorer layout | `sources/base.py`, `publish.gallery_context` | Layout is chosen by `subject == "Mars"` / `name == "sdo"` checks; a `gallery_layout` attribute would keep new sources out of publish.py. |
+| Untangle digest/publish import cycle | `digest.py`, `publish.py`, `store.py` | `survey_candidates` lives in publish and digest imports it inside a function; move it to store. |
+| One shared "Mastcam-Z colour frame" predicate | `digest.py`, `wiggle.py` | Two different filters for the same idea. |
+| Card fields nobody reads | `reference.Card`, `data/reference/README.md` | `picture_types` and `confidence` are filled on every card but unused; surface `confidence` on posts or drop both. |
 | Perseverance paging in the daily fetch | `sources/perseverance.py` | Page 0 alone missed the sol's Mastcam-Z colour frames today; the wigglegram search currently leans on the committed survey pages, which will go stale. Fetch pages 0..3. |
 | Wigglegram selection: prefer one-subject close-ups | `wiggle.py` | Keith's verdict: a single rock mid-frame with ground before and behind is ideal; survey mosaics are not. Navcam horizon pairs still untested. |
 | Day 2, first: Sun difference detector as the SDO chooser | `digest.py`, new `signals.py` | Frame differences at native cadence per channel; validated 2026-09-17 (found a flare). Pair AIA eruptions with LASCO CMEs hours later. |

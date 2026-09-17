@@ -26,7 +26,7 @@ MAX_PANELS = 6
 
 
 class Panel(BaseModel):
-    candidate: Candidate
+    candidate: Candidate  # the source frame; for a derived image (wigglegram, composite), the anchor frame it was built from
     site_image: str  # relative to site/
     heading: str  # e.g. "Mastcam-Z, left eye"
     blurb: str  # one or two sentences from the instrument card
@@ -189,6 +189,8 @@ def _wigglegram_panel(candidates: list[Candidate], day: date) -> list[Panel]:
 
 def _panel(c: Candidate, day: date) -> Panel:
     card = card_for(c)
+    if card is None:
+        logger.warning("no instrument card for %s / %s; the panel will show the raw instrument id", c.spacecraft, c.instrument)
     ext = image_ext(str(c.image_url))
     heading = panel_heading(c, card)
     if card and card.spacecraft_name:

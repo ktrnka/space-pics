@@ -6,7 +6,6 @@ Everything here is best effort: callers should treat None as "no wigglegram toda
 """
 
 import logging
-import re
 from datetime import date
 from pathlib import Path
 
@@ -21,7 +20,6 @@ logger = logging.getLogger(__name__)
 
 WIDTH = 640
 MIN_SPREAD, MAX_SPREAD = 8, 40  # px at WIDTH
-EYE_RE = re.compile(r"^[A-Z][LR][A-Z0-9]_")  # NLF/NRF, ZL0/ZR0 prefixes
 
 
 def _best_shift(ga, gb, ys, xs, dy_range=range(-6, 7, 2), dx_range=range(-90, 91, 2)) -> tuple[int, int]:

@@ -8,7 +8,7 @@ DATA_DIR = REPO_ROOT / "data"
 FEEDS_DIR = DATA_DIR / "feeds"  # raw feed responses, committed (offline reproducibility)
 CANDIDATES_DIR = DATA_DIR / "candidates"  # extracted Candidate JSONL, committed
 DERIVED_DIR = DATA_DIR / "derived"  # locally generated images (composites), gitignored; the pick's copy lives in site/
-SURVEY_DIR = DATA_DIR / "survey"  # exploration fetches of other dates, gitignored; explorer pages fold them in
+SURVEY_DIR = DATA_DIR / "survey"  # exploration fetches of other dates, committed so CI explorer pages match local; folded into galleries
 PICKS_FILE = DATA_DIR / "picks.jsonl"
 
 SITE_DIR = REPO_ROOT / "site"
