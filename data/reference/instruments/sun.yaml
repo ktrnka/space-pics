@@ -34,12 +34,14 @@
     solar atmosphere are and follow flares, filament eruptions, and coronal mass ejections as they unfold.
 
     '
-  reading_the_image: 'Dark patches in 193 or 211 are coronal holes (open field, source of fast solar wind); bright
-    tangled patches are active regions over sunspots; dark thread-like filaments on the disc in 304 are the same
-    structures seen as bright prominences when they curve above the limb. A sudden bright flash in 131 or 94 is
-    a flare.
-
-    '
+  reading_the_image: 'A note on the labels: ''Fe XIV'' is spectroscopists'' shorthand for an iron atom that has
+    lost 13 of its electrons (I is neutral, II has lost one, and so on). Stripping that many electrons takes a temperature
+    of about 2 million K, and each ion glows at its own set of wavelengths, so tuning a channel to the 211 Å line
+    of Fe XIV is a way of photographing only the gas at that temperature. That is why each AIA channel is really
+    a temperature map, and why the same active region looks different from channel to channel. Dark patches in 193
+    or 211 are coronal holes (open field, source of fast solar wind); bright tangled patches are active regions
+    over sunspots; dark thread-like filaments on the disc in 304 are the same structures seen as bright prominences
+    when they curve above the limb. A sudden bright flash in 131 or 94 is a flare.'
   wikipedia: https://en.wikipedia.org/wiki/Atmospheric_Imaging_Assembly
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_Dynamics_Observatory
   links: []

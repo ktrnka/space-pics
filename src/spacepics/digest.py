@@ -13,7 +13,7 @@ from pydantic import BaseModel
 
 from .models import Candidate
 from .paths import DATA_DIR
-from .pipeline import fresh, safe_name
+from .pipeline import fresh, image_ext, safe_name
 from .reference import card_for, panel_heading
 from .sources import Source
 from .store import read_candidates
@@ -145,7 +145,7 @@ def build_digest(sources: list[Source], day: date) -> Digest:
 
 def _panel(c: Candidate, day: date) -> Panel:
     card = card_for(c)
-    ext = Path(str(c.image_url)).suffix.lower() or ".jpg"
+    ext = image_ext(str(c.image_url))
     heading = panel_heading(c, card)
     if card and card.spacecraft_name:
         heading += f" on {card.spacecraft_name}"

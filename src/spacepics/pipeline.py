@@ -165,8 +165,7 @@ def pick(sources: list[Source], day: date, chooser: Chooser = choose_random) -> 
     pools = {s.name: fresh(read_candidates(s.name), day, s.freshness_days) for s in sources}
     previous = [p for p in read_picks() if p.day < day]
     choice = chooser(sources, pools, day, previous)
-    image_name = Path(choice.derived_image).name if choice.derived_image else Path(str(choice.candidate.image_url)).name
-    ext = Path(image_name).suffix.lower() or ".jpg"
+    ext = Path(choice.derived_image).suffix.lower() if choice.derived_image else image_ext(str(choice.candidate.image_url))
     result = Pick(
         day=day,
         candidate=choice.candidate,
@@ -183,6 +182,11 @@ def pick(sources: list[Source], day: date, chooser: Chooser = choose_random) -> 
 
 def default_caption(candidate: Candidate) -> str:
     return f"{candidate.title}. Captured {candidate.captured_at:%Y-%m-%d %H:%M} UTC. Credit: {candidate.credit}."
+
+
+def image_ext(url: str) -> str:
+    """File extension for a copied image, from the URL path only (never the query string). Renders without a suffix are PNG."""
+    return Path(urlsplit(url).path).suffix.lower() or ".png"
 
 
 def safe_name(s: str) -> str:

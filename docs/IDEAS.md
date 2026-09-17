@@ -58,6 +58,14 @@ Add a date and where the idea came from (which debug page, which pick).
 
 ## Site
 
+- **Wiggle stereo (wigglegram) from stereo pairs** (2026-09-17, Keith). Navcam and Mastcam-Z left/right frames of the
+  same sequence taken seconds apart: alternate them in an animated image to fake depth, an old trick that works well.
+  (A and B sides are redundant computers, not a stereo pair; the pair is left/right.)
+- **Digest panels grouped by spacecraft, then instrument** (2026-09-17, Keith). Headers per vehicle would read better
+  than a flat panel list once a subject has several spacecraft.
+- **Explain spectroscopic notation once** (2026-09-17, Keith): "Fe XIV" and "211 Å" mean nothing to a newcomer; the
+  AIA card now has a plain-English paragraph, and the pattern should carry to other instruments (ion, temperature,
+  why a wavelength isolates it).
 - **Show the Earth date beside the sol** (2026-09-17, Keith). Done on sol headers; the general point stands: Mars
   and Earth time both matter, keep both visible.
 - **NOIRLab sits apart** (2026-09-17, Keith): interesting but not closely related to the spacecraft sources; fine as
