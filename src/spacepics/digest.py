@@ -147,6 +147,11 @@ def _panel(c: Candidate, day: date) -> Panel:
     card = card_for(c)
     ext = Path(str(c.image_url)).suffix.lower() or ".jpg"
     heading = card.name if card else c.instrument
+    if card and len(card.instruments) > 1:  # e.g. AIA covers nine channels: say which one
+        detail = c.meta.get("filter_name") or c.meta.get("measurement") or c.meta.get("channel") or c.instrument
+        if c.meta.get("wavelength_angstrom"):
+            detail = f"{c.meta['wavelength_angstrom']} Å"
+        heading += f" ({detail})"
     if card and card.spacecraft_name:
         heading += f" on {card.spacecraft_name}"
     elif c.spacecraft:
