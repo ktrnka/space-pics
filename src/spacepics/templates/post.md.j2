@@ -1,0 +1,16 @@
+---
+layout: post
+title: "{{ pick.candidate.title | replace('"', "'") }}"
+date: {{ pick.day.isoformat() }}
+image: /{{ pick.site_image }}
+source: {{ pick.candidate.source }}
+instrument: {{ pick.candidate.instrument }}
+captured_at: {{ pick.candidate.captured_at.isoformat() }}
+credit: "{{ pick.candidate.credit }}"
+source_url: {{ pick.candidate.source_page_url or pick.candidate.image_url }}
+picker: {{ pick.picker }}
+---
+
+<img src="{{ '{{' }} '/{{ pick.site_image }}' | absolute_url {{ '}}' }}" alt="{{ pick.candidate.title | replace('"', "'") }}">
+
+{{ pick.caption }}

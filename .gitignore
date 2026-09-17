@@ -1,0 +1,20 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.env
+
+# Downloaded image cache (feeds and candidates are committed; images are re-fetched)
+data/images/
+
+# Jekyll
+site/_site/
+site/.jekyll-cache/
+site/.jekyll-metadata
+site/vendor/
+site/.bundle/
+
+# Scratch
+tmp/

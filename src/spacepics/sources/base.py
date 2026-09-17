@@ -1,0 +1,23 @@
+from typing import Protocol
+
+import httpx
+
+from ..models import Candidate
+
+
+class Source(Protocol):
+    """A feed of recent images.
+
+    Two halves, deliberately split so extraction can be developed and tested offline
+    against saved feeds in data/feeds/ and tests/fixtures/:
+
+    - fetch_feed: network only. Returns the raw response bytes to be saved verbatim.
+    - extract: pure. Parses raw bytes into Candidates. No network, no filesystem.
+    """
+
+    name: str
+    feed_suffix: str  # file extension for the saved feed, e.g. "json" or "xml"
+
+    def fetch_feed(self, client: httpx.Client) -> bytes: ...
+
+    def extract(self, raw: bytes) -> list[Candidate]: ...

@@ -1,0 +1,42 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "spacepics"
+version = "0.1.0"
+description = "Daily space image picker: pulls recent imagery from public space feeds, picks one, publishes a static site with RSS"
+readme = "README.md"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "click",
+    "httpx",
+    "jinja2",
+    "pydantic",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[project.scripts]
+spacepics = "spacepics.cli:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spacepics"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.ruff]
+line-length = 150
+target-version = "py314"
+
+[tool.ruff.lint]
+extend-select = ["I", "UP"]
+
+[tool.uv]
+exclude-newer = "P7D"
