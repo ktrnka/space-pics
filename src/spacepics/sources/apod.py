@@ -43,7 +43,7 @@ class ApodSource:
     weight = 0.5
 
     def fetch_feed(self, client: httpx.Client) -> bytes:
-        resp = client.get(API_URL, params={"api_key": os.environ.get("NASA_API_KEY", "DEMO_KEY")})
+        resp = client.get(API_URL, params={"api_key": (os.environ.get("NASA_API_KEY") or "DEMO_KEY")})
         resp.raise_for_status()
         return resp.content
 
