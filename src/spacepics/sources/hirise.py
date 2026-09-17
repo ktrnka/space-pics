@@ -35,6 +35,7 @@ _TAG_RE = re.compile(r"<[^>]+>")
 
 class HiriseSource:
     name = "hirise"
+    subject = "Mars"
     feed_suffix = "xml"
     enabled = True
     freshness_days = 7  # roughly daily

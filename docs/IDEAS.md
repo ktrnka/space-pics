@@ -17,7 +17,30 @@ Add a date and where the idea came from (which debug page, which pick).
   not science-grade.
 - Use PR photos as training data for multi-spectral work, if we can match a PR photo to the sources (this way there's a little less guess and check for MS work)
 
+- **Mastcam-Z near-IR decorrelation stretch** (2026-09-17, Keith's gallery notes). The right eye's 800-1022 nm filters
+  target iron-mineral absorption features; the team publishes band-ratio and decorrelation-stretch composites that make
+  rock composition differences visible. Same sequence, same eye, no alignment needed (filter wheel cycles in seconds
+  from a fixed pointing). Day-sized and would actually show something.
+- **Exclude or feature the ND solar frames** (2026-09-17). L7 (590 nm, ND6) and R7 (880 nm, ND5) are Sun shots for
+  dust opacity and moon transits: a small disc on black. Either filter them from picking or make transits a treat.
+- **Calibration frames and anomaly scores** (2026-09-17). Two guesses on the board: caltarget frames are so common
+  they'll sit at the embedding centroid (low score, good), or they're visually odd enough to be high outliers.
+  Check empirically once embeddings exist.
+- **Navcam love** (2026-09-17, Keith). Navcam frames deserve a fair share; don't let ranking bury them.
+- **SDO channels are temperature, not element** (2026-09-17). Each AIA channel is mostly an iron ion line at a
+  different temperature; the 211/193/171 composite is already a temperature map. Element mapping isn't reachable
+  from AIA. Other composites worth trying: 304/171/193, 094/335/193 for flares.
+- **Raw Webb via MAST to tune composites** (2026-09-17, Keith). Use ESA's finished picture-of-the-month images as
+  targets for a composite pipeline over the underlying per-filter frames. FITS-sized; later day.
+- **Tomorrow's snapshot for calibration**: the debug galleries are the fastest feedback loop we have; keep them
+  first-class as stages are added (ranker scores, shortlist, composite previews).
+
 ## Sources
+
+- **More HiRISE** (2026-09-17, Keith): the HiPOD is one a day, but every observation has a browse JPEG in the
+  catalog; a "latest releases" page scrape could yield dozens. Needs research.
+- **APOD backfill** (2026-09-17): the new endpoint returns a list, so a migration could pull the last week rather
+  than one item.
 
 - Perseverance paging beyond the first 100 frames so a whole sol is covered.
 

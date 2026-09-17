@@ -70,6 +70,7 @@ def _wavelength(channel: str) -> int | None:
 
 class SdoSource:
     name = "sdo"
+    subject = "Sun"
     feed_suffix = "html"
     enabled = True
     freshness_days = 2  # the daily listing; older days are separate listings we never fetch

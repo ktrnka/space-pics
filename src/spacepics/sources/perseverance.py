@@ -51,6 +51,7 @@ class RawFeed(BaseModel):
 
 class PerseveranceSource:
     name = "perseverance"
+    subject = "Mars"
     feed_suffix = "json"
     enabled = True
     freshness_days = 7

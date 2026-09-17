@@ -35,6 +35,7 @@ class RawApod(BaseModel):
 
 class ApodSource:
     name = "apod"
+    subject = "Various"
     feed_suffix = "json"
     enabled = True
     freshness_days = 3  # one curated image a day; fallback only

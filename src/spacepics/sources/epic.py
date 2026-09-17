@@ -41,6 +41,7 @@ RAW_RECORDS = TypeAdapter(list[RawRecord])
 
 class EpicSource:
     name = "epic"
+    subject = "Earth"
     feed_suffix = "json"
     enabled = True
     freshness_days = 10  # latest available day lags real time by several days

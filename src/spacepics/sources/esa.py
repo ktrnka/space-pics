@@ -115,6 +115,7 @@ def _first_sentence(text: str) -> str | None:
 
 
 class EsaSource:
+    subject = "Deep space"
     feed_suffix = "json"
     enabled = True
     freshness_days = 45  # monthly (potm) and weekly (potw) releases

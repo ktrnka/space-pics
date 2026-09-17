@@ -53,7 +53,10 @@ def write_debug_galleries(sources: list[Source], per_instrument_limit: int = 60)
         path = DEBUG_DIR / f"{source.name}.html"
         path.write_text(env.get_template("gallery.html.j2").render(source=source.name, groups=groups))
         paths.append(path)
+    by_subject: dict[str, list[str]] = defaultdict(list)
+    for source in sources:
+        by_subject[source.subject].append(source.name)
     index = DEBUG_DIR / "index.html"
-    index.write_text(env.get_template("debug_index.html.j2").render(sources=[s.name for s in sources]))
+    index.write_text(env.get_template("debug_index.html.j2").render(by_subject=dict(sorted(by_subject.items()))))
     paths.append(index)
     return paths
