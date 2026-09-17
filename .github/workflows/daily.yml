@@ -1,0 +1,78 @@
+name: Daily pick
+
+# One workflow for pipeline + Pages deploy: commits made with the default token don't
+# trigger other workflows, so the Jekyll build has to live here rather than in a push-triggered job.
+
+on:
+  schedule:
+    - cron: "30 15 * * *" # 15:30 UTC daily; SDO and Mars feeds have fresh frames by then
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["site/**", "src/**", ".github/workflows/daily.yml"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "daily"
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'push'
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version-file: ".python-version"
+      - name: Install the project
+        run: uv sync --locked
+      - name: Run pipeline
+        run: uv run spacepics pipeline
+        env:
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+      - name: Commit data and site
+        uses: EndBug/add-and-commit@290ea2c423ad77ca9c62ae0f5b224379612c0321 # v10.0.0
+        with:
+          add: "data site"
+          message: "chore(daily): pick and publish"
+          default_author: github_actions
+
+  build:
+    runs-on: ubuntu-latest
+    needs: pipeline
+    if: always() && (needs.pipeline.result == 'success' || needs.pipeline.result == 'skipped')
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          ref: main # pick up the commit made by the pipeline job
+      - name: Setup Pages
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
+        with:
+          source: site
+          destination: ./_site
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
