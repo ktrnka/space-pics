@@ -53,8 +53,11 @@ than the Sun: scores from 0.1 to 0.8. Contact sheets (top-8 versus bottom-8 per 
 | NAVCAM_LEFT | the sun, deck and arm hardware, a self-portrait of the mast shadow | horizons, all alike |
 | FRONT_HAZCAM | one sequence (FHAZ02008) dominates the top | the usual view over the wheels |
 
-So Keith's guess in IDEAS.md was right and mine was wrong: calibration frames are high outliers, not centroid
-dwellers, at least over a five-sol window. Same for sun shots and hardware. Consequences for the ranker:
+Keith's reading after looking at the browsable page (more accurate than the sheets): it depends on the instrument.
+On some, calibration frames are the most anomalous; on others the least. What the anomaly ordering really exposes is
+that each instrument produces several *types* of picture (rocks, hardware checks, calibration, sun, sky, raw Bayer
+frames) that the metadata doesn't label. Nothing in the feed says "this is a caltarget frame", and the type mix, not
+the centroid, decides where calibration lands. Consequences for the ranker:
 
 - Raw anomaly is a garbage-and-hardware detector first. That's useful (it caught a corrupted frame), but the
   interesting rock or landscape sits in the middle of the distribution, not the tail.
@@ -62,6 +65,19 @@ dwellers, at least over a five-sol window. Same for sun shots and hardware. Cons
   drop frames whose mast elevation points at the deck. Then rank what's left, and consider "moderately unusual
   terrain" rather than the extreme tail.
 - Or invert the framing: use anomaly to build the exclusion list and let the vision model choose among the rest.
+- Better: learn the picture *types* per instrument (cluster the embeddings, label clusters once by eye), then rank
+  within a type. The explorer is the labelling tool.
+
+Product codes explain one type. Perseverance image ids carry a product code after the fourth underscore field:
+`ECM` is the processed (demosaiced, compressed) image and `EBY` is the raw Bayer-pattern frame, which reads as grey
+with a fine checkerboard mask. Mastcam-Z and SuperCam RMI publish both for many exposures (65 EBY vs 117 ECM on
+MCZ_LEFT over five sols), so about a third of those candidates are duplicates of another frame in a worse form. The
+black-and-white versus colour SuperCam RMI pair is exactly this. Drop `EBY` at extraction.
+
+Other observations from Keith's pass: HMIIC's top anomaly is the day with three large sunspots mid-disc (so for
+same-framing sources the tail can still be meaningful); the NAVCAM_LEFT sun frame is a keeper; CHEMCAM_RMI
+(Curiosity's telescopic context imager for the laser spectrometer, monochrome, showing the zapped spots) deserves
+its own look.
 
 Browsable version: `site/debug/experiment-anomaly.html` (12 most and 6 least anomalous per instrument).
 

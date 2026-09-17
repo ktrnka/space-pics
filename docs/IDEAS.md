@@ -46,11 +46,22 @@ Add a date and where the idea came from (which debug page, which pick).
 
 ## Site
 
+- **Show the Earth date beside the sol** (2026-09-17, Keith). Done on sol headers; the general point stands: Mars
+  and Earth time both matter, keep both visible.
+- **NOIRLab sits apart** (2026-09-17, Keith): interesting but not closely related to the spacecraft sources; fine as
+  a deep-space filler, don't build around it.
 - Per-instrument debug galleries for every source, linked from a debug index (exists for perseverance; keep it as sources are added).
 - User interface theme inspired from classic space UIs, or actually maybe Mass Effect? It'd be pretty dope to have a ME theme
 - Some sort of UI that shows where each spacecraft is, relative to earth-sol? Like the mission select screen
 
 ## Image selection
 
+- **Picture types per instrument** (2026-09-17, Keith, from the anomaly page). Each instrument mixes several kinds of
+  frame (rocks, hardware checks, calibration, sun, sky, raw Bayer) and the feed doesn't label them. Cluster embeddings
+  per instrument, label clusters once by eye in the explorer, then rank within type. This is the real ranker.
+- **Drop EBY (raw Bayer) products at extraction** (2026-09-17). They duplicate the ECM frame in worse form. Same check
+  for Curiosity's id scheme.
+- **Keepers noticed by eye** (2026-09-17): NAVCAM_LEFT sun frame; HMIIC day with three big sunspots; GOES GeoColor
+  composites are far better than expected; CHEMCAM_RMI deserves a dedicated look.
 - Pick weighting beyond the placeholder (2026-09-17). Today: fixed source weights, uniform instrument within source, avoid yesterday's source. Longer term the ranker + VLM should replace weights entirely; if not, ideas: weight by recent novelty per instrument, or by how long since that source last appeared.
 - High outliers are probably calibration stuff. Possibly tune a range from an outlier detection model to select interesting stuff

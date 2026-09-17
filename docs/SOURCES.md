@@ -11,6 +11,7 @@ Research notes for candidate sources not yet built are in `space-image-of-the-da
 - Raw fields used: `imageid`, `sol`, `date_taken_utc` (naive string, UTC), `sample_type` (`Full` or `Thumbnail`), `camera.instrument`, `camera.filter_name`, `image_files.{small,medium,large,full_res}`.
 - Candidate mapping: `image_url` = `large` (1200 px JPEG), `preview_url` = `medium` (800 px). Thumbnails dropped. `filter_name` of `UNK` becomes `None`.
 - `meta`: `sol`, `filter_name` (e.g. `ZCAM_R2_866NM`; Mastcam-Z filter sets are the multispectral composite source).
+- Quirk: image ids carry a product code in the fourth field (`957ECM`): `ECM` is the processed image, `EBY` the raw Bayer frame (grey checkerboard look). Both are published for many Mastcam-Z and SuperCam RMI exposures; EBY should be dropped (not yet done).
 - Instruments seen: `MCZ_LEFT`, `MCZ_RIGHT`, `FRONT_HAZCAM_*`, `REAR_HAZCAM_*`, `NAVCAM_*`, and engineering cams. Hazcam and navcam frames are frequent and repetitive; ranking will need per-instrument handling.
 - Curiosity (`category=msl`) returns "No more images" on this endpoint; not pursued.
 
