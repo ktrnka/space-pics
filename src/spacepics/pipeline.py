@@ -17,7 +17,7 @@ import httpx
 from .models import Candidate, Pick
 from .paths import FEEDS_DIR, IMAGES_DIR, SITE_IMG_DIR
 from .sources import Source
-from .store import read_candidates, upsert_pick, write_candidates
+from .store import read_candidates, read_picks, upsert_pick, write_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -105,20 +105,37 @@ def fresh(candidates: list[Candidate], day: date, days: int = DEFAULT_FRESHNESS_
     return [c for c in candidates if c.captured_at >= cutoff]
 
 
-def pick_random(sources: list[Source], day: date) -> Pick:
-    """Placeholder picker: a seeded random choice among recent candidates. Replaced by ranking + VLM later."""
-    pool = []
-    for source in sources:
-        pool.extend(fresh(read_candidates(source.name), day, getattr(source, "freshness_days", DEFAULT_FRESHNESS_DAYS)))
-    if not pool:
+# Placeholder weighting until the ranker exists. Raw-feed sources outweigh curated ones because raw frames are
+# the point of the project; within a source, instruments are drawn uniformly so a chatty camera doesn't swamp a rare one.
+SOURCE_WEIGHTS = {"perseverance": 3, "sdo": 2, "esa_webb": 2, "esa_hubble": 2, "epic": 1, "hirise": 1, "apod": 0.5}
+
+
+def stratified_choice(pools: dict[str, list[Candidate]], rng: random.Random, avoid_source: str | None = None) -> Candidate:
+    """Weighted source, then uniform instrument, then uniform frame. Skips yesterday's source when there's a choice."""
+    pools = {name: cs for name, cs in pools.items() if cs}
+    if not pools:
         raise RuntimeError("no fresh candidates; run fetch and extract first")
-    candidate = random.Random(day.isoformat()).choice(pool)
+    eligible = [name for name in pools if name != avoid_source] or list(pools)
+    source_name = rng.choices(eligible, weights=[SOURCE_WEIGHTS.get(name, 1) for name in eligible])[0]
+    by_instrument: dict[str, list[Candidate]] = {}
+    for c in pools[source_name]:
+        by_instrument.setdefault(c.instrument, []).append(c)
+    instrument = rng.choice(sorted(by_instrument))
+    return rng.choice(sorted(by_instrument[instrument], key=lambda c: c.key))
+
+
+def pick_random(sources: list[Source], day: date) -> Pick:
+    """Placeholder picker: seeded stratified random choice among fresh candidates. Replaced by ranking + VLM later."""
+    pools = {s.name: fresh(read_candidates(s.name), day, getattr(s, "freshness_days", DEFAULT_FRESHNESS_DAYS)) for s in sources}
+    previous = [p for p in read_picks() if p.day < day]
+    avoid = previous[-1].candidate.source if previous else None
+    candidate = stratified_choice(pools, random.Random(day.isoformat()), avoid_source=avoid)
     ext = Path(str(candidate.image_url)).suffix.lower() or ".jpg"
     pick = Pick(
         day=day,
         candidate=candidate,
         caption=default_caption(candidate),
-        picker="random",
+        picker="random-stratified",
         site_image=str(Path("assets/img") / day.isoformat() / f"{candidate.source}-{safe_name(candidate.source_id)}{ext}"),
     )
     upsert_pick(pick)

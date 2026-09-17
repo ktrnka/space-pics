@@ -12,8 +12,8 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
-| Per-source freshness window | `sources/base.py`, `pipeline.py` | Monthly/weekly sources (ESA) need more than 7 days. |
-| Compress saved feeds | `pipeline.py` | SDO's listing is 1.2 MB/day uncompressed; decide gzip-on-save before the repo grows. |
+| Feed storage growth (revisit around 2026-10-01 if the project continues) | `pipeline.py`, `.github/workflows/daily.yml` | Decided 2026-09-17 to leave feeds committed as-is: git packs them to about 216 KB/day; checkout grows 1.75 MB/day. Likely fix is a 30-day retention window in the tree. gzip rejected (no packed-size win, loses greppability). |
+| APOD: migrate to the new endpoint before 2026-12-01 | `sources/apod.py`, `tests/fixtures/apod_*` | Legacy api.nasa.gov/planetary/apod is archived 2026-12-01. New: `https://science.nasa.gov/wp-json/wp/v2/apod-basic` (no key, returns a list; `url` is now the article permalink, image is `hdurl`). Keith's copy of the user guide: `docs/apod-feed-and-api-user-guide`. |
 | Perseverance paging | `sources/perseverance.py` | Pull pages 0..N so a full sol is covered. |
 | Ranker: per-instrument embedding anomaly | `rank.py`, `pipeline.py`, `pyproject.toml` | DINOv2-small on CPU; rolling window persisted under `data/embeddings/`. |
 | Picker: vision model pick + caption | `pick.py`, `pipeline.py` | Decision on provider pending. |
@@ -24,5 +24,6 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 | Task | Commit |
 |---|---|
 | Skeleton: models, Perseverance source, stages, CLI, Jekyll site, workflows, docs | 27bb139..5b4f945 |
-| Sources sdo, esa_webb, esa_hubble, epic, apod, hirise: fetch halves by main session, extractors by 4 parallel subagents | (this commit) |
-| Per-source freshness window | (this commit) |
+| Sources sdo, esa_webb, esa_hubble, epic, apod, hirise: fetch halves by main session, extractors by 4 parallel subagents | a1fb6a1 |
+| Per-source freshness window | a1fb6a1 |
+| Placeholder picker: weighted source, uniform instrument, no repeat of yesterday's source | (this commit) |

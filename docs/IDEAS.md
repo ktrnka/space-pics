@@ -29,4 +29,5 @@ Add a date and where the idea came from (which debug page, which pick).
 
 ## Image selection
 
+- Pick weighting beyond the placeholder (2026-09-17). Today: fixed source weights, uniform instrument within source, avoid yesterday's source. Longer term the ranker + VLM should replace weights entirely; if not, ideas: weight by recent novelty per instrument, or by how long since that source last appeared.
 - High outliers are probably calibration stuff. Possibly tune a range from an outlier detection model to select interesting stuff

@@ -1,0 +1,181 @@
+APOD Feed And API User Guide
+This guide explains the APOD data feeds provided by the SMD APOD plugin. It is written for people who need to pull APOD content into another site, mirror site, tool, feed reader, or content archive.
+The goal of these feeds is to make APOD content easier to reuse. The APOD Basic feeds provide a simpler APOD-focused version of the data, while the regular WordPress RSS feed remains available for broader site-managed content.
+Quick Choice Guide
+Need
+Use
+A list of APOD posts and fields for a website or app
+APOD Basic JSON
+One APOD by old APOD date code
+APOD Basic single-date JSON
+Copy-and-paste APOD Basic HTML
+APOD Basic raw HTML route
+RSS reader or XML-based import
+APOD Basic RSS
+Future scheduled APOD posts
+Future APODs JSON
+A broad WordPress feed with more site-managed markup
+Existing image-article RSS feed
+APOD Basic JSON
+Use this when another site or app needs structured APOD data. JSON is usually the best choice when a developer or import tool wants separate fields for title, date, explanation, media type, image URL, and generated HTML.
+List endpoint:
+https://science.nasa.gov/wp-json/wp/v2/apod-basic
+​
+Paginated list:
+https://science.nasa.gov/wp-json/wp/v2/apod-basic?page=1&per_page=5
+​
+Date range:
+https://science.nasa.gov/wp-json/wp/v2/apod-basic?date_from=140901&date_to=140930
+​
+Single APOD by legacy date:
+https://science.nasa.gov/wp-json/wp/v2/apod-basic/140918
+​
+Supported filters:
+Parameter
+What it does
+page
+Page number for list results.
+per_page
+Number of results per page. Capped at 25.
+date_from
+Start date using legacy YYMMDD format.
+date_to
+End date using legacy YYMMDD format.
+/apod-basic/{YYMMDD}
+Gets one APOD by legacy date code.
+Common JSON meta fields:
+Field
+Meaning
+date
+APOD date in YYYY-MM-DD format.
+post_id
+WordPress post ID.
+title
+APOD post title.
+permalink
+URL of the APOD post on the site.
+media_type
+Normalized APOD media type, such as image, video, or iframe.
+explanation
+APOD explanation text.
+url
+APOD post URL. This matches the permalink.
+hdurl
+Full-size featured image URL when available.
+basic_html
+APOD Basic HTML document as a JSON string.
+basic_html_url
+Plain-text HTML source URL for easier copy/paste workflows.
+Important: JSON has to escape some characters. If you see values like \u003C, that means <. If you see \n, that means a line break. This is normal JSON behavior, not broken HTML.
+For copy-and-paste HTML, use the raw HTML route instead of copying the basic_html JSON field.
+APOD Basic Raw HTML (Primary for copy/paste)
+Primary recommendation when a person needs to copy/paste APOD Basic HTML. This route returns the HTML document directly as plain text (not JSON), so it avoids JSON string escaping issues.
+https://science.nasa.gov/wp-json/wp/v2/apod-basic/140918/html
+​
+Use this instead of copying the basic_html JSON field whenever the goal is manual copy/paste.
+APOD Basic RSS
+Use this when a mirror site, feed reader, or import tool works better with RSS/XML. RSS is also useful when a system wants to check for new APOD items on a schedule.
+Main feed:
+https://science.nasa.gov/feed/apod-basic/
+​
+All APOD posts in a year:
+https://science.nasa.gov/feed/apod-basic/?year=2014
+​
+All APOD posts in a month:
+https://science.nasa.gov/feed/apod-basic/?year=2014&month=9
+​
+Supported RSS filters:
+Parameter
+What it does
+No params
+Most recent APOD feed items. Currently 30.
+year=YYYY
+All APOD posts in that year.
+year=YYYY&month=M
+All APOD posts in that month.
+month is ignored unless year is also present.
+Important RSS fields:
+Field
+Meaning
+title
+APOD title.
+link
+APOD post URL.
+guid
+Permanent item URL.
+pubDate
+WordPress publication date.
+apod:explanation
+APOD explanation text.
+apod:url
+APOD post URL.
+apod:hdurl
+Full-size featured image URL when available.
+description
+RSS-standard description field. It uses the same value as apod:explanation.
+content:encoded
+Full APOD Basic HTML document.
+description is included because RSS readers and import tools commonly expect it. apod:explanation is included because APOD users are used to the old API field name. They intentionally contain the same explanation text.
+The full APOD Basic HTML is inside content:encoded as CDATA. CDATA lets the RSS feed carry a full HTML document without breaking the XML feed.
+Future APODs JSON
+Use this for APOD posts that are scheduled for a future publish date.
+https://science.nasa.gov/wp-json/wp/v2/future-apods/
+​
+This endpoint is still changing, but it now includes next_apod and previous_apod data with title and URL values. Future APOD Basic HTML does not use published previous/next navigation the same way a published APOD does, because those posts have not gone live yet.
+Existing Image Article RSS Feed
+This is the broader WordPress feed example. It can be useful for comparison, but it is not the simplified APOD Basic feed.
+https://science.nasa.gov/feed/apod-rss/
+​
+Use APOD Basic JSON or APOD Basic RSS when the mirror site needs the cleaner APOD plugin output.
+Which Feed Should A Mirror Site Use?
+For most mirror-site workflows, start with APOD Basic JSON. It provides the clearest field names and is easiest for a developer to map into another system.
+Use APOD Basic RSS when the receiving system already expects RSS, XML, description, or content:encoded.
+Use the raw HTML route when a person needs to copy one APOD Basic HTML document by hand.
+Use Future APODs JSON only for scheduled upcoming APOD content.
+Date Formats
+The feeds use two date styles:
+Date style
+Example
+Where it is used
+Legacy APOD date code
+140918
+JSON route and JSON date filters.
+Standard date
+2014-09-18
+JSON response field.
+RSS year/month filters
+year=2014&month=9
+RSS archive filtering.
+Copying APOD Basic HTML
+Best option:
+Find the APOD date code, such as 140918.
+Open /wp-json/wp/v2/apod-basic/140918/html.
+Copy the HTML from the page.
+RSS option:
+Open /feed/apod-basic/.
+Find the item you need.
+Copy the HTML inside content:encoded.
+JSON option:
+Open /wp-json/wp/v2/apod-basic/140918.
+Copy basic_html only if the receiving tool understands JSON string escaping.
+If the HTML contains \u003C or \n, use the raw HTML route instead.
+Helpful Web Tools
+These tools can help people inspect the feeds. Only paste public APOD feed content into third-party websites. Do not paste private, unpublished, embargoed, or not-yet-released content.
+Tool
+URL
+Use
+JSONLint
+https://jsonlint.com/
+Formats and validates JSON so it is easier to read.
+Code Beautify HTML Decode
+https://codebeautify.org/html-decode-string
+Decodes HTML text when copied content contains encoded characters.
+W3C Feed Validation Service
+https://validator.w3.org/feed/
+Checks whether an RSS feed is valid XML/RSS.
+Troubleshooting
+If the RSS feed returns a 404 but JSON works, the plugin may be active but WordPress rewrite rules may need to be flushed.
+If basic_html looks full of escaped characters in JSON, that is normal. Use the raw HTML route or the RSS content:encoded field for copy/paste HTML.
+If explanation or description is empty, check that the APOD post has explanation text in the Media Detail Hero data source.
+If the RSS feed only returns one item, check the filters and confirm there are published APOD posts for that date range.
+If hdurl is empty, check that the post has a featured image with a full-size image URL.

@@ -2,6 +2,7 @@ import logging
 from datetime import date
 
 import click
+from dotenv import load_dotenv
 
 from . import pipeline, publish
 from .sources import SOURCES, get_sources
@@ -17,6 +18,7 @@ def _day(d) -> date:
 @click.group()
 @click.option("--debug", is_flag=True)
 def cli(debug: bool):
+    load_dotenv()  # NASA_API_KEY for the api.nasa.gov sources; harmless when absent
     logging.basicConfig(level=logging.DEBUG if debug else logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 
 
