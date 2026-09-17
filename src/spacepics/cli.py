@@ -89,6 +89,8 @@ def pipeline_cmd(source_names, day):
     d = _day(day)
     pipeline.fetch(sources, d)
     pipeline.extract(sources, d)
+    # Render-on-view sources need their previews cached so the explorer can embed local copies instead of render URLs.
+    pipeline.download([s for s in sources if s.name in publish.RENDER_ON_VIEW], limit=None)
     digest.build_digest(sources, d)
     publish.publish(d)
     publish.write_debug_galleries(sources)
