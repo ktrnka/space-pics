@@ -12,13 +12,14 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
+| Perseverance paging in the daily fetch | `sources/perseverance.py` | Page 0 alone missed the sol's Mastcam-Z colour frames today; the wigglegram search currently leans on the committed survey pages, which will go stale. Fetch pages 0..3. |
+| Wigglegram selection: prefer one-subject close-ups | `wiggle.py` | Keith's verdict: a single rock mid-frame with ground before and behind is ideal; survey mosaics are not. Navcam horizon pairs still untested. |
 | Day 2, first: Sun difference detector as the SDO chooser | `digest.py`, new `signals.py` | Frame differences at native cadence per channel; validated 2026-09-17 (found a flare). Pair AIA eruptions with LASCO CMEs hours later. |
 | Day 2, second: picture-type labels per instrument | `publish.py` (explorer), new `labels.py`, `data/reference/` | Cluster DINOv2 embeddings per instrument, show clusters in the explorer, Keith names them once; then rank within type. |
 | Day 2, third: vehicle sketch with the active instrument lit | `site/`, cards | SVG per spacecraft on the post; extension of where-in-the-universe. |
 | Digest panels grouped by spacecraft | `templates/digest.md.j2` | |
 | Notation explainers on the remaining Sun cards | `data/reference/instruments/sun.yaml` | Follow the AIA pattern (ion, temperature, why a wavelength isolates it). |
 | Earth: a different angle or a smaller share of the rotation | `digest.py`, `sources/gibs.py` | See IDEAS: GIBS specialty layers, or Earth one day in five. |
-| Wigglegram into the Mars digest | `digest.py`, `publish.py` | Proof of concept at site/debug/experiment-wigglegram.html; needs numpy/Pillow in the project deps. |
 | Helioviewer preview growth | `publish.py` | Local previews under `site/debug/img/helioviewer/` cost about 6 MB/day committed. Prune to the last N days, or downscale to 256 px, before it matters. |
 | Source: NASA GIBS WMS (Earth, many layers) | `sources/gibs.py` | Date-addressable GetMap PNGs; pick a few layers (true colour, night lights, sea surface temperature). |
 | Source: STEREO-A beacon (fresher than Helioviewer's 3-day lag) | `sources/stereo.py` | latest-style URLs; needs the Last-Modified cache key (see research note). |
@@ -32,6 +33,7 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Commit |
 |---|---|
+| Wigglegram panel in the Mars digest (guarded; Mastcam-Z colour pairs, 8-40 px parallax spread) | 15:30 merge of branch `wigglegram` |
 | Subject-of-the-day digest with rotation and per-subject recipes; instrument cards (3 subagents); readable metadata; EBY/ND filtering | (13:50 commits) |
 | Sources goes (GOES-19 GeoColor) and noirlab; Curiosity sequence ids | (12:25 commits) |
 | Sources helioviewer (29 layers) and curiosity; explorer pages with sequence and time-grid layouts; week-long survey folded in | 2a8d9b8 and this commit |
