@@ -33,7 +33,9 @@ class Pick(BaseModel):
     """The published image for one day."""
 
     day: date
-    candidate: Candidate
+    candidate: Candidate  # the source frame; for a composite, the anchor frame it was built around
     caption: str
-    picker: str  # how it was chosen, e.g. "random", "vlm:claude-opus-5"
+    picker: str  # how it was chosen, e.g. "random-stratified", "vlm:claude-opus-5", "composite:mastcam-z"
     site_image: str  # path relative to site/, e.g. "assets/img/2026-09-17/perseverance-abc.jpg"
+    derived_image: str | None = None  # path relative to data/ of a locally generated image to publish instead of candidate.image_url
+    derived_from: list[str] = []  # candidate keys a derived image was built from

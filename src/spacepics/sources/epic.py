@@ -44,6 +44,7 @@ class EpicSource:
     feed_suffix = "json"
     enabled = True
     freshness_days = 10  # latest available day lags real time by several days
+    weight = 1
 
     def fetch_feed(self, client: httpx.Client) -> bytes:
         resp = client.get(API_URL, params={"api_key": os.environ.get("NASA_API_KEY", "DEMO_KEY")})

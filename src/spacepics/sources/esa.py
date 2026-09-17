@@ -118,6 +118,7 @@ class EsaSource:
     feed_suffix = "json"
     enabled = True
     freshness_days = 45  # monthly (potm) and weekly (potw) releases
+    weight = 2
 
     def __init__(self, name: str, host: str, list_name: str):
         self.name = name

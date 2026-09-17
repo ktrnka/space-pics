@@ -14,18 +14,21 @@ def write_candidates(source: str, day: date, candidates: list[Candidate]) -> Pat
     return path
 
 
-def read_candidates(source: str, day: date | None = None) -> list[Candidate]:
-    """Candidates from one source. Latest file if no day is given; empty if none exist."""
+def read_candidates(source: str, day: date | None = None, days: int = 1) -> list[Candidate]:
+    """Candidates from one source: the newest `days` files (default just the latest), or one specific day.
+
+    Feeds overlap day to day, so candidates are de-duplicated by key, newest file winning.
+    """
     src_dir = CANDIDATES_DIR / source
-    if day is not None:
-        files = [src_dir / f"{day.isoformat()}.jsonl"]
-    else:
-        files = sorted(src_dir.glob("*.jsonl"))[-1:]
-    out: list[Candidate] = []
+    files = [src_dir / f"{day.isoformat()}.jsonl"] if day is not None else sorted(src_dir.glob("*.jsonl"))[-days:]
+    by_key: dict[str, Candidate] = {}
     for f in files:
         if f.exists():
-            out.extend(Candidate.model_validate_json(line) for line in f.read_text().splitlines() if line.strip())
-    return out
+            for line in f.read_text().splitlines():
+                if line.strip():
+                    c = Candidate.model_validate_json(line)
+                    by_key[c.key] = c
+    return list(by_key.values())
 
 
 def read_picks() -> list[Pick]:

@@ -38,6 +38,7 @@ class HiriseSource:
     feed_suffix = "xml"
     enabled = True
     freshness_days = 7  # roughly daily
+    weight = 1
 
     def fetch_feed(self, client: httpx.Client) -> bytes:
         resp = client.get(FEED_URL)

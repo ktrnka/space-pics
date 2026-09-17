@@ -50,8 +50,8 @@ def download(source_names, limit):
 @source_opt
 @day_opt
 def pick(source_names, day):
-    """Choose the image for a day (placeholder: seeded random) and record it in data/picks.jsonl."""
-    p = pipeline.pick_random(get_sources(source_names), _day(day))
+    """Choose the image for a day and record it in data/picks.jsonl."""
+    p = pipeline.pick(get_sources(source_names), _day(day))
     click.echo(f"{p.day}: {p.candidate.key}  {p.candidate.image_url}")
 
 
@@ -74,13 +74,12 @@ def debug_pages(source_names):
 @cli.command("pipeline")
 @source_opt
 @day_opt
-@click.pass_context
-def pipeline_cmd(ctx, source_names, day):
+def pipeline_cmd(source_names, day):
     """fetch -> extract -> pick -> publish -> debug-pages, for the daily job."""
     sources = get_sources(source_names)
     d = _day(day)
     pipeline.fetch(sources, d)
     pipeline.extract(sources, d)
-    pipeline.pick_random(sources, d)
+    pipeline.pick(sources, d)
     publish.publish(d)
     publish.write_debug_galleries(sources)

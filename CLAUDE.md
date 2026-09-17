@@ -49,7 +49,11 @@ Use a git worktree per task so sessions don't share a working tree:
 ```bash
 git worktree add ../space-pics-<task> -b <task>
 cd ../space-pics-<task> && uv sync
+export SPACEPICS_IMAGES_DIR=/home/keith/code/space-pics/data/images   # share the main tree's image cache; never re-download
 ```
+
+Subagents and parallel sessions work offline: the main session fetches feeds and images once, everything else
+runs from `data/`. Per-source knobs (`enabled`, `freshness_days`, `weight`) live on the adapter class.
 
 Claim the task in `docs/TASKS.md` with the files you expect to touch. Adding a source touches only
 `src/spacepics/sources/<name>.py`, its registration line in `sources/__init__.py`, one fixture, one test file,

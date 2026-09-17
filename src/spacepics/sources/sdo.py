@@ -73,6 +73,7 @@ class SdoSource:
     feed_suffix = "html"
     enabled = True
     freshness_days = 2  # the daily listing; older days are separate listings we never fetch
+    weight = 2
 
     def __init__(self, day: date | None = None):
         self.day = day

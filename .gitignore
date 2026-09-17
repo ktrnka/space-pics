@@ -18,3 +18,6 @@ site/.bundle/
 
 # Scratch
 tmp/
+
+# Locally generated images (composites); the published copy is under site/assets/img/
+data/derived/

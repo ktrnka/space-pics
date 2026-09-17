@@ -54,6 +54,7 @@ class PerseveranceSource:
     feed_suffix = "json"
     enabled = True
     freshness_days = 7
+    weight = 3
 
     def __init__(self, num: int = DEFAULT_NUM):
         self.num = num

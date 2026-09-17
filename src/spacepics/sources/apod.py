@@ -38,6 +38,7 @@ class ApodSource:
     feed_suffix = "json"
     enabled = True
     freshness_days = 3  # one curated image a day; fallback only
+    weight = 0.5
 
     def fetch_feed(self, client: httpx.Client) -> bytes:
         resp = client.get(API_URL, params={"api_key": os.environ.get("NASA_API_KEY", "DEMO_KEY")})

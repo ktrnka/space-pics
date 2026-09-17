@@ -16,6 +16,15 @@ debug-pages offline  candidates    ->  site/debug/<source>.html              (pe
 Each stage reads and writes files, so any stage can be developed against what's already on disk.
 `spacepics pipeline` runs fetch, extract, pick, publish, debug-pages in order; that's what the daily job calls.
 
+fetch and extract isolate failures per source: one broken feed is logged and skipped, the rest continue, and the
+picker works with whatever sources have fresh candidates. A source that fails every day just stops contributing.
+
+`store.read_candidates(source, days=N)` concatenates the newest N daily files, de-duplicated by key with the newest
+winning. The picker reads one day; the ranker's rolling window will ask for more.
+
+The image cache (`data/images/`, gitignored, keyed by URL hash) can be pointed elsewhere with `SPACEPICS_IMAGES_DIR`
+so several worktrees share one cache instead of re-downloading.
+
 ## The contract between sources and everything else
 
 A source implements `Source` (`sources/base.py`):
@@ -40,9 +49,18 @@ If a later stage needs a new cross-source field, add it to `Candidate` with a de
 
 ## Picking
 
-`pick_random` is a placeholder: a seeded random choice among candidates captured in the last 7 days.
-The planned replacement is: per-instrument embedding anomaly score over a rolling window, top-N to a
-vision model that picks one and writes the caption. The pick stage records `picker` so old picks stay explained.
+`pipeline.pick(sources, day, chooser)` builds pools of fresh candidates per source (each source declares its own
+`freshness_days`), hands them to a chooser along with previous picks, and persists the result. Choosers only decide.
+
+A chooser returns a `Choice`: the candidate, a caption, a `picker` label (recorded on the Pick so old picks stay
+explained), and optionally a `derived_image` (a path under `data/`, e.g. a multispectral composite) with the
+candidate keys it was built from. When `derived_image` is set the publisher copies that file into `site/` instead
+of downloading the candidate's image; the candidate is then the anchor frame.
+
+`choose_random` is the placeholder: weighted source (each source declares `weight`), uniform instrument within the
+source, uniform frame, skipping yesterday's source when possible. The planned replacement: per-instrument embedding
+anomaly score over a rolling window, top-N to a vision model that picks one and writes the caption. That is another
+chooser; nothing else changes.
 
 ## Site and deploy
 

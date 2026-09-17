@@ -26,4 +26,5 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 | Skeleton: models, Perseverance source, stages, CLI, Jekyll site, workflows, docs | 27bb139..5b4f945 |
 | Sources sdo, esa_webb, esa_hubble, epic, apod, hirise: fetch halves by main session, extractors by 4 parallel subagents | a1fb6a1 |
 | Per-source freshness window | a1fb6a1 |
-| Placeholder picker: weighted source, uniform instrument, no repeat of yesterday's source | (this commit) |
+| Placeholder picker: weighted source, uniform instrument, no repeat of yesterday's source | d8c76a3 |
+| Cleanup: per-source error isolation, chooser seam with derived-image support, rolling-window store, weights on sources, shared image cache env var | (this commit) |
