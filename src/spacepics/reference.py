@@ -147,7 +147,7 @@ def panel_heading(candidate: Candidate, card: Card | None = None) -> str:
         parts.append(value_label("filter_name", filt, card))
     elif candidate.meta.get("wavelength_angstrom"):
         parts.append(value_label("wavelength_angstrom", candidate.meta["wavelength_angstrom"], card))
-    elif str(candidate.meta.get("measurement", "")).isdigit() and len(card.instruments) > 1:
+    elif str(candidate.meta.get("measurement", "")).isdigit():
         parts.append(f"{candidate.meta['measurement']} Å")
     return ", ".join(p for p in parts if p)
 
