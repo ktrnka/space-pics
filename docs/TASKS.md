@@ -12,6 +12,7 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
+| Helioviewer explorer page triggers renders on view | `publish.py`, `sources/helioviewer.py` | Gallery img tags point at takeScreenshot URLs, so each page view renders 29 images server-side. Copy cached previews into `site/debug/img/helioviewer/` (about 6 MB/day) or show a smaller subset. Until then, don't reload that page repeatedly. |
 | Source: NASA GIBS WMS (Earth, many layers) | `sources/gibs.py` | Date-addressable GetMap PNGs; pick a few layers (true colour, night lights, sea surface temperature). |
 | Source: STEREO-A beacon (fresher than Helioviewer's 3-day lag) | `sources/stereo.py` | latest-style URLs; needs the Last-Modified cache key (see research note). |
 | Newly-released treatment for delayed layers | `pipeline.py`, `sources/helioviewer.py` | Track the latest date per Helioviewer layer across manifests; when it jumps, that's a release. Pair with a realtime layer at the same capture time. |
