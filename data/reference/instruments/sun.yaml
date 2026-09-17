@@ -149,13 +149,15 @@
     than any other instrument in history by imaging small sungrazers crossing its field.
 
     '
-  reading_the_image: 'The dark disc at the centre is the occulting mask, not the Sun (a small marker circle usually
-    shows the Sun''s true size and position). A bright, expanding cloud or arc moving outward across a sequence
-    of frames is a coronal mass ejection; faint radial streaks are the ordinary streamer belt; bright dots crossing
-    the field are usually background stars, planets, or sungrazing comets. LASCO frames on this site are normally
-    within minutes of real time.
-
-    '
+  reading_the_image: 'A coronagraph hides the Sun''s disc behind an occulting disc (the dark circle) to show the
+    faint outer corona: C2 covers about 2 to 6 solar radii, C3 about 4 to 30. Nothing here maps directly onto the
+    disc images above; the connection is in time. An eruption seen in AIA 304 or 171 on the disc becomes a coronal
+    mass ejection expanding through the LASCO field a few hours later, and streamers here trace the magnetic structures
+    rooted in the active regions above. The white circle marks the Sun''s actual size. The dark disc at the centre
+    is the occulting mask, not the Sun (a small marker circle usually shows the Sun''s true size and position).
+    A bright, expanding cloud or arc moving outward across a sequence of frames is a coronal mass ejection; faint
+    radial streaks are the ordinary streamer belt; bright dots crossing the field are usually background stars,
+    planets, or sungrazing comets. LASCO frames on this site are normally within minutes of real time.'
   wikipedia: https://en.wikipedia.org/wiki/Large_Angle_and_Spectrometric_Coronagraph
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory
   links: []
@@ -336,10 +338,12 @@
     and coronal-hole tracking used to warn about radiation storms and solar-wind streams headed for Earth.
 
     '
-  reading_the_image: 'Read it like AIA or EIT at a matching wavelength: dark patches are coronal holes, bright knots
-    are active regions, sudden brightening is a flare. Frames on this site are normally within minutes of real time.
-
-    '
+  reading_the_image: 'SUVI''s 195 Å channel and SDO AIA''s 193 Å channel both isolate the same ion, Fe XII at about
+    1.2 million K, so the two should show the same coronal structures from nearly the same vantage; differences
+    are mostly resolution (SUVI is a much smaller telescope) and processing. That makes SUVI a good sanity check
+    on AIA, and a fallback when SDO data is late. Read it like AIA or EIT at a matching wavelength: dark patches
+    are coronal holes, bright knots are active regions, sudden brightening is a flare. Frames on this site are normally
+    within minutes of real time.'
   wikipedia: https://en.wikipedia.org/wiki/Solar_Ultraviolet_Imager
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/GOES-19
   links: []

@@ -9,14 +9,15 @@ panels: {{ d.panels | length }}
 
 {{ d.intro }}
 {% set seen = namespace(cards=[]) %}
-{% for panel, card, items in panels %}
+{% for panel, card, items, curated in panels %}
 ## {{ panel.heading }}
 
 <img src="{{ '{{' }} '/{{ panel.site_image }}' | absolute_url {{ '}}' }}" alt="{{ panel.candidate.title | replace('"', "'") }}">
 
 <p class="caption">{{ panel.candidate.captured_at.strftime('%Y-%m-%d %H:%M') }} UTC{% for label, value, tip in items %} · <abbr title="{{ tip }}">{{ label }}{% if label %} {% endif %}{{ value }}</abbr>{% endfor %}<br>
-<a href="{{ '{{' }} '/debug/{{ panel.candidate.source }}.html{% if panel.candidate.meta.get('sequence') %}#{{ panel.candidate.meta['sequence'] }}{% endif %}' | relative_url {{ '}}' }}">{% if panel.candidate.meta.get('sequence') %}All frames of this sequence{% else %}Explore this source{% endif %}</a> · <a href="{{ panel.candidate.source_page_url or panel.candidate.image_url }}">Original</a> · {{ panel.candidate.credit }}</p>
+{% if not curated %}<a href="{{ '{{' }} '/debug/{{ panel.candidate.source }}.html{% if panel.candidate.meta.get('sequence') %}#{{ panel.candidate.meta['sequence'] }}{% endif %}' | relative_url {{ '}}' }}">{% if panel.candidate.meta.get('sequence') %}All frames of this sequence{% else %}Explore this source{% endif %}</a> · {% endif %}<a href="{{ panel.candidate.source_page_url or panel.candidate.image_url }}">Original</a> · {{ panel.candidate.credit }}</p>
 {% if card and card.name not in seen.cards %}{% set seen.cards = seen.cards + [card.name] %}
 {% if card.formal_name %}*{{ card.name }}* is short for {{ card.formal_name }}. {% endif %}{{ (card.what_it_sees or card.what_it_is) | trim }}{% if card.reading_the_image %} {{ card.reading_the_image | trim }}{% endif %}
+
 {% if card.wikipedia %}[{{ card.name }} on Wikipedia]({{ card.wikipedia }}){% if card.spacecraft_wikipedia %} · [{{ card.spacecraft_name or card.spacecraft }}]({{ card.spacecraft_wikipedia }}){% endif %}{% endif %}
 {% endif %}{% endfor %}

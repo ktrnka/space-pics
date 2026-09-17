@@ -60,20 +60,15 @@
     sensor - a first for a Mars rover''s navigation cameras, which on earlier missions were black and white.
 
     '
-  what_it_sees: 'Each camera covers a 96 x 73 degree field of view at about 0.33 milliradians per pixel, downsampled
-    for downlink from a native 5120x3840-pixel color sensor - sharp enough to make out an object the size of a golf
-    ball 25 meters away. It''s a normal wide-angle perspective, not a fisheye.
-
-    '
+  what_it_sees: It's a normal wide-angle perspective, not a fisheye.
   why_it_matters: 'The stereo pair lets the rover (and its autonomous-driving software) build a 3D model of the
     ground ahead to find safe paths, and stitched-together navcam frames make the wide panoramas used to plan each
     drive.
 
     '
-  reading_the_image: 'Expect an ordinary-looking wide color landscape shot, often one tile of a larger panorama
-    - frames sharing a sequence ID in the metadata are usually taken together as a mosaic.
-
-    '
+  reading_the_image: The frames here are the raw feed's 1200-pixel-wide versions of a 5120 x 3840 sensor, so fine
+    detail is lost; the full-resolution products are on the NASA raw-images site. Expect a wide colour landscape,
+    often one tile of a larger panorama; frames sharing a sequence id were taken together as a mosaic.
   wikipedia: https://en.wikipedia.org/wiki/Navcam
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
   meta_labels:

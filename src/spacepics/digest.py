@@ -96,32 +96,40 @@ def recipe_mars(rng: random.Random, pools: dict[str, list[Candidate]]) -> list[C
 
 def recipe_sun(rng: random.Random, pools: dict[str, list[Candidate]]) -> list[Candidate]:
     sdo = pools.get("sdo", [])
-    picks = []
-    for ch in ("0304", "0171", "211193171", "HMIIC"):
-        frames = _by(sdo, instrument=ch)
-        if frames:  # the frame nearest noon UTC
-            picks.append(min(frames, key=lambda c: abs(c.captured_at.hour - 12)))
     hv = pools.get("helioviewer", [])
-    for inst in ("SOHO LASCO C2", "GOES SUVI", "STEREO-A EUVI", "PROBA-2 SWAP"):
-        frames = _by(hv, instrument=inst)
-        if frames:
-            picks += _pick(rng, frames, 1)
-    return picks
+
+    def noon(frames):
+        return min(frames, key=lambda c: abs(c.captured_at.hour - 12)) if frames else None
+
+    # Surface outward: HMI continuum, AIA 304 (chromosphere), AIA 193 beside SUVI 195 (same iron ion, two spacecraft),
+    # the AIA composite, then the coronagraph.
+    suvi = [c for c in _by(hv, instrument="GOES SUVI") if str(c.meta.get("measurement")) == "195"] or _by(hv, instrument="GOES SUVI")
+    ordered = [noon(_by(sdo, instrument="HMIIC")), noon(_by(sdo, instrument="0304")), noon(_by(sdo, instrument="0193"))]
+    ordered += _pick(rng, suvi, 1)
+    ordered += [noon(_by(sdo, instrument="211193171"))]
+    ordered += _pick(rng, _by(hv, instrument="SOHO LASCO C2"), 1)
+    return [c for c in ordered if c is not None]
 
 
 def recipe_earth(rng: random.Random, pools: dict[str, list[Candidate]]) -> list[Candidate]:
     picks = []
     goes = pools.get("goes", [])
-    if goes:
+    if goes:  # the 00 UTC frame: dusk on the US west coast, night in the east; the most legible GeoColor of the day
         newest_day = max(c.captured_at.date() for c in goes)
         day_frames = [c for c in goes if c.captured_at.date() == newest_day]
-        picks += sorted(day_frames, key=lambda c: c.captured_at)[:: max(1, len(day_frames) // 3)][:3]
+        picks.append(min(day_frames, key=lambda c: c.captured_at.hour))
     picks += _pick(rng, pools.get("epic", []), 2)
     return picks
 
 
 RECIPES = {"Mars": recipe_mars, "Sun": recipe_sun, "Earth": recipe_earth}
 TITLES = {"Mars": "Mars, {day}", "Sun": "The Sun, {day}", "Earth": "Earth, {day}"}
+INTROS = {
+    "Mars": "{n} recent images of Mars from {craft}. Capture times are in the captions; a sol is a Mars day.",
+    "Sun": "{n} views of the Sun from {craft}, ordered from the surface outward: the visible surface, then the hot corona in "
+    "ultraviolet from two different spacecraft, then the outer corona seen by a coronagraph that blocks the disc.",
+    "Earth": "{n} recent images of Earth from {craft}: the sunlit disc from geostationary orbit, and the whole planet from a million miles away.",
+}
 
 
 def build_digest(sources: list[Source], day: date) -> Digest:
@@ -134,10 +142,8 @@ def build_digest(sources: list[Source], day: date) -> Digest:
         raise RuntimeError(f"recipe for {subject} produced no panels")
     panels = [_panel(c, day) for c in picks]
     spacecraft = sorted({c.spacecraft for c in picks if c.spacecraft})
-    captured = max(c.captured_at for c in picks).date()
-    noun = {"Sun": "the Sun", "Mars": "Mars", "Earth": "Earth"}[subject]
-    intro = f"{len(panels)} recent images of {noun} from {', '.join(spacecraft) or 'public feeds'}."
-    d = Digest(day=day, subject=subject, title=TITLES[subject].format(day=captured.isoformat()), intro=intro, panels=panels)
+    intro = INTROS[subject].format(n=len(panels), craft=", ".join(spacecraft) or "public feeds")
+    d = Digest(day=day, subject=subject, title=TITLES[subject].format(day=day.isoformat()), intro=intro, panels=panels)
     upsert_digest(d)
     logger.info("digest for %s: %s with %d panels", day, subject, len(panels))
     return d

@@ -56,6 +56,16 @@ Add a date and where the idea came from (which debug page, which pick).
 - **Rover anomaly**: no single signal; for same-framing sources (Sun, Earth) difference-from-average works; for rovers,
   label picture types first.
 
+## Subjects
+
+- **Earth is the least interesting subject as built** (2026-09-17, Keith): great high-res satellite imagery sites already
+  exist. Angles that could earn its place: GIBS specialty layers by date (fires, sea surface temperature, night lights,
+  aerosols), "Earth from far away" only (EPIC, and any spacecraft looking back), or dropping Earth to one day in five.
+- **Build our own SUVI composite** (2026-09-17, Keith): SUVI has 94/131/171/195/284/304 like AIA; a 3-channel composite
+  would sit beside AIA's 211/193/171 for a two-spacecraft comparison.
+- **Sun story arcs**: eruption on the disc (AIA 304/171) then the CME in LASCO hours later; a difference-signal detector
+  could pair them automatically.
+
 ## Site
 
 - **Wiggle stereo (wigglegram) from stereo pairs** (2026-09-17, Keith). Navcam and Mastcam-Z left/right frames of the
