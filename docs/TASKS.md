@@ -12,6 +12,9 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
+| Newly-released treatment for delayed layers | `pipeline.py`, `sources/helioviewer.py` | Track the latest date per Helioviewer layer across manifests; when it jumps, that's a release. Pair with a realtime layer at the same capture time. |
+| Sky-position reference lookup for deep space | new `references.py` | ESA meta has RA/Dec/FOV; MAST and ESA archives support cone search. |
+| Helioviewer: SDO through the same adapter for time-matched comparisons | `sources/helioviewer.py` | SDO layers exist in Helioviewer (sourceIds 8-19); useful for same-instant comparisons with other spacecraft. |
 | Feed storage growth (revisit around 2026-10-01 if the project continues) | `pipeline.py`, `.github/workflows/daily.yml` | Decided 2026-09-17 to leave feeds committed as-is: git packs them to about 216 KB/day; checkout grows 1.75 MB/day. Likely fix is a 30-day retention window in the tree. gzip rejected (no packed-size win, loses greppability). |
 | APOD: migrate to the new endpoint before 2026-12-01 | `sources/apod.py`, `tests/fixtures/apod_*` | Legacy api.nasa.gov/planetary/apod is archived 2026-12-01. New: `https://science.nasa.gov/wp-json/wp/v2/apod-basic` (no key, returns a list; `url` is now the article permalink, image is `hdurl`). Keith's copy of the user guide: `docs/apod-feed-and-api-user-guide`. |
 | Perseverance paging | `sources/perseverance.py` | Pull pages 0..N so a full sol is covered. |

@@ -62,6 +62,14 @@ source, uniform frame, skipping yesterday's source when possible. The planned re
 anomaly score over a rolling window, top-N to a vision model that picks one and writes the caption. That is another
 chooser; nothing else changes.
 
+## Explorer pages (site/debug/)
+
+Plain HTML per source, opened from disk or served by Pages, linking to remote images (lazy-loaded). Layout is chosen
+per source in `publish.gallery_context`: rovers get sol -> sequence -> frames (a sequence is one observation, e.g. a
+filter set side by side); SDO gets a channel-by-time grid; everything else groups by instrument. Pages fold in the
+last 30 days of committed candidates plus anything under `data/survey/<source>/` (gitignored exploration fetches of
+other dates, run through the same extractor). The CI-built pages therefore show less history than local ones.
+
 ## Site and deploy
 
 Jekyll with `jekyll-feed` (Atom feed at `/feed.xml`) and no theme. One post per pick; the post body embeds

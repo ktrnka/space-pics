@@ -24,6 +24,16 @@ Research notes for candidate sources not yet built are in `space-image-of-the-da
 - `meta`: `channel`, `size` (1024), `wavelength_angstrom` (int for numeric AIA channels, else None).
 - `source_page_url` is fixed at `https://sdo.gsfc.nasa.gov/data/`.
 
+## helioviewer (`sources/helioviewer.py`)
+
+- One adapter, many spacecraft: SOHO (LASCO C2/C3, EIT), STEREO-A (EUVI, COR1, COR2), PROBA-2 SWAP, GOES (SUVI, CCOR-1), GONG H-alpha, MLSO KCor, Hinode XRT, Solar Orbiter (EUI FSI/HRI, SoloHI), PUNCH. Layers are listed in `LAYERS` with their Helioviewer `sourceId`; `getDataSources` shows every available layer and its latest date.
+- Feed: a manifest, not a feed. `fetch_feed` calls `getClosestImage` once per layer for noon UTC today (cheap metadata: real frame date, native scale and size) and records the `takeScreenshot` URLs to use. About 29 requests, paced.
+- Images: `takeScreenshot` renders a PNG server-side (about 700 KB at 1024 px). `imageScale = native_scale * native_width / size` fits the whole frame. Each is a render, so counts stay small: 29 previews and at most one display image per day.
+- Lag varies by layer and is recorded in `meta.lag_days`. Observed 2026-09-17: GOES, LASCO, PROBA-2, GONG, KCor within minutes; STEREO-A 3 days; SOHO EIT and Hinode about 3 weeks; PUNCH a month; SoloHI 5 months; Solar Orbiter EUI 20 months. `captured_at` is the real frame date, so freshness (3 days) drops the laggards; the "newly released" treatment for delayed layers is future work.
+- Candidate mapping: `spacecraft` = the vehicle; `instrument` = "spacecraft instrument" (e.g. "SOHO LASCO C2") so galleries group per detector; `source_id` = sourceId plus frame timestamp; `source_page_url` = helioviewer.org at that date.
+- `meta`: `helioviewer_source_id`, `measurement`, `native_scale_arcsec_px`, `native_width`, `lag_days`.
+- No rate limit published; be gentle, it is a shared public service.
+
 ## epic (`sources/epic.py`)
 
 - Feed: `https://api.nasa.gov/EPIC/api/natural` with `NASA_API_KEY` (`DEMO_KEY` works at low volume). Returns the most recent available day's images (10 to 20), not a chosen date.
