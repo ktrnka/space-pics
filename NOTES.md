@@ -18,6 +18,12 @@
   in the manifest; Curiosity, GOES-19 GeoColor, NOIRLab sources; explorer pages with sequence and time-grid layouts;
   week-long date survey (about 620 requests, paced, 45 MB); embedding experiment (DINOv2 27 img/s on CPU; global
   embeddings flat on the Sun, frame differences find a flare); Candidate gained spacecraft, released_at, thumbnail_url
+- 13:05 Keith's review of the explorer and anomaly page; reset around four criteria (public, RSS not regrettable,
+  shareable, personal excitement); plan: instrument cards + digest + CI verify
+- 13:50 first subject-of-the-day digests published (Mars today; Sun and Earth as backdated demos from today's data)
+- 13:55 first unattended-style CI run of the full pipeline succeeded end to end (fetch, extract, download, digest,
+  publish, bot commit, Jekyll build, Pages deploy); the earlier attempt failed only on a push race with my own pushes
+- 14:00 all 47 instrument keys have a verified or from-memory card (3 subagents, ~6 to 9 minutes each)
 
 ## Scope changes from the must-do note
 
