@@ -44,6 +44,18 @@ Add a date and where the idea came from (which debug page, which pick).
 
 - Perseverance paging beyond the first 100 frames so a whole sol is covered.
 
+## Learning layer (2026-09-17, Keith, after the explorer review)
+
+- **Connect each image to its instrument and spacecraft.** A card per (spacecraft, instrument): what it is, what it
+  sees (wavelengths, field, resolution), why it exists, a Wikipedia link. Shown on every post and explorer group.
+  Also the natural home for the "picture types" this instrument produces once we've labelled them.
+- **Vehicle sketch with the active sensor highlighted.** A simple SVG per spacecraft, the instrument lit up on the
+  post; an extension of where-in-the-universe. Later day; the cards come first.
+- **Human-readable metadata on the image page.** Parse `meta` into labelled lines (sol, local Mars time, mast
+  pointing, filter and wavelength, lag since capture) instead of raw keys.
+- **Rover anomaly**: no single signal; for same-framing sources (Sun, Earth) difference-from-average works; for rovers,
+  label picture types first.
+
 ## Site
 
 - **Show the Earth date beside the sol** (2026-09-17, Keith). Done on sol headers; the general point stands: Mars
