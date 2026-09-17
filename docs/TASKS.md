@@ -29,6 +29,7 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Commit |
 |---|---|
+| Subject-of-the-day digest with rotation and per-subject recipes; instrument cards (3 subagents); readable metadata; EBY/ND filtering | (13:50 commits) |
 | Sources goes (GOES-19 GeoColor) and noirlab; Curiosity sequence ids | (12:25 commits) |
 | Sources helioviewer (29 layers) and curiosity; explorer pages with sequence and time-grid layouts; week-long survey folded in | 2a8d9b8 and this commit |
 | Skeleton: models, Perseverance source, stages, CLI, Jekyll site, workflows, docs | 27bb139..5b4f945 |

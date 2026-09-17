@@ -47,7 +47,27 @@ Those never leave the source module. `Candidate` (`models.py`) is the only thing
 
 If a later stage needs a new cross-source field, add it to `Candidate` with a default so existing sources keep working.
 
-## Picking
+## The daily post: subject-of-the-day digest
+
+`digest.build_digest(sources, day)` picks a subject by rotating Sun, Mars, Earth on the calendar day (skipping any
+subject with nothing fresh), runs that subject's recipe (`digest.RECIPES`) over the fresh pools to choose up to six
+panels, and records a `Digest` in `data/digests.jsonl`. Recipes are simple and seeded: Mars takes the latest sol's
+colour Mastcam-Z frames, a navcam, a close-up instrument, Curiosity, and HiRISE; Sun takes four SDO channels nearest
+noon and a few Helioviewer companions; Earth takes three GOES frames across the day and two EPIC frames.
+
+`publish` writes one post per digest (`site/_posts/<date>-<subject>.md`), copies each panel's display image into
+`site/assets/img/<date>/`, and renders each panel with its instrument card and readable metadata. The single-image
+`pick` still exists as a CLI command and a fallback; the daily job runs the digest.
+
+## Instrument cards
+
+`data/reference/instruments/*.yaml` (schema in `data/reference/README.md`) holds one hand-maintained card per
+spacecraft and instrument, matched on the exact `spacecraft` and `instrument` values candidates carry.
+`reference.card_for` finds the card; `reference.readable_meta` turns `Candidate.meta` into labelled lines using
+common labels plus the card's own. Cards are the learning layer: what the instrument is, what it sees, how to read
+the frame, Wikipedia links. Adding a source means adding a card.
+
+## Picking (single image; fallback)
 
 `pipeline.pick(sources, day, chooser)` builds pools of fresh candidates per source (each source declares its own
 `freshness_days`), hands them to a chooser along with previous picks, and persists the result. Choosers only decide.

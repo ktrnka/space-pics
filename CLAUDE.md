@@ -11,7 +11,8 @@ and `docs/TASKS.md` before starting work (claim a task there so parallel session
 ```bash
 uv sync
 uv run spacepics --help
-uv run spacepics pipeline          # fetch -> extract -> pick -> publish -> debug-pages
+uv run spacepics pipeline          # fetch -> extract -> download(helioviewer) -> digest -> publish -> debug-pages
+uv run spacepics digest --day 2026-09-17   # rebuild one day's subject digest offline
 uv run pytest -q && uv run ruff check src tests
 cd site && bundle install && bundle exec jekyll serve   # http://localhost:4000/space-pics/
 ```
@@ -28,7 +29,9 @@ Debug galleries need no Jekyll: `uv run spacepics debug-pages` then open `site/d
 | Raw feed responses (committed) | `data/feeds/<source>/<date>.json` |
 | Extracted candidates (committed) | `data/candidates/<source>/<date>.jsonl` |
 | Downloaded images (gitignored cache) | `data/images/<source>/` |
-| Daily picks | `data/picks.jsonl` |
+| Daily digests and picks | `data/digests.jsonl`, `data/picks.jsonl` |
+| Instrument cards (hand-maintained) | `data/reference/instruments/*.yaml` |
+| Date-survey feeds (committed, exploration) | `data/survey/<source>/` |
 | Jekyll site, generated posts, chosen images | `site/`, `site/_posts/`, `site/assets/img/<date>/` |
 | Test fixtures (trimmed real feed responses) | `tests/fixtures/` |
 
