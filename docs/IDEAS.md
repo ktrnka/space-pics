@@ -29,6 +29,13 @@ Format: one bullet per idea, dated, with where it came from and enough context t
   difference detector could pair them automatically. Keith: "I'm not sure what story would be interesting from the
   Sun views, I have more questions than anything", so this needs a worked example before it's a task.
 
+## Digest
+
+- **Group panels by spacecraft?** (2026-09-17). Was a task; demoted after weaving SUVI 195 in beside AIA 193 worked
+  well. Keith: less sure the old grouping plan is right. Revisit only if a subject page gets confusing.
+- **Wigglegram selection** (2026-09-17). The rule is one-subject close-ups; rather than tune it, let the daily job run
+  and judge the results over a few Mars days.
+
 ## Learning layer
 
 - **Mission-select screen** (2026-09-17, Keith). A UI showing where each spacecraft is relative to Earth and the Sun,
