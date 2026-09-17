@@ -15,6 +15,7 @@ Quirk: `link` is always feed-relative (e.g. "/raw_images/1639694"), never absolu
 `source_page_url` is only set when `link` looks absolute; otherwise it's None.
 """
 
+import re
 from datetime import UTC, datetime
 
 import httpx
@@ -26,6 +27,8 @@ FEED_URL = "https://mars.nasa.gov/api/v1/raw_image_items/"
 FEED_PARAMS = {"order": "sol desc", "page": 0, "condition_1": "msl:mission"}
 DEFAULT_PER_PAGE = 100
 CREDIT = "NASA/JPL-Caltech"
+# imageid like NRB_842870462EDR_S1250198NCAM00594M_: the trailing NCAM00594 is the sequence (one observation).
+SEQUENCE_RE = re.compile(r"([A-Z]{3,4}\d{5})M?_?$")
 
 
 class RawExtended(BaseModel):
@@ -99,6 +102,7 @@ class CuriositySource:
             source_page_url=source_page_url,
             meta={
                 "sol": img.sol,
+                "sequence": (sm.group(1) if (sm := SEQUENCE_RE.search(img.imageid)) else None),
                 "mast_az": img.extended.mast_az,
                 "mast_el": img.extended.mast_el,
                 "lmst": img.extended.lmst,
