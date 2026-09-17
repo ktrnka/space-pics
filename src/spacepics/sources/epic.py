@@ -1,4 +1,4 @@
-"""NASA EPIC (DSCOVR) whole-Earth natural colour images. Needs NASA_API_KEY (DEMO_KEY works at low volume).
+"""NASA EPIC (DSCOVR) whole-Earth natural color images. Needs NASA_API_KEY (DEMO_KEY works at low volume).
 
 Feed: https://api.nasa.gov/EPIC/api/natural returns the most recent day's images (10-20), each with an
 `image` name and `date`. Image URL pattern (verified 2026-09-17):
@@ -16,7 +16,7 @@ from pydantic import BaseModel, TypeAdapter
 from ..models import Candidate
 
 API_URL = "https://api.nasa.gov/EPIC/api/natural"
-CREDIT = "NASA EPIC / DSCOVR"
+CREDIT = "NASA/NOAA EPIC, DSCOVR"
 SOURCE_PAGE_URL = "https://epic.gsfc.nasa.gov/"
 
 

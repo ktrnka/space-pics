@@ -67,7 +67,7 @@
 
     '
   reading_the_image: The frames here are the raw feed's 1200-pixel-wide versions of a 5120 x 3840 sensor, so fine
-    detail is lost; the full-resolution products are on the NASA raw-images site. Expect a wide colour landscape,
+    detail is lost; the full-resolution products are on the NASA raw-images site. Expect a wide color landscape,
     often one tile of a larger panorama; frames sharing a sequence id were taken together as a mosaic.
   wikipedia: https://en.wikipedia.org/wiki/Navcam
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)

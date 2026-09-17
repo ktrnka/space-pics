@@ -165,7 +165,7 @@ def _wigglegram_panel(candidates: list[Candidate], day: date) -> list[Panel]:
         pool.update({c.key: c for c in candidates})
         found = best_wigglegram(list(pool.values()), day)
         if not found:
-            logger.info("wigglegram: no qualifying Mastcam-Z colour pair among %d candidates", len(pool))
+            logger.info("wigglegram: no qualifying Mastcam-Z color pair among %d candidates", len(pool))
     except Exception:
         logger.exception("wigglegram step failed; skipping")
         return []

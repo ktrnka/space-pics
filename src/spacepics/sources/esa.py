@@ -37,10 +37,10 @@ from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 
 from ..models import Candidate
 
-DETAIL_COUNT = 3  # per-image JSON only for the newest few; that's all the freshness window will use
+DETAIL_COUNT = 6  # per-image JSON (with the proper credit line) for the newest few; covers the 45-day freshness window for monthly and weekly lists
 
 DEFAULT_CREDIT = {
-    "webb": "ESA/Webb, NASA, CSA",
+    "webb": "ESA/Webb, NASA & CSA",
     "hubble": "ESA/Hubble & NASA",
 }
 

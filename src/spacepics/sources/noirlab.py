@@ -2,6 +2,9 @@
 
 Feed: RSS 2.0 at https://noirlab.edu/public/images/iotw/feed/, 25 items, each with an <enclosure> pointing at the
 screen-size JPEG (about 100-500 KB), a link to the image page, and a pubDate. Verified 2026-09-17.
+
+Credit is fixed at NOIRLab/NSF/AURA: the RSS feed doesn't carry the per-image facility and photographer line that
+NOIRLab's own image pages show, so ours is intentionally generic and the post links to the page.
 """
 
 from datetime import UTC

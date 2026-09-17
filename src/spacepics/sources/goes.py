@@ -5,7 +5,7 @@ of frames at 10-minute cadence). Filenames are YYYYDDDHHMM_GOES19-ABI-FD-GEOCOLO
 5424x5424,10848x10848,21696x21696}.jpg where DDD is day of year. Unversioned `latest.jpg` is the 10848 px file
 (18 MB): never use. Verified 2026-09-17.
 
-GeoColor is a composite: true colour by day, and at night an infrared blend with city lights from a static layer.
+GeoColor is a composite: true color by day, and at night an infrared blend with city lights from a static layer.
 """
 
 import re

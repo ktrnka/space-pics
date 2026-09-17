@@ -19,14 +19,14 @@
 <p><a href="index.html">all sources</a></p>
 {% macro fig(c) -%}
   <figure><a href="{{ local[c.key] if c.key in local else c.image_url }}"><img loading="lazy" src="{{ local[c.key] if c.key in local else (c.thumbnail_url or c.preview_url) }}" alt=""></a>
-  <figcaption title="{{ c.title }} {{ c.captured_at.isoformat() }}">{{ c.captured_at.strftime('%m-%d %H:%M') }} {{ c.meta.get('filter_name') or c.meta.get('measurement') or c.instrument }}</figcaption></figure>
+  <figcaption title="{{ c.title }} {{ c.captured_at.isoformat() }}">{{ c.captured_at.strftime('%m-%d %H:%M') }} {{ c.meta.get('filter_name') or c.meta.get('measurement') or labels.get(c.instrument, c.instrument) }}</figcaption></figure>
 {%- endmacro %}
 {% if layout == "sequence" %}
   {% for sol, seqs in sols.items() %}
   {% set first = (seqs.values() | list | first) | first %}
   <h2>Sol {{ sol }} <span class="meta">· {{ first.captured_at.strftime('%Y-%m-%d') }} UTC · {{ seqs | length }} sequences</span></h2>
   {% for seq, frames in seqs.items() %}
-  <h3 id="{{ seq }}">{{ seq }} · {{ frames[0].instrument }}{% if frames | length > 1 and frames[-1].instrument != frames[0].instrument %} + {{ frames[-1].instrument }}{% endif %} · {{ frames | length }} frames · {{ frames[0].captured_at.strftime('%H:%M') }}–{{ frames[-1].captured_at.strftime('%H:%M') }} UTC</h3>
+  <h3 id="{{ seq }}">{{ seq }} · {{ labels.get(frames[0].instrument, frames[0].instrument) }}{% if frames | length > 1 and frames[-1].instrument != frames[0].instrument %} + {{ frames[-1].instrument }}{% endif %} · {{ frames | length }} frames · {{ frames[0].captured_at.strftime('%H:%M') }}–{{ frames[-1].captured_at.strftime('%H:%M') }} UTC</h3>
   <div class="grid">{% for c in frames %}{{ fig(c) }}{% endfor %}</div>
   {% endfor %}
   {% endfor %}

@@ -57,7 +57,7 @@ def duration_ms(spread_px: int) -> int:
 
 
 def mastcam_pairs(candidates: list[Candidate]) -> list[tuple[Candidate, Candidate]]:
-    """Left/right colour Mastcam-Z frames of the same sequence, paired by order (the eyes expose minutes apart)."""
+    """Left/right color Mastcam-Z frames of the same sequence, paired by order (the eyes expose minutes apart)."""
     seqs: dict[tuple, dict[str, list[Candidate]]] = {}
     for c in candidates:
         if c.instrument in ("MCZ_LEFT", "MCZ_RIGHT") and (c.meta.get("filter_name") or "").endswith("RGB") and c.meta.get("sequence"):
@@ -93,7 +93,7 @@ def build(left: Candidate, right: Candidate, day: date) -> tuple[str, int, int] 
 
 
 def best_wigglegram(candidates: list[Candidate], day: date, max_tries: int = 4) -> tuple[Candidate, Candidate, str, int, int] | None:
-    """First qualifying Mastcam-Z colour pair among the newest sequences. Any failure means None."""
+    """First qualifying Mastcam-Z color pair among the newest sequences. Any failure means None."""
     for left, right in mastcam_pairs(candidates)[:max_tries]:
         try:
             result = build(left, right, day)

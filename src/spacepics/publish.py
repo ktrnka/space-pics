@@ -112,7 +112,7 @@ def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
         for seqs in sols.values():
             for frames in seqs.values():
                 frames.sort(key=lambda c: c.captured_at)
-        return {"layout": "sequence", "sols": dict(sorted(sols.items(), reverse=True))}
+        return {"layout": "sequence", "sols": dict(sorted(sols.items(), reverse=True)), "labels": instrument_labels(candidates)}
     if source.name == "sdo":
         hours = 3 if len({c.captured_at.date() for c in candidates}) == 1 else 6
         columns = sorted({_bucket(c, hours) for c in candidates})

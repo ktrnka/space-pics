@@ -27,7 +27,17 @@ import httpx
 from ..models import Candidate
 
 API = "https://api.helioviewer.org/v2"
-CREDIT = "Helioviewer.org; data courtesy of the respective instrument teams"
+CREDITS = {  # per provider; each shown as "<provider>, via Helioviewer.org"
+    "SOHO": "ESA/NASA SOHO",
+    "STEREO-A": "NASA STEREO",
+    "PROBA-2": "ESA/Royal Observatory of Belgium PROBA-2",
+    "GOES": "NOAA GOES-R",
+    "GONG": "NSF/NSO GONG",
+    "MLSO": "NCAR/HAO MLSO",
+    "Hinode": "JAXA/NASA Hinode",
+    "Solar Orbiter": "ESA/NASA Solar Orbiter",
+    "PUNCH": "NASA/SwRI PUNCH",
+}
 
 
 @dataclass(frozen=True)
@@ -140,7 +150,7 @@ class HelioviewerSource:
                     image_url=e["display_url"],
                     preview_url=e["preview_url"],
                     title=f"{instrument} {e['measurement']}" + (" Å" if e["measurement"].isdigit() else ""),
-                    credit=CREDIT,
+                    credit=f"{CREDITS.get(e['spacecraft'], e['spacecraft'])}, via Helioviewer.org",
                     source_page_url=f"https://helioviewer.org/?date={captured_at:%Y-%m-%dT%H:%M:%S}Z",
                     meta={
                         "helioviewer_source_id": e["source_id"],

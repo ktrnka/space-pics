@@ -20,7 +20,7 @@ def test_extract_maps_fields(fixture_bytes):
     assert c.instrument == "epic_natural"
     assert c.captured_at == datetime(2026, 9, 13, 0, 59, 48, tzinfo=UTC)
     assert c.captured_at.tzinfo is UTC
-    assert c.credit == "NASA EPIC / DSCOVR"
+    assert c.credit == "NASA/NOAA EPIC, DSCOVR"
     assert c.source_page_url is not None and str(c.source_page_url) == "https://epic.gsfc.nasa.gov/"
     assert c.meta["centroid_lat"] == 6.965332
     assert c.meta["centroid_lon"] == 165.717773

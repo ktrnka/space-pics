@@ -20,7 +20,7 @@
     coverage.
 
     '
-  what_it_sees: 'Each channel isolates one temperature layer of the solar atmosphere; the colours are false and
+  what_it_sees: 'Each channel isolates one temperature layer of the solar atmosphere; the colors are false and
     assigned by convention. 304 Å, He II, about 50,000 K, red: chromosphere and prominences. 171 Å, Fe IX, about
     630,000 K, gold: quiet corona and coronal loops. 193 Å, Fe XII (and Fe XXIV in flares), about 1.2 million K:
     corona and coronal holes. 211 Å, Fe XIV, about 2 million K: active regions. 335 Å, Fe XVI, about 2.5 million
@@ -58,7 +58,7 @@
   name: AIA 211/193/171 composite
   spacecraft_name: SDO
   operator: NASA / Lockheed Martin Solar and Astrophysics Laboratory
-  what_it_is: 'A single false-colour image made by blending three AIA ultraviolet channels the way a colour camera
+  what_it_is: 'A single false-color image made by blending three AIA ultraviolet channels the way a color camera
     blends red, green and blue. It is not a natural-light photo of the Sun; it is a way to show three temperatures
     of coronal plasma in one image that reads more easily at a glance than three separate grey frames.
 
@@ -75,7 +75,7 @@
 
     '
   reading_the_image: 'Dark, blue-tinted patches are coronal holes; bright orange-white knots are active regions;
-    fine looping strands are coronal loops tracing magnetic field lines. Colour balance can shift slightly frame
+    fine looping strands are coronal loops tracing magnetic field lines. Color balance can shift slightly frame
     to frame since the three source channels are processed independently.
 
     '
@@ -150,7 +150,7 @@
 
     '
   reading_the_image: 'A coronagraph hides the Sun''s disc behind an occulting disc (the dark circle) to show the
-    faint outer corona: C2 covers about 2 to 6 solar radii, C3 about 4 to 30. Nothing here maps directly onto the
+    faint outer corona: Nothing here maps directly onto the
     disc images above; the connection is in time. An eruption seen in AIA 304 or 171 on the disc becomes a coronal
     mass ejection expanding through the LASCO field a few hours later, and streamers here trace the magnetic structures
     rooted in the active regions above. The white circle marks the Sun''s actual size. The dark disc at the centre

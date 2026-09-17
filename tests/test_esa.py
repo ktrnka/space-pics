@@ -42,7 +42,7 @@ def test_extract_fills_meta_from_detail_and_none_without_it(fixture_bytes):
     assert without_detail.meta["dec"] is None
     assert without_detail.meta["fov"] is None
     assert without_detail.meta["constellation"] is None
-    assert without_detail.credit == "ESA/Webb, NASA, CSA"
+    assert without_detail.credit == "ESA/Webb, NASA & CSA"
 
 
 def test_instrument_differs_by_source_name(fixture_bytes):
@@ -56,5 +56,5 @@ def test_instrument_differs_by_source_name(fixture_bytes):
     # default credit fallback (no per-image detail, so nothing overrides it) differs by instrument
     webb_no_detail = next(c for c in webb_candidates if c.source_id == "potm2605a")
     hubble_no_detail = next(c for c in hubble_candidates if c.source_id == "potm2605a")
-    assert webb_no_detail.credit == "ESA/Webb, NASA, CSA"
+    assert webb_no_detail.credit == "ESA/Webb, NASA & CSA"
     assert hubble_no_detail.credit == "ESA/Hubble & NASA"

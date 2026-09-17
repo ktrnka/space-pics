@@ -53,14 +53,14 @@ HIDDEN_META = {"description", "explanation", "hdurl", "helioviewer_source_id", "
 
 
 def value_label(key: str, value: Any, card: Card | None = None) -> str:
-    """Colloquial rendering of a raw meta value: 'Processed image' for ECM, 'colour' for an RGB filter, '866 nm' for a band."""
+    """Colloquial rendering of a raw meta value: 'Processed image' for ECM, 'color' for an RGB filter, '866 nm' for a band."""
     text = str(value)
     for table in ((card.value_labels.get(key, {}) if card else {}), VALUE_LABELS.get(key, {})):
         if text in table:
             return table[text]
     if key == "filter_name":
         if text.endswith("RGB"):
-            return "colour"
+            return "color"
         if m := FILTER_NM.search(text):
             return f"{m.group(1)} nm"
     if key == "wavelength_angstrom":
@@ -136,7 +136,7 @@ def caption_items(candidate: Candidate, card: Card | None = None) -> list[tuple[
 
 
 def panel_heading(candidate: Candidate, card: Card | None = None) -> str:
-    """Colloquial heading: card name, then instrument detail and filter when the card spans several, e.g. 'Mastcam-Z, left eye, colour'."""
+    """Colloquial heading: card name, then instrument detail and filter when the card spans several, e.g. 'Mastcam-Z, left eye, color'."""
     if card is None:
         return candidate.instrument
     parts = [card.name]

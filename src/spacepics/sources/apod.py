@@ -35,7 +35,7 @@ class RawApod(BaseModel):
 
 class ApodSource:
     name = "apod"
-    subject = "Various"
+    subject = "Highlights"
     release_tier = "curated"
     feed_suffix = "json"
     enabled = True
