@@ -33,7 +33,10 @@
 - 15:11 final CI run dispatched, succeeded (pipeline, bot commit, build, deploy)
 - 15:14 wigglegram speed from parallax spread
 - 15:20 wigglegram pair selection by parallax spread after Keith's review of the three pairs
-- 15:30 wigglegram integrated into the Mars digest on a branch, merged and deployed; **code freeze** at 16:00 as planned, docs only after this
+- 15:30 wigglegram integrated into the Mars digest on a branch, merged and deployed
+- 15:35-15:41 polish pass guided by three read-only review subagents (docs consistency, code maintainability,
+  attribution and wording): docs realigned to the digest pipeline, five safe code fixes, per-provider credits,
+  licence note, spelling; the larger findings went to the board. Last code push 15:41; **code freeze** at 16:00 as planned
 - biggest single stall of the day: push-triggered deploys silently skipped for four hours (found 14:30, one-line fix)
 
 ## Scope changes from the must-do note
