@@ -1,114 +1,119 @@
-# Reference cards for Earth-observing and deep-space instruments: DSCOVR/EPIC, GOES-19/ABI GeoColor,
-# JWST and Hubble picture-of-the-month/week, and the two curated feeds (NOIRLab IOTW, NASA APOD).
-# Schema: see ../README.md
-
 - spacecraft: DSCOVR
-  instruments: [epic_natural]
-  name: EPIC (Earth Polychromatic Imaging Camera)
-  spacecraft_name: DSCOVR (Deep Space Climate Observatory)
+  instruments:
+  - epic_natural
+  name: EPIC
+  spacecraft_name: DSCOVR
   operator: NOAA/NASA
-  what_it_is: >
-    EPIC is a single camera on DSCOVR, a satellite parked at the Sun-Earth L1 Lagrange point, about
-    1.5 million km from Earth, where it always faces the sunlit side of the planet. It carries a
-    30.5 cm telescope and takes images through ten narrowband filters from ultraviolet to
-    near-infrared. NOAA operates the spacecraft; NASA processes the Earth imagery.
-  what_it_sees: >
-    The full, sunlit disc of Earth, roughly a full hemisphere at a time. The camera actually
-    captures ten separate monochrome exposures, one per filter; the "natural color" image combines
-    three of them (approximately 443 nm blue, 551 nm green, and 680 nm red) into an RGB composite.
-    Onboard averaging brings the native 2048x2048 frame down to about 1024x1024 pixels, roughly
-    25 km per pixel. New images arrive about every two hours.
-  why_it_matters: >
-    EPIC monitors ozone, aerosols, cloud height, vegetation, and UV radiation across the whole
-    sunlit Earth in one frame, something no single low-orbit satellite can do.
-  reading_the_image: >
-    You are looking at the entire daylit half of Earth at once, always centered near the
-    subsolar point, so the terminator (day/night line) never appears and the perspective barely
-    changes day to day. Because the three color channels are captured seconds apart as Earth
-    rotates underneath, fast-moving clouds can show faint red or blue fringing at their edges.
-    From L1, DSCOVR sees the Moon's far side (the side never visible from Earth) whenever the
-    Moon happens to pass between the camera and Earth, appearing as a small dark silhouette
+  what_it_is: 'EPIC is a single camera on DSCOVR, a satellite parked at the Sun-Earth L1 Lagrange point, about 1.5
+    million km from Earth, where it always faces the sunlit side of the planet. It carries a 30.5 cm telescope and
+    takes images through ten narrowband filters from ultraviolet to near-infrared. NOAA operates the spacecraft;
+    NASA processes the Earth imagery.
+
+    '
+  what_it_sees: 'The full, sunlit disc of Earth, roughly a full hemisphere at a time. The camera actually captures
+    ten separate monochrome exposures, one per filter; the "natural color" image combines three of them (approximately
+    443 nm blue, 551 nm green, and 680 nm red) into an RGB composite. Onboard averaging brings the native 2048x2048
+    frame down to about 1024x1024 pixels, roughly 25 km per pixel. New images arrive about every two hours.
+
+    '
+  why_it_matters: 'EPIC monitors ozone, aerosols, cloud height, vegetation, and UV radiation across the whole sunlit
+    Earth in one frame, something no single low-orbit satellite can do.
+
+    '
+  reading_the_image: 'You are looking at the entire daylit half of Earth at once, always centered near the subsolar
+    point, so the terminator (day/night line) never appears and the perspective barely changes day to day. Because
+    the three color channels are captured seconds apart as Earth rotates underneath, fast-moving clouds can show
+    faint red or blue fringing at their edges. From L1, DSCOVR sees the Moon''s far side (the side never visible
+    from Earth) whenever the Moon happens to pass between the camera and Earth, appearing as a small dark silhouette
     transiting the planet.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Earth_Polychromatic_Imaging_Camera
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Deep_Space_Climate_Observatory
   links:
-    - title: EPIC imagery site (NASA)
-      url: https://epic.gsfc.nasa.gov/
+  - title: EPIC imagery site (NASA)
+    url: https://epic.gsfc.nasa.gov/
   meta_labels:
     centroid_lat: Centroid latitude of the frame
     centroid_lon: Centroid longitude of the frame
     version: Processing version
   picture_types: []
   confidence: verified
-
+  formal_name: Earth Polychromatic Imaging Camera
 - spacecraft: GOES-19
-  instruments: [ABI GeoColor]
+  instruments:
+  - ABI GeoColor
   name: ABI GeoColor
-  spacecraft_name: GOES-19 (geostationary weather satellite)
+  spacecraft_name: GOES-19
   operator: NOAA/NASA
-  what_it_is: >
-    The Advanced Baseline Imager (ABI) is the primary imaging instrument on GOES-19, a NOAA weather
-    satellite in geostationary orbit at 75.2 degrees west longitude (the "GOES East" position). ABI
-    observes in 16 spectral bands: two visible, four near-infrared, and ten infrared. GeoColor is a
-    processed product built from those bands, not a single raw band.
-  what_it_sees: >
-    A full disc of Earth every 10 minutes. ABI has no true green channel, so daytime GeoColor
-    imagery synthesizes green from the red visible band, a near-infrared band, and blue, giving a
-    true-color-like image at about 0.5-1 km per pixel. At night the same product switches to
-    infrared cloud and fog data, with a fixed, pre-rendered city-lights layer (derived from
-    separate satellite data, not live at the time of the shot) blended in over land.
-  why_it_matters: >
-    GeoColor gives forecasters and the public one continuously updated, intuitive full-disc view
+  what_it_is: 'The Advanced Baseline Imager (ABI) is the primary imaging instrument on GOES-19, a NOAA weather satellite
+    in geostationary orbit at 75.2 degrees west longitude (the "GOES East" position). ABI observes in 16 spectral
+    bands: two visible, four near-infrared, and ten infrared. GeoColor is a processed product built from those bands,
+    not a single raw band.
+
+    '
+  what_it_sees: 'A full disc of Earth every 10 minutes. ABI has no true green channel, so daytime GeoColor imagery
+    synthesizes green from the red visible band, a near-infrared band, and blue, giving a true-color-like image
+    at about 0.5-1 km per pixel. At night the same product switches to infrared cloud and fog data, with a fixed,
+    pre-rendered city-lights layer (derived from separate satellite data, not live at the time of the shot) blended
+    in over land.
+
+    '
+  why_it_matters: 'GeoColor gives forecasters and the public one continuously updated, intuitive full-disc view
     that looks natural in daylight and still shows storms and clouds after dark.
-  reading_the_image: >
-    Daytime frames are a true-color-style composite, not raw sensor output. After dark, anything
-    that looks like city lights is a static background layer, not a live detector reading, so it
-    never flickers, changes with local power outages, or lines up exactly with clouds passing
-    overhead; only the cloud and storm structure is current. Watch the terminator (the day/night
-    line) sweep across the disc over the course of a day as GOES-19 holds a fixed spot above the
-    equator.
+
+    '
+  reading_the_image: 'Daytime frames are a true-color-style composite, not raw sensor output. After dark, anything
+    that looks like city lights is a static background layer, not a live detector reading, so it never flickers,
+    changes with local power outages, or lines up exactly with clouds passing overhead; only the cloud and storm
+    structure is current. Watch the terminator (the day/night line) sweep across the disc over the course of a day
+    as GOES-19 holds a fixed spot above the equator.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Advanced_Baseline_Imager
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/GOES-19
   links:
-    - title: NOAA GOES Image Viewer
-      url: https://www.star.nesdis.noaa.gov/GOES/index.php
+  - title: NOAA GOES Image Viewer
+    url: https://www.star.nesdis.noaa.gov/GOES/index.php
   meta_labels:
     product: Imagery product
   picture_types: []
   confidence: verified
-
+  formal_name: Advanced Baseline Imager, GeoColor product
 - spacecraft: JWST
-  instruments: [webb]
+  instruments:
+  - webb
   name: Picture of the Month
   spacecraft_name: James Webb Space Telescope
   operator: NASA/ESA/CSA
-  what_it_is: >
-    ESA/Webb's "Picture of the Month" is a press release image chosen from the James Webb Space
-    Telescope's observations. Webb is an infrared observatory at the Sun-Earth L2 point, about 1.5
-    million km from Earth, operated jointly by NASA, ESA, and the Canadian Space Agency. Its two
-    main imaging instruments are NIRCam, covering the edge of visible light through near-infrared
-    (0.6-5 micrometers), and MIRI, covering mid-infrared (5-27 micrometers) and cooled to below 6
-    kelvin.
-  what_it_sees: >
-    Infrared light invisible to human eyes, captured through a series of narrow filters as separate
-    monochrome exposures. The published color image is built afterward by assigning a visible color
-    to each infrared filter and combining the exposures, so colors are representative, not what an
-    eye or a normal camera would record.
-  why_it_matters: >
-    Infrared light passes through the dust that blocks visible light, letting Webb see through star-
+  what_it_is: 'ESA/Webb''s "Picture of the Month" is a press release image chosen from the James Webb Space Telescope''s
+    observations. Webb is an infrared observatory at the Sun-Earth L2 point, about 1.5 million km from Earth, operated
+    jointly by NASA, ESA, and the Canadian Space Agency. Its two main imaging instruments are NIRCam, covering the
+    edge of visible light through near-infrared (0.6-5 micrometers), and MIRI, covering mid-infrared (5-27 micrometers)
+    and cooled to below 6 kelvin.
+
+    '
+  what_it_sees: 'Infrared light invisible to human eyes, captured through a series of narrow filters as separate
+    monochrome exposures. The published color image is built afterward by assigning a visible color to each infrared
+    filter and combining the exposures, so colors are representative, not what an eye or a normal camera would record.
+
+    '
+  why_it_matters: 'Infrared light passes through the dust that blocks visible light, letting Webb see through star-
     forming clouds, image the earliest and most distant galaxies, and study exoplanet atmospheres.
-  reading_the_image: >
-    Every Webb color image is a false-color composite: brighter or bluer does not mean hotter or
-    closer, only that more light was recorded in whichever filter was mapped to that color.
-    Diffraction spikes, the sharp six-pointed star shapes radiating from bright points, are an
-    artifact of Webb's hexagonal segmented mirror, not a feature of the object itself. Field of
-    view is small (a few arcminutes across), so a single frame usually shows one target in detail
-    rather than a wide sky area.
+
+    '
+  reading_the_image: 'Every Webb color image is a false-color composite: brighter or bluer does not mean hotter
+    or closer, only that more light was recorded in whichever filter was mapped to that color. Diffraction spikes,
+    the sharp six-pointed star shapes radiating from bright points, are an artifact of Webb''s hexagonal segmented
+    mirror, not a feature of the object itself. Field of view is small (a few arcminutes across), so a single frame
+    usually shows one target in detail rather than a wide sky area.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/James_Webb_Space_Telescope
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/James_Webb_Space_Telescope
   links:
-    - title: ESA/Webb Picture of the Month
-      url: https://esawebb.org/images/potm/
+  - title: ESA/Webb Picture of the Month
+    url: https://esawebb.org/images/potm/
   meta_labels:
     ra: Right ascension
     dec: Declination
@@ -119,39 +124,41 @@
     description: Description
   picture_types: []
   confidence: verified
-
 - spacecraft: Hubble
-  instruments: [hubble]
+  instruments:
+  - hubble
   name: Picture of the Week
   spacecraft_name: Hubble Space Telescope
   operator: NASA/ESA
-  what_it_is: >
-    ESA/Hubble's "Picture of the Week" is a press release image chosen from the Hubble Space
-    Telescope's observations. Hubble orbits Earth at roughly 540 km altitude, above the atmosphere,
-    observing mainly in visible and ultraviolet light with some near-infrared reach. Its current
-    imaging instruments are Wide Field Camera 3 (WFC3), added in 2009, and the Advanced Camera for
-    Surveys (ACS), operating since 2002. NASA controls the spacecraft; the Space Telescope Science
-    Institute selects targets and processes the data, with ESA a partner in the mission.
-  what_it_sees: >
-    Each instrument takes separate monochrome exposures through different filters (for example, one
-    filter tuned to hydrogen-alpha light, another to a broad visible band). The published color
-    image combines several of these exposures, assigning each filter a color, so the result is a
-    composite built from multiple black-and-white frames rather than a single color photograph.
-  why_it_matters: >
-    Working above the atmosphere gives Hubble sharp, stable images across ultraviolet through
-    near-infrared light, filling in wavelengths and resolution that ground telescopes and Webb's
-    infrared instruments don't cover.
-  reading_the_image: >
-    Like Webb's images, these are processed composites: colors are assigned to filters, not
-    reproduced directly, and are often chosen to highlight structure (such as gas glowing at a
-    specific wavelength) rather than to match how the object would look to an eye. The frame is
-    usually one target filling most of the field of view, captured over multiple exposures that may
-    span hours.
+  what_it_is: 'ESA/Hubble''s "Picture of the Week" is a press release image chosen from the Hubble Space Telescope''s
+    observations. Hubble orbits Earth at roughly 540 km altitude, above the atmosphere, observing mainly in visible
+    and ultraviolet light with some near-infrared reach. Its current imaging instruments are Wide Field Camera 3
+    (WFC3), added in 2009, and the Advanced Camera for Surveys (ACS), operating since 2002. NASA controls the spacecraft;
+    the Space Telescope Science Institute selects targets and processes the data, with ESA a partner in the mission.
+
+    '
+  what_it_sees: 'Each instrument takes separate monochrome exposures through different filters (for example, one
+    filter tuned to hydrogen-alpha light, another to a broad visible band). The published color image combines several
+    of these exposures, assigning each filter a color, so the result is a composite built from multiple black-and-white
+    frames rather than a single color photograph.
+
+    '
+  why_it_matters: 'Working above the atmosphere gives Hubble sharp, stable images across ultraviolet through near-infrared
+    light, filling in wavelengths and resolution that ground telescopes and Webb''s infrared instruments don''t
+    cover.
+
+    '
+  reading_the_image: 'Like Webb''s images, these are processed composites: colors are assigned to filters, not reproduced
+    directly, and are often chosen to highlight structure (such as gas glowing at a specific wavelength) rather
+    than to match how the object would look to an eye. The frame is usually one target filling most of the field
+    of view, captured over multiple exposures that may span hours.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Hubble_Space_Telescope
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Hubble_Space_Telescope
   links:
-    - title: ESA/Hubble Picture of the Week
-      url: https://esahubble.org/images/potw/
+  - title: ESA/Hubble Picture of the Week
+    url: https://esahubble.org/images/potw/
   meta_labels:
     ra: Right ascension
     dec: Declination
@@ -162,69 +169,76 @@
     description: Description
   picture_types: []
   confidence: verified
-
 - spacecraft: null
-  instruments: [iotw]
+  instruments:
+  - iotw
   name: Image of the Week
   spacecraft_name: Ground-based observatory (varies)
   operator: NOIRLab/NSF/AURA
-  what_it_is: >
-    NOIRLab is the United States' national center for ground-based optical and infrared astronomy,
-    funded by the National Science Foundation and operated by AURA. It runs several facilities:
-    Gemini Observatory (twin 8.1 m telescopes in Hawaii and Chile), the Cerro Tololo Inter-American
-    Observatory in Chile (home to the Victor M. Blanco Telescope and its DECam wide-field camera),
-    Kitt Peak National Observatory in Arizona, and the Vera C. Rubin Observatory in Chile. "Image of
-    the Week" is a weekly press release picking one image from across these sites.
-  what_it_sees: >
-    A single wide-field or deep-sky image from whichever telescope and instrument produced it that
-    week; the camera, filters, exposure time, and field of view all vary by release and are
-    described in the accompanying text rather than fixed by a schema.
-  why_it_matters: >
-    These are large ground-based telescopes doing the bulk of nightly professional sky surveys and
-    deep imaging, distinct from space telescopes: bigger mirrors and longer exposure times, but
-    seen through Earth's atmosphere.
-  reading_the_image: >
-    Because the source telescope changes week to week, treat each image as its own case: check the
-    description for which observatory and instrument made it, and note whether it is a true-color
-    photograph, a narrowband composite (common for glowing nebulae), or a wide-field survey mosaic.
+  what_it_is: 'NOIRLab is the United States'' national center for ground-based optical and infrared astronomy, funded
+    by the National Science Foundation and operated by AURA. It runs several facilities: Gemini Observatory (twin
+    8.1 m telescopes in Hawaii and Chile), the Cerro Tololo Inter-American Observatory in Chile (home to the Victor
+    M. Blanco Telescope and its DECam wide-field camera), Kitt Peak National Observatory in Arizona, and the Vera
+    C. Rubin Observatory in Chile. "Image of the Week" is a weekly press release picking one image from across these
+    sites.
+
+    '
+  what_it_sees: 'A single wide-field or deep-sky image from whichever telescope and instrument produced it that
+    week; the camera, filters, exposure time, and field of view all vary by release and are described in the accompanying
+    text rather than fixed by a schema.
+
+    '
+  why_it_matters: 'These are large ground-based telescopes doing the bulk of nightly professional sky surveys and
+    deep imaging, distinct from space telescopes: bigger mirrors and longer exposure times, but seen through Earth''s
+    atmosphere.
+
+    '
+  reading_the_image: 'Because the source telescope changes week to week, treat each image as its own case: check
+    the description for which observatory and instrument made it, and note whether it is a true-color photograph,
+    a narrowband composite (common for glowing nebulae), or a wide-field survey mosaic.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/NOIRLab
   spacecraft_wikipedia: null
   links:
-    - title: NOIRLab Image of the Week
-      url: https://noirlab.edu/public/images/iotw/
+  - title: NOIRLab Image of the Week
+    url: https://noirlab.edu/public/images/iotw/
   meta_labels:
     description: Description
   picture_types: []
   confidence: verified
-
 - spacecraft: null
-  instruments: [apod]
+  instruments:
+  - apod
   name: Astronomy Picture of the Day
   spacecraft_name: Varies (any telescope or camera)
   operator: NASA/Michigan Technological University
-  what_it_is: >
-    APOD is a daily web feature run by NASA and Michigan Technological University, publishing one
-    astronomy-related image a day with a short explanation written by a professional astronomer.
-    It has run since June 16, 1995, and draws from professional observatories, space agency
-    releases, and amateur astrophotographers alike, so unlike most NASA feeds many APOD images are
-    copyrighted by their original photographer rather than public domain.
-  what_it_sees: >
-    Whatever image was selected that day: it may be a visible-light photograph, a false-color image
-    from an instrument sensitive to invisible wavelengths, a mosaic, an animation, or occasionally
-    an illustration or simulation. There is no fixed instrument, field of view, or resolution.
-  why_it_matters: >
-    APOD is a curated best-of across all of astronomy and spaceflight imaging, not a single
-    instrument's raw feed, so it is a fallback source here rather than the main point: something
-    worth seeing on days without a fresh image from the other tracked instruments.
-  reading_the_image: >
-    Read the day's explanation text before assuming anything about the image: it names the
-    telescope or photographer, says whether color is true or false, and gives scale. Because
-    sources vary so widely, no single rule of thumb applies across different days' pictures.
+  what_it_is: 'APOD is a daily web feature run by NASA and Michigan Technological University, publishing one astronomy-related
+    image a day with a short explanation written by a professional astronomer. It has run since June 16, 1995, and
+    draws from professional observatories, space agency releases, and amateur astrophotographers alike, so unlike
+    most NASA feeds many APOD images are copyrighted by their original photographer rather than public domain.
+
+    '
+  what_it_sees: 'Whatever image was selected that day: it may be a visible-light photograph, a false-color image
+    from an instrument sensitive to invisible wavelengths, a mosaic, an animation, or occasionally an illustration
+    or simulation. There is no fixed instrument, field of view, or resolution.
+
+    '
+  why_it_matters: 'APOD is a curated best-of across all of astronomy and spaceflight imaging, not a single instrument''s
+    raw feed, so it is a fallback source here rather than the main point: something worth seeing on days without
+    a fresh image from the other tracked instruments.
+
+    '
+  reading_the_image: 'Read the day''s explanation text before assuming anything about the image: it names the telescope
+    or photographer, says whether color is true or false, and gives scale. Because sources vary so widely, no single
+    rule of thumb applies across different days'' pictures.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Astronomy_Picture_of_the_Day
   spacecraft_wikipedia: null
   links:
-    - title: APOD archive
-      url: https://apod.nasa.gov/apod/astropix.html
+  - title: APOD archive
+    url: https://apod.nasa.gov/apod/astropix.html
   meta_labels:
     explanation: Explanation text
     hdurl: Full-resolution image URL

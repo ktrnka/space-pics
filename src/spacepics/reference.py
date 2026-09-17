@@ -130,7 +130,7 @@ def caption_items(candidate: Candidate, card: Card | None = None) -> list[tuple[
         if key == "lag_days":
             if abs(float(value)) < 1:
                 continue
-            value = f"{int(round(float(value)))} days"
+            value = f"{round(float(value))} days"
         items.append((label, value_label(key, value, card), tooltip))
     return items
 
