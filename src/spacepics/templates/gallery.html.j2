@@ -26,7 +26,7 @@
   {% set first = (seqs.values() | list | first) | first %}
   <h2>Sol {{ sol }} <span class="meta">· {{ first.captured_at.strftime('%Y-%m-%d') }} UTC · {{ seqs | length }} sequences</span></h2>
   {% for seq, frames in seqs.items() %}
-  <h3>{{ seq }} · {{ frames[0].instrument }}{% if frames | length > 1 and frames[-1].instrument != frames[0].instrument %} + {{ frames[-1].instrument }}{% endif %} · {{ frames | length }} frames · {{ frames[0].captured_at.strftime('%H:%M') }}–{{ frames[-1].captured_at.strftime('%H:%M') }} UTC</h3>
+  <h3 id="{{ seq }}">{{ seq }} · {{ frames[0].instrument }}{% if frames | length > 1 and frames[-1].instrument != frames[0].instrument %} + {{ frames[-1].instrument }}{% endif %} · {{ frames | length }} frames · {{ frames[0].captured_at.strftime('%H:%M') }}–{{ frames[-1].captured_at.strftime('%H:%M') }} UTC</h3>
   <div class="grid">{% for c in frames %}{{ fig(c) }}{% endfor %}</div>
   {% endfor %}
   {% endfor %}

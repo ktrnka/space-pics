@@ -1,33 +1,45 @@
-# Solar observatory and instrument reference cards.
-# Schema: see data/reference/README.md.
-
 - spacecraft: SDO
-  instruments: ["0094", "0131", "0171", "0193", "0211", "0304", "0335", "1600", "1700"]
-  name: Atmospheric Imaging Assembly (AIA)
-  spacecraft_name: Solar Dynamics Observatory
-  operator: NASA / Lockheed Martin Solar and Astrophysics Laboratory (Stanford runs the joint science operations center)
-  what_it_is: >
-    AIA is a set of four telescopes on SDO that photograph the whole visible face of the Sun every 12 seconds,
-    cycling through ultraviolet and visible-light filters. Nine of its channels are shown here, each tuned to a
-    wavelength that only certain hot, ionized atoms emit strongly, which makes AIA closer to a thermometer than
-    a plain camera. SDO has flown in a geosynchronous orbit above the Americas since 2010, giving nearly
-    uninterrupted coverage.
-  what_it_sees: >
-    Each channel isolates one temperature layer of the solar atmosphere; the colours are false and assigned by
-    convention. 304 Å, He II, about 50,000 K, red: chromosphere and prominences. 171 Å, Fe IX, about 630,000 K,
-    gold: quiet corona and coronal loops. 193 Å, Fe XII (and Fe XXIV in flares), about 1.2 million K: corona and
-    coronal holes. 211 Å, Fe XIV, about 2 million K: active regions. 335 Å, Fe XVI, about 2.5 million K: active
-    regions. 94 Å, Fe XVIII, about 6 million K: flaring plasma. 131 Å, Fe VIII plus Fe XXI/XXIII, roughly 400,000
-    K to 16 million K: flares across a wide temperature range. 1600 Å, C IV plus continuum, about 100,000 K and
-    5,000 K: transition region and photosphere. 1700 Å, continuum, about 5,000 K: photosphere. Native frames are
-    4096x4096 pixels at 0.6 arcsec/pixel; this site uses NASA's 1024 px browse copies.
-  why_it_matters: >
-    Comparing the same moment across channels lets researchers map how hot different parts of the solar
-    atmosphere are and follow flares, filament eruptions, and coronal mass ejections as they unfold.
-  reading_the_image: >
-    Dark patches in 193 or 211 are coronal holes (open field, source of fast solar wind); bright tangled patches
-    are active regions over sunspots; dark thread-like filaments on the disc in 304 are the same structures seen
-    as bright prominences when they curve above the limb. A sudden bright flash in 131 or 94 is a flare.
+  instruments:
+  - 0094
+  - '0131'
+  - '0171'
+  - 0193
+  - '0211'
+  - '0304'
+  - '0335'
+  - '1600'
+  - '1700'
+  name: AIA
+  spacecraft_name: SDO
+  operator: NASA / Lockheed Martin Solar and Astrophysics Laboratory (Stanford runs the joint science operations
+    center)
+  what_it_is: 'AIA is a set of four telescopes on SDO that photograph the whole visible face of the Sun every 12
+    seconds, cycling through ultraviolet and visible-light filters. Nine of its channels are shown here, each tuned
+    to a wavelength that only certain hot, ionized atoms emit strongly, which makes AIA closer to a thermometer
+    than a plain camera. SDO has flown in a geosynchronous orbit above the Americas since 2010, giving nearly uninterrupted
+    coverage.
+
+    '
+  what_it_sees: 'Each channel isolates one temperature layer of the solar atmosphere; the colours are false and
+    assigned by convention. 304 Å, He II, about 50,000 K, red: chromosphere and prominences. 171 Å, Fe IX, about
+    630,000 K, gold: quiet corona and coronal loops. 193 Å, Fe XII (and Fe XXIV in flares), about 1.2 million K:
+    corona and coronal holes. 211 Å, Fe XIV, about 2 million K: active regions. 335 Å, Fe XVI, about 2.5 million
+    K: active regions. 94 Å, Fe XVIII, about 6 million K: flaring plasma. 131 Å, Fe VIII plus Fe XXI/XXIII, roughly
+    400,000 K to 16 million K: flares across a wide temperature range. 1600 Å, C IV plus continuum, about 100,000
+    K and 5,000 K: transition region and photosphere. 1700 Å, continuum, about 5,000 K: photosphere. Native frames
+    are 4096x4096 pixels at 0.6 arcsec/pixel; this site uses NASA''s 1024 px browse copies.
+
+    '
+  why_it_matters: 'Comparing the same moment across channels lets researchers map how hot different parts of the
+    solar atmosphere are and follow flares, filament eruptions, and coronal mass ejections as they unfold.
+
+    '
+  reading_the_image: 'Dark patches in 193 or 211 are coronal holes (open field, source of fast solar wind); bright
+    tangled patches are active regions over sunspots; dark thread-like filaments on the disc in 304 are the same
+    structures seen as bright prominences when they curve above the limb. A sudden bright flash in 131 or 94 is
+    a flare.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Atmospheric_Imaging_Assembly
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_Dynamics_Observatory
   links: []
@@ -37,28 +49,34 @@
     size: Pixel size of this frame (1024)
   picture_types: []
   confidence: verified
-
+  formal_name: Atmospheric Imaging Assembly
 - spacecraft: SDO
-  instruments: ["211193171"]
+  instruments:
+  - '211193171'
   name: AIA 211/193/171 composite
-  spacecraft_name: Solar Dynamics Observatory
+  spacecraft_name: SDO
   operator: NASA / Lockheed Martin Solar and Astrophysics Laboratory
-  what_it_is: >
-    A single false-colour image made by blending three AIA ultraviolet channels the way a colour camera blends
-    red, green and blue. It is not a natural-light photo of the Sun; it is a way to show three temperatures of
-    coronal plasma in one image that reads more easily at a glance than three separate grey frames.
-  what_it_sees: >
-    By standard convention, 211 Å (Fe XIV, about 2 million K) is mapped to red, 193 Å (Fe XII, about 1.2 million
-    K) to green, and 171 Å (Fe IX, about 630,000 K) to blue, then combined. Corona bright in all three channels
-    looks golden-white; structures bright mainly in the cooler 171 Å channel look blue; hotter, more disturbed
+  what_it_is: 'A single false-colour image made by blending three AIA ultraviolet channels the way a colour camera
+    blends red, green and blue. It is not a natural-light photo of the Sun; it is a way to show three temperatures
+    of coronal plasma in one image that reads more easily at a glance than three separate grey frames.
+
+    '
+  what_it_sees: 'By standard convention, 211 Å (Fe XIV, about 2 million K) is mapped to red, 193 Å (Fe XII, about
+    1.2 million K) to green, and 171 Å (Fe IX, about 630,000 K) to blue, then combined. Corona bright in all three
+    channels looks golden-white; structures bright mainly in the cooler 171 Å channel look blue; hotter, more disturbed
     plasma trends toward orange and red.
-  why_it_matters: >
-    This is the composite NASA and space-weather forecasters use as a quick "state of the corona" view, because
-    it shows active regions, coronal holes, and loop structure together without switching between channels.
-  reading_the_image: >
-    Dark, blue-tinted patches are coronal holes; bright orange-white knots are active regions; fine looping
-    strands are coronal loops tracing magnetic field lines. Colour balance can shift slightly frame to frame
-    since the three source channels are processed independently.
+
+    '
+  why_it_matters: 'This is the composite NASA and space-weather forecasters use as a quick "state of the corona"
+    view, because it shows active regions, coronal holes, and loop structure together without switching between
+    channels.
+
+    '
+  reading_the_image: 'Dark, blue-tinted patches are coronal holes; bright orange-white knots are active regions;
+    fine looping strands are coronal loops tracing magnetic field lines. Colour balance can shift slightly frame
+    to frame since the three source channels are processed independently.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Atmospheric_Imaging_Assembly
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_Dynamics_Observatory
   links: []
@@ -68,29 +86,33 @@
     size: Pixel size of this frame (1024)
   picture_types: []
   confidence: verified
-
 - spacecraft: SDO
-  instruments: [HMIIC]
-  name: HMI continuum intensitygram
-  spacecraft_name: Solar Dynamics Observatory
+  instruments:
+  - HMIIC
+  name: HMI continuum
+  spacecraft_name: SDO
   operator: NASA / Stanford University
-  what_it_is: >
-    The Helioseismic and Magnetic Imager (HMI) is SDO's visible-light instrument, built around filters tuned to
-    a single iron spectral line at 617.3 nm. A continuum intensitygram is its plainest product: an ordinary
-    white-light snapshot of the visible surface (the photosphere), the closest thing on this site to what your
-    eye would see.
-  what_it_sees: >
-    HMI images the full disc at 4096x4096 pixels, roughly 1 arcsecond resolution, updating every 45 seconds. The
-    continuum frame shows the granulated surface and any sunspots but carries none of the magnetic or velocity
-    information HMI is actually built to measure.
-  why_it_matters: >
-    HMI's main products, not shown here, are dopplergrams (surface motion, used for helioseismology) and
-    magnetograms (magnetic field strength and polarity) that map the field lines driving flares and eruptions;
-    we don't yet show either, though they exist in HMI's data stream.
-  reading_the_image: >
-    Dark, sharp-edged spots are sunspots, cooler regions where a strong magnetic field suppresses convection; the
-    mottled texture elsewhere is granulation, the tops of convection cells roughly 1,000 km across. The disc's
-    edge looks dimmer than its centre from limb darkening, not from any real feature.
+  what_it_is: 'The Helioseismic and Magnetic Imager (HMI) is SDO''s visible-light instrument, built around filters
+    tuned to a single iron spectral line at 617.3 nm. A continuum intensitygram is its plainest product: an ordinary
+    white-light snapshot of the visible surface (the photosphere), the closest thing on this site to what your eye
+    would see.
+
+    '
+  what_it_sees: 'HMI images the full disc at 4096x4096 pixels, roughly 1 arcsecond resolution, updating every 45
+    seconds. The continuum frame shows the granulated surface and any sunspots but carries none of the magnetic
+    or velocity information HMI is actually built to measure.
+
+    '
+  why_it_matters: 'HMI''s main products, not shown here, are dopplergrams (surface motion, used for helioseismology)
+    and magnetograms (magnetic field strength and polarity) that map the field lines driving flares and eruptions;
+    we don''t yet show either, though they exist in HMI''s data stream.
+
+    '
+  reading_the_image: 'Dark, sharp-edged spots are sunspots, cooler regions where a strong magnetic field suppresses
+    convection; the mottled texture elsewhere is granulation, the tops of convection cells roughly 1,000 km across.
+    The disc''s edge looks dimmer than its centre from limb darkening, not from any real feature.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Helioseismic_and_Magnetic_Imager
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_Dynamics_Observatory
   links: []
@@ -100,405 +122,486 @@
     size: Pixel size of this frame (1024)
   picture_types: []
   confidence: verified
-
+  formal_name: Helioseismic and Magnetic Imager continuum intensitygram
 - spacecraft: SOHO
-  instruments: [SOHO LASCO C2, SOHO LASCO C3]
-  name: LASCO C2 / C3 coronagraphs
-  spacecraft_name: Solar and Heliospheric Observatory
+  instruments:
+  - SOHO LASCO C2
+  - SOHO LASCO C3
+  name: LASCO
+  spacecraft_name: SOHO
   operator: ESA / NASA (LASCO built by the US Naval Research Laboratory)
-  what_it_is: >
-    LASCO is a set of coronagraphs on SOHO: telescopes with a metal disc built in to blot out the Sun's blinding
-    disc, the same trick as a solar eclipse, so the much fainter corona around it becomes visible. C2 and C3 are
-    two of LASCO's three cameras (the innermost, C1, stopped working in 1998); they cover overlapping but
+  what_it_is: 'LASCO is a set of coronagraphs on SOHO: telescopes with a metal disc built in to blot out the Sun''s
+    blinding disc, the same trick as a solar eclipse, so the much fainter corona around it becomes visible. C2 and
+    C3 are two of LASCO''s three cameras (the innermost, C1, stopped working in 1998); they cover overlapping but
     different distances from the Sun.
-  what_it_sees: >
-    Both are white-light cameras recording sunlight scattered by free electrons in the corona (Thomson
-    scattering), not any particular wavelength. C2's occulting disc blocks the inner 1.5 solar radii and images
-    out to about 6 solar radii; C3's disc blocks out to about 3.7 solar radii and images out to about 30 solar
+
+    '
+  what_it_sees: 'Both are white-light cameras recording sunlight scattered by free electrons in the corona (Thomson
+    scattering), not any particular wavelength. C2''s occulting disc blocks the inner 1.5 solar radii and images
+    out to about 6 solar radii; C3''s disc blocks out to about 3.7 solar radii and images out to about 30 solar
     radii, a much wider but coarser view.
-  why_it_matters: >
-    LASCO has been the workhorse instrument for watching coronal mass ejections leave the Sun since 1996, which
-    is why space-weather forecasters still lean on it, and it has incidentally discovered more comets than any
-    other instrument in history by imaging small sungrazers crossing its field.
-  reading_the_image: >
-    The dark disc at the centre is the occulting mask, not the Sun (a small marker circle usually shows the
-    Sun's true size and position). A bright, expanding cloud or arc moving outward across a sequence of frames
-    is a coronal mass ejection; faint radial streaks are the ordinary streamer belt; bright dots crossing the
-    field are usually background stars, planets, or sungrazing comets. LASCO frames on this site are normally
+
+    '
+  why_it_matters: 'LASCO has been the workhorse instrument for watching coronal mass ejections leave the Sun since
+    1996, which is why space-weather forecasters still lean on it, and it has incidentally discovered more comets
+    than any other instrument in history by imaging small sungrazers crossing its field.
+
+    '
+  reading_the_image: 'The dark disc at the centre is the occulting mask, not the Sun (a small marker circle usually
+    shows the Sun''s true size and position). A bright, expanding cloud or arc moving outward across a sequence
+    of frames is a coronal mass ejection; faint radial streaks are the ordinary streamer belt; bright dots crossing
+    the field are usually background stars, planets, or sungrazing comets. LASCO frames on this site are normally
     within minutes of real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Large_Angle_and_Spectrometric_Coronagraph
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory
   links: []
   meta_labels:
     measurement: What the channel records (LASCO is white light, not a specific wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (LASCO is usually current within minutes)
+    lag_days: Days between when this frame was requested and the newest frame available (LASCO is usually current
+      within minutes)
   picture_types: []
   confidence: verified
-
+  formal_name: Large Angle and Spectrometric Coronagraph
+  instrument_labels:
+    SOHO LASCO C2: C2
+    SOHO LASCO C3: C3
 - spacecraft: SOHO
-  instruments: [SOHO EIT]
+  instruments:
+  - SOHO EIT
   name: Extreme ultraviolet Imaging Telescope (EIT)
-  spacecraft_name: Solar and Heliospheric Observatory
+  spacecraft_name: SOHO
   operator: ESA / NASA
-  what_it_is: >
-    EIT was one of the first instruments to routinely image the whole solar corona in extreme ultraviolet light,
-    showing structure invisible in ordinary visible light. Each of its four channels isolates a different
+  what_it_is: 'EIT was one of the first instruments to routinely image the whole solar corona in extreme ultraviolet
+    light, showing structure invisible in ordinary visible light. Each of its four channels isolates a different
     temperature of coronal or chromospheric plasma by choosing a wavelength one particular ion emits strongly.
-  what_it_sees: >
-    171 Å, Fe IX/Fe X, about 1 million K: quiet corona. 195 Å, Fe XII, about 1.5 million K: general corona, EIT's
-    main channel. 284 Å, Fe XV, about 2 million K: hotter active-region plasma. 304 Å, He II, roughly 60,000 to
-    80,000 K: chromosphere and transition region, including filaments and prominences. Full-disc frames update
-    every 12 to 25 minutes depending on channel.
-  why_it_matters: >
-    EIT's long, continuous record since 1996 underlies much of what's known about coronal holes, how coronal
-    mass ejections start, and how the low corona changes over a solar cycle, even though newer instruments have
-    since taken over as the primary EUV imagers.
-  reading_the_image: >
-    As with AIA, filaments look dark against the disc in 304 and bright at the limb as prominences; coronal
-    holes are dark patches in 171/195; bright compact knots are active regions. EIT frames on this site typically
-    run about three weeks behind real time, since its archive is slower to release than the newer instruments.
+
+    '
+  what_it_sees: '171 Å, Fe IX/Fe X, about 1 million K: quiet corona. 195 Å, Fe XII, about 1.5 million K: general
+    corona, EIT''s main channel. 284 Å, Fe XV, about 2 million K: hotter active-region plasma. 304 Å, He II, roughly
+    60,000 to 80,000 K: chromosphere and transition region, including filaments and prominences. Full-disc frames
+    update every 12 to 25 minutes depending on channel.
+
+    '
+  why_it_matters: 'EIT''s long, continuous record since 1996 underlies much of what''s known about coronal holes,
+    how coronal mass ejections start, and how the low corona changes over a solar cycle, even though newer instruments
+    have since taken over as the primary EUV imagers.
+
+    '
+  reading_the_image: 'As with AIA, filaments look dark against the disc in 304 and bright at the limb as prominences;
+    coronal holes are dark patches in 171/195; bright compact knots are active regions. EIT frames on this site
+    typically run about three weeks behind real time, since its archive is slower to release than the newer instruments.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Extreme_ultraviolet_Imaging_Telescope
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory
   links: []
   meta_labels:
     measurement: EIT channel wavelength in ångströms (171, 195, 284, or 304)
-    lag_days: Days between when this frame was requested and the newest frame available (EIT typically runs about three weeks behind)
+    lag_days: Days between when this frame was requested and the newest frame available (EIT typically runs about
+      three weeks behind)
   picture_types: []
   confidence: verified
-
 - spacecraft: STEREO-A
-  instruments: [STEREO-A EUVI]
+  instruments:
+  - STEREO-A EUVI
   name: SECCHI EUVI
   spacecraft_name: Solar Terrestrial Relations Observatory A (STEREO-A)
   operator: NASA / Naval Research Laboratory
-  what_it_is: >
-    EUVI is the extreme-ultraviolet imager in the SECCHI instrument suite on STEREO-A, one of two nearly
+  what_it_is: 'EUVI is the extreme-ultraviolet imager in the SECCHI instrument suite on STEREO-A, one of two nearly
     identical spacecraft launched in 2006 to view the Sun from a different angle than Earth. Its twin, STEREO-B,
-    was lost in 2014; STEREO-A remains active and slowly drifts around the Sun on its own orbit, periodically
-    seeing the side of the Sun not visible from Earth.
-  what_it_sees: >
-    EUVI images the disc in the same four EUV channels as SOHO/EIT: 171 Å (Fe IX, quiet corona), 195 Å (Fe XII,
-    general corona), 284 Å (Fe XV, hot active regions) and 304 Å (He II, chromosphere and prominences), at
-    similar field of view and resolution to EIT.
-  why_it_matters: >
-    Because STEREO-A sits at a different longitude than Earth, EUVI gives a preview of active regions before
-    they rotate into Earth's view, useful for flare and CME forecasting.
-  reading_the_image: >
-    Read it like EIT or AIA at a matching wavelength: dark patches are coronal holes, bright knots are active
-    regions, dark threads on the disc in 304 are filaments. Frames on this site typically run about three days
-    behind real time.
+    was lost in 2014; STEREO-A remains active and slowly drifts around the Sun on its own orbit, periodically seeing
+    the side of the Sun not visible from Earth.
+
+    '
+  what_it_sees: 'EUVI images the disc in the same four EUV channels as SOHO/EIT: 171 Å (Fe IX, quiet corona), 195
+    Å (Fe XII, general corona), 284 Å (Fe XV, hot active regions) and 304 Å (He II, chromosphere and prominences),
+    at similar field of view and resolution to EIT.
+
+    '
+  why_it_matters: 'Because STEREO-A sits at a different longitude than Earth, EUVI gives a preview of active regions
+    before they rotate into Earth''s view, useful for flare and CME forecasting.
+
+    '
+  reading_the_image: 'Read it like EIT or AIA at a matching wavelength: dark patches are coronal holes, bright knots
+    are active regions, dark threads on the disc in 304 are filaments. Frames on this site typically run about three
+    days behind real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/STEREO
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/STEREO
   links:
-    - title: SECCHI EUVI (LMSAL)
-      url: http://secchi.lmsal.com/EUVI/
+  - title: SECCHI EUVI (LMSAL)
+    url: http://secchi.lmsal.com/EUVI/
   meta_labels:
     measurement: EUVI channel wavelength in ångströms
-    lag_days: Days between when this frame was requested and the newest frame available (STEREO-A typically runs about three days behind)
+    lag_days: Days between when this frame was requested and the newest frame available (STEREO-A typically runs
+      about three days behind)
   picture_types: []
   confidence: from-memory
-
 - spacecraft: STEREO-A
-  instruments: [STEREO-A COR1, STEREO-A COR2]
+  instruments:
+  - STEREO-A COR1
+  - STEREO-A COR2
   name: SECCHI COR1 / COR2 coronagraphs
   spacecraft_name: Solar Terrestrial Relations Observatory A (STEREO-A)
   operator: NASA / Naval Research Laboratory
-  what_it_is: >
-    COR1 and COR2 are the two white-light coronagraphs in STEREO-A's SECCHI suite, working like SOHO's LASCO: an
-    occulting disc blocks the Sun's disc so the much fainter corona around it can be photographed, but from
-    STEREO-A's separate vantage point away from the Earth-Sun line.
-  what_it_sees: >
-    COR1 covers the inner corona, roughly 1.4 to 4 solar radii; COR2 covers a wider outer range, roughly 2 to 15
-    solar radii, overlapping LASCO C2/C3's coverage but seen from a different angle. Both record ordinary
+  what_it_is: 'COR1 and COR2 are the two white-light coronagraphs in STEREO-A''s SECCHI suite, working like SOHO''s
+    LASCO: an occulting disc blocks the Sun''s disc so the much fainter corona around it can be photographed, but
+    from STEREO-A''s separate vantage point away from the Earth-Sun line.
+
+    '
+  what_it_sees: 'COR1 covers the inner corona, roughly 1.4 to 4 solar radii; COR2 covers a wider outer range, roughly
+    2 to 15 solar radii, overlapping LASCO C2/C3''s coverage but seen from a different angle. Both record ordinary
     sunlight scattered by coronal electrons rather than a specific wavelength.
-  why_it_matters: >
-    Viewing a coronal mass ejection from two separated vantage points, Earth-based LASCO plus STEREO-A, lets
-    scientists triangulate its true speed and direction instead of estimating from one flat image.
-  reading_the_image: >
-    The dark disc at the centre is the instrument's occulting mask, not the Sun; an expanding bright arc or
-    cloud across a sequence of frames is a coronal mass ejection, and thin radial streaks are the ordinary
-    streamer belt. Frames on this site typically run about three days behind real time.
+
+    '
+  why_it_matters: 'Viewing a coronal mass ejection from two separated vantage points, Earth-based LASCO plus STEREO-A,
+    lets scientists triangulate its true speed and direction instead of estimating from one flat image.
+
+    '
+  reading_the_image: 'The dark disc at the centre is the instrument''s occulting mask, not the Sun; an expanding
+    bright arc or cloud across a sequence of frames is a coronal mass ejection, and thin radial streaks are the
+    ordinary streamer belt. Frames on this site typically run about three days behind real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/STEREO
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/STEREO
   links:
-    - title: SECCHI COR1 (NASA)
-      url: https://cor1.gsfc.nasa.gov
+  - title: SECCHI COR1 (NASA)
+    url: https://cor1.gsfc.nasa.gov
   meta_labels:
     measurement: What the channel records (COR1 and COR2 are white light, not a specific wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (STEREO-A typically runs about three days behind)
+    lag_days: Days between when this frame was requested and the newest frame available (STEREO-A typically runs
+      about three days behind)
   picture_types: []
   confidence: from-memory
-
+  instrument_labels:
+    STEREO-A COR1: COR1
+    STEREO-A COR2: COR2
 - spacecraft: PROBA-2
-  instruments: [PROBA-2 SWAP]
+  instruments:
+  - PROBA-2 SWAP
   name: SWAP (Sun Watcher using APS detectors and Image Processing)
   spacecraft_name: PROBA-2 satellite
   operator: ESA / Royal Observatory of Belgium
-  what_it_is: >
-    SWAP is a small, low-cost extreme-ultraviolet telescope on ESA's PROBA-2, a technology-demonstration
+  what_it_is: 'SWAP is a small, low-cost extreme-ultraviolet telescope on ESA''s PROBA-2, a technology-demonstration
     satellite that also carries genuine solar-physics instruments. It photographs the full solar disc and a bit
     of the surrounding corona in a single EUV channel.
-  what_it_sees: >
-    SWAP observes at 174 Å (Fe IX/Fe X), showing plasma around 1 million K, similar to AIA's or EIT's 171 Å
-    channel but from a compact, cheaper instrument. Its images routinely extend further off the disc than most
-    EUV imagers, sometimes showing corona out to 2 solar radii or more.
-  why_it_matters: >
-    SWAP gives near-continuous, low-cost monitoring of the corona for space-weather purposes, backing up the
-    larger SOHO and SDO missions and occasionally catching CME onsets and EUV waves.
-  reading_the_image: >
-    Read it like a 171 Å AIA or EIT frame: dark patches are coronal holes, bright knotted regions are active
-    regions, faint structure fading outward past the disc's edge is the extended corona. Frames on this site are
-    normally within minutes of real time.
+
+    '
+  what_it_sees: 'SWAP observes at 174 Å (Fe IX/Fe X), showing plasma around 1 million K, similar to AIA''s or EIT''s
+    171 Å channel but from a compact, cheaper instrument. Its images routinely extend further off the disc than
+    most EUV imagers, sometimes showing corona out to 2 solar radii or more.
+
+    '
+  why_it_matters: 'SWAP gives near-continuous, low-cost monitoring of the corona for space-weather purposes, backing
+    up the larger SOHO and SDO missions and occasionally catching CME onsets and EUV waves.
+
+    '
+  reading_the_image: 'Read it like a 171 Å AIA or EIT frame: dark patches are coronal holes, bright knotted regions
+    are active regions, faint structure fading outward past the disc''s edge is the extended corona. Frames on this
+    site are normally within minutes of real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/SWAP_(instrument)
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/PROBA-2
   links: []
   meta_labels:
     measurement: SWAP channel wavelength in ångströms (174)
-    lag_days: Days between when this frame was requested and the newest frame available (SWAP is usually current within minutes)
+    lag_days: Days between when this frame was requested and the newest frame available (SWAP is usually current
+      within minutes)
   picture_types: []
   confidence: verified
-
 - spacecraft: GOES
-  instruments: [GOES SUVI]
-  name: Solar Ultraviolet Imager (SUVI)
-  spacecraft_name: GOES-19 (NOAA GOES-R series weather satellite)
+  instruments:
+  - GOES SUVI
+  name: SUVI
+  spacecraft_name: GOES-19
   operator: NOAA / NASA
-  what_it_is: >
-    SUVI is a full-disc extreme-ultraviolet telescope on NOAA's newest geostationary weather satellites, built to
-    do for round-the-clock space-weather monitoring what instruments like AIA do for solar-physics research. It
-    cycles continuously through six wavelength channels.
-  what_it_sees: >
-    SUVI's six channels, 94, 131, 171, 195, 284 and 304 Å, sample much the same ions and temperatures as SDO/AIA
-    and SOHO/EIT: about 630,000 K in 171 Å, several million K in 94 and 131 Å, and the cooler chromosphere in
-    304 Å. Its design and role closely mirror EIT's.
-  why_it_matters: >
-    SUVI is a core input to NOAA's operational space-weather forecasts, feeding flare detection and coronal-hole
-    tracking used to warn about radiation storms and solar-wind streams headed for Earth.
-  reading_the_image: >
-    Read it like AIA or EIT at a matching wavelength: dark patches are coronal holes, bright knots are active
-    regions, sudden brightening is a flare. Frames on this site are normally within minutes of real time.
+  what_it_is: 'SUVI is a full-disc extreme-ultraviolet telescope on NOAA''s newest geostationary weather satellites,
+    built to do for round-the-clock space-weather monitoring what instruments like AIA do for solar-physics research.
+    It cycles continuously through six wavelength channels.
+
+    '
+  what_it_sees: 'SUVI''s six channels, 94, 131, 171, 195, 284 and 304 Å, sample much the same ions and temperatures
+    as SDO/AIA and SOHO/EIT: about 630,000 K in 171 Å, several million K in 94 and 131 Å, and the cooler chromosphere
+    in 304 Å. Its design and role closely mirror EIT''s.
+
+    '
+  why_it_matters: 'SUVI is a core input to NOAA''s operational space-weather forecasts, feeding flare detection
+    and coronal-hole tracking used to warn about radiation storms and solar-wind streams headed for Earth.
+
+    '
+  reading_the_image: 'Read it like AIA or EIT at a matching wavelength: dark patches are coronal holes, bright knots
+    are active regions, sudden brightening is a flare. Frames on this site are normally within minutes of real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Solar_Ultraviolet_Imager
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/GOES-19
   links: []
   meta_labels:
     measurement: SUVI channel wavelength in ångströms
-    lag_days: Days between when this frame was requested and the newest frame available (SUVI is usually current within minutes)
+    lag_days: Days between when this frame was requested and the newest frame available (SUVI is usually current
+      within minutes)
   picture_types: []
   confidence: verified
-
+  formal_name: Solar Ultraviolet Imager
 - spacecraft: GOES
-  instruments: [GOES CCOR-1]
+  instruments:
+  - GOES CCOR-1
   name: Compact Coronagraph (CCOR-1)
-  spacecraft_name: GOES-19 (NOAA GOES-R series weather satellite)
+  spacecraft_name: GOES-19
   operator: NOAA / NASA (built by the Naval Research Laboratory)
-  what_it_is: >
-    CCOR-1 is the first coronagraph flown continuously from geostationary orbit, added to NOAA's newest weather
-    satellite specifically to watch for Earth-directed coronal mass ejections. Like LASCO, it blocks the Sun's
-    disc with an occulting mask to reveal the much fainter corona in white light.
-  what_it_sees: >
-    CCOR-1 records ordinary sunlight scattered by coronal electrons, no specific wavelength, over a field similar
-    to LASCO C2's close-in coverage, and is designed to deliver imagery within about 30 minutes of being taken.
-    It began routine observations in September 2024.
-  why_it_matters: >
-    Flying on an operational weather satellite rather than a research spacecraft gives forecasters a dedicated,
-    low-latency coronagraph instead of leaning on LASCO, a research-grade instrument designed in the late 1980s.
-  reading_the_image: >
-    As with LASCO, the dark central disc is an artificial mask, not the Sun; an expanding bright cloud or arc
-    across a sequence of frames is a coronal mass ejection. Frames on this site are normally within minutes of
-    real time.
+  what_it_is: 'CCOR-1 is the first coronagraph flown continuously from geostationary orbit, added to NOAA''s newest
+    weather satellite specifically to watch for Earth-directed coronal mass ejections. Like LASCO, it blocks the
+    Sun''s disc with an occulting mask to reveal the much fainter corona in white light.
+
+    '
+  what_it_sees: 'CCOR-1 records ordinary sunlight scattered by coronal electrons, no specific wavelength, over a
+    field similar to LASCO C2''s close-in coverage, and is designed to deliver imagery within about 30 minutes of
+    being taken. It began routine observations in September 2024.
+
+    '
+  why_it_matters: 'Flying on an operational weather satellite rather than a research spacecraft gives forecasters
+    a dedicated, low-latency coronagraph instead of leaning on LASCO, a research-grade instrument designed in the
+    late 1980s.
+
+    '
+  reading_the_image: 'As with LASCO, the dark central disc is an artificial mask, not the Sun; an expanding bright
+    cloud or arc across a sequence of frames is a coronal mass ejection. Frames on this site are normally within
+    minutes of real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/GOES-19
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/GOES-19
   links:
-    - title: CCOR-1 instrument overview (NOAA GOES-R)
-      url: https://www.goes-r.gov/spacesegment/CCOR.html
+  - title: CCOR-1 instrument overview (NOAA GOES-R)
+    url: https://www.goes-r.gov/spacesegment/CCOR.html
   meta_labels:
     measurement: What the channel records (CCOR-1 is white light, not a specific wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (CCOR-1 is usually current within minutes)
+    lag_days: Days between when this frame was requested and the newest frame available (CCOR-1 is usually current
+      within minutes)
   picture_types: []
   confidence: verified
-
 - spacecraft: GONG
-  instruments: [GONG H-alpha]
+  instruments:
+  - GONG H-alpha
   name: GONG H-alpha network
   spacecraft_name: Global Oscillation Network Group (six ground-based telescopes)
   operator: NSF / National Solar Observatory
-  what_it_is: >
-    GONG is not a spacecraft but a network of six identical ground telescopes spread around the world (Big Bear
-    in California, Mauna Loa in Hawaii, Learmonth in Australia, Udaipur in India, Teide in the Canary Islands,
-    and Cerro Tololo in Chile), positioned so at least one station has the Sun in daylight almost all the time.
-    Its main job is helioseismology, but each station also takes plain hydrogen-alpha images of the chromosphere.
-  what_it_sees: >
-    H-alpha is a red visible-light spectral line (656.3 nm) emitted by hydrogen in the chromosphere, a thin layer
-    just above the visible surface. GONG's H-alpha camera photographs the full disc roughly every 20 seconds
-    from whichever station currently has the best view.
-  why_it_matters: >
-    H-alpha shows fine chromospheric detail invisible in white light or most EUV channels, especially the shape
-    of filaments and flare ribbons, which is why it has been a staple of ground-based flare monitoring for
-    decades.
-  reading_the_image: >
-    Dark, thread-like filaments crossing the disc are cool plasma suspended by magnetic fields; bright patches
-    (plage) surround active regions; a sudden bright ribbon-shaped brightening is a flare. Because stations hand
-    off through the day, image quality can vary with local weather and seeing.
+  what_it_is: 'GONG is not a spacecraft but a network of six identical ground telescopes spread around the world
+    (Big Bear in California, Mauna Loa in Hawaii, Learmonth in Australia, Udaipur in India, Teide in the Canary
+    Islands, and Cerro Tololo in Chile), positioned so at least one station has the Sun in daylight almost all the
+    time. Its main job is helioseismology, but each station also takes plain hydrogen-alpha images of the chromosphere.
+
+    '
+  what_it_sees: 'H-alpha is a red visible-light spectral line (656.3 nm) emitted by hydrogen in the chromosphere,
+    a thin layer just above the visible surface. GONG''s H-alpha camera photographs the full disc roughly every
+    20 seconds from whichever station currently has the best view.
+
+    '
+  why_it_matters: 'H-alpha shows fine chromospheric detail invisible in white light or most EUV channels, especially
+    the shape of filaments and flare ribbons, which is why it has been a staple of ground-based flare monitoring
+    for decades.
+
+    '
+  reading_the_image: 'Dark, thread-like filaments crossing the disc are cool plasma suspended by magnetic fields;
+    bright patches (plage) surround active regions; a sudden bright ribbon-shaped brightening is a flare. Because
+    stations hand off through the day, image quality can vary with local weather and seeing.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Global_Oscillation_Network_Group
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Global_Oscillation_Network_Group
   links: []
   meta_labels:
     measurement: What the channel records (H-alpha, 656.3 nm)
-    lag_days: Days between when this frame was requested and the newest frame available (GONG is usually current within minutes)
+    lag_days: Days between when this frame was requested and the newest frame available (GONG is usually current
+      within minutes)
   picture_types: []
   confidence: verified
-
 - spacecraft: MLSO
-  instruments: [MLSO KCor]
+  instruments:
+  - MLSO KCor
   name: COSMO K-Coronagraph (K-Cor)
   spacecraft_name: Mauna Loa Solar Observatory (ground station, Hawaii)
   operator: NCAR High Altitude Observatory
-  what_it_is: >
-    K-Cor is a ground-based coronagraph on Mauna Loa, Hawaii, one of the few places on Earth's surface clear and
-    dark enough to image the faint corona without going to space. Like the LASCO and COR instruments, it uses an
-    occulting disc to block the Sun's overwhelming disc.
-  what_it_sees: >
-    K-Cor images the polarized "K-corona," visible light from the photosphere scattered by free electrons
-    (Thomson scattering), from about 1.05 to 3 solar radii, at roughly 6 arcseconds per pixel. It has operated
-    since 2013, replacing an older instrument called Mark-IV.
-  why_it_matters: >
-    Being ground-based, K-Cor can run at a much higher cadence than most space coronagraphs, giving a fast,
-    near-real-time check on CMEs and other eruptions leaving the low corona, limited to Mauna Loa's daylight and
-    clear weather.
-  reading_the_image: >
-    As with other coronagraphs, the dark central disc is the instrument's mask, not the Sun; an expanding bright
-    cloud or loop is a coronal mass ejection. Because it observes from the ground, frames are occasionally
-    missing or degraded by cloud, haze, or daylight scattering.
+  what_it_is: 'K-Cor is a ground-based coronagraph on Mauna Loa, Hawaii, one of the few places on Earth''s surface
+    clear and dark enough to image the faint corona without going to space. Like the LASCO and COR instruments,
+    it uses an occulting disc to block the Sun''s overwhelming disc.
+
+    '
+  what_it_sees: 'K-Cor images the polarized "K-corona," visible light from the photosphere scattered by free electrons
+    (Thomson scattering), from about 1.05 to 3 solar radii, at roughly 6 arcseconds per pixel. It has operated since
+    2013, replacing an older instrument called Mark-IV.
+
+    '
+  why_it_matters: 'Being ground-based, K-Cor can run at a much higher cadence than most space coronagraphs, giving
+    a fast, near-real-time check on CMEs and other eruptions leaving the low corona, limited to Mauna Loa''s daylight
+    and clear weather.
+
+    '
+  reading_the_image: 'As with other coronagraphs, the dark central disc is the instrument''s mask, not the Sun;
+    an expanding bright cloud or loop is a coronal mass ejection. Because it observes from the ground, frames are
+    occasionally missing or degraded by cloud, haze, or daylight scattering.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Mauna_Loa_Solar_Observatory
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Mauna_Loa_Solar_Observatory
   links: []
   meta_labels:
     measurement: What the channel records (K-Cor is polarized white light, not a specific wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (K-Cor is usually current within minutes, weather permitting)
+    lag_days: Days between when this frame was requested and the newest frame available (K-Cor is usually current
+      within minutes, weather permitting)
   picture_types: []
   confidence: verified
-
 - spacecraft: Hinode
-  instruments: [Hinode XRT]
+  instruments:
+  - Hinode XRT
   name: X-Ray Telescope (XRT)
   spacecraft_name: Hinode solar observatory satellite
   operator: JAXA / NASA / UK Space Agency (built by the Smithsonian Astrophysical Observatory)
-  what_it_is: >
-    XRT is a soft X-ray telescope on Hinode, a Japanese-led solar satellite launched in 2006 that also carries a
-    visible-light telescope (SOT) and a UV spectrometer (EIS). Unlike the EUV imagers elsewhere on this site, XRT
-    images the hottest solar plasma directly in X-rays, light only very hot material emits.
-  what_it_sees: >
-    XRT is sensitive to plasma from about 1 million K up to 10 million K, imaging the disc and corona at up to 1
-    arcsecond per pixel over a 34 arcminute field of view.
-  why_it_matters: >
-    Tuned to the hottest end of the corona, XRT shows structures like X-ray bright points and hot flare loops
-    that cooler EUV channels miss or saturate on, useful for studying coronal heating and flares alongside
-    Hinode's other instruments.
-  reading_the_image: >
-    Bright compact spots scattered across the disc away from any obvious active region are X-ray bright points,
-    small transient heating events; large bright loop systems are active-region cores. The corona looks patchier
-    and less uniform than in EUV images because only the hottest plasma shows up at all.
+  what_it_is: 'XRT is a soft X-ray telescope on Hinode, a Japanese-led solar satellite launched in 2006 that also
+    carries a visible-light telescope (SOT) and a UV spectrometer (EIS). Unlike the EUV imagers elsewhere on this
+    site, XRT images the hottest solar plasma directly in X-rays, light only very hot material emits.
+
+    '
+  what_it_sees: 'XRT is sensitive to plasma from about 1 million K up to 10 million K, imaging the disc and corona
+    at up to 1 arcsecond per pixel over a 34 arcminute field of view.
+
+    '
+  why_it_matters: 'Tuned to the hottest end of the corona, XRT shows structures like X-ray bright points and hot
+    flare loops that cooler EUV channels miss or saturate on, useful for studying coronal heating and flares alongside
+    Hinode''s other instruments.
+
+    '
+  reading_the_image: 'Bright compact spots scattered across the disc away from any obvious active region are X-ray
+    bright points, small transient heating events; large bright loop systems are active-region cores. The corona
+    looks patchier and less uniform than in EUV images because only the hottest plasma shows up at all.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Hinode_(satellite)
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Hinode_(satellite)
   links: []
   meta_labels:
     measurement: What the channel records (XRT is broadband soft X-ray, not a single wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (XRT is usually current within minutes)
+    lag_days: Days between when this frame was requested and the newest frame available (XRT is usually current
+      within minutes)
   picture_types: []
   confidence: verified
-
 - spacecraft: Solar Orbiter
-  instruments: [Solar Orbiter EUI FSI, Solar Orbiter EUI HRI]
-  name: "Extreme Ultraviolet Imager (EUI): FSI and HRI"
+  instruments:
+  - Solar Orbiter EUI FSI
+  - Solar Orbiter EUI HRI
+  name: 'Extreme Ultraviolet Imager (EUI): FSI and HRI'
   spacecraft_name: Solar Orbiter spacecraft
   operator: ESA / NASA (built by a European consortium led by the Royal Observatory of Belgium)
-  what_it_is: >
-    EUI is Solar Orbiter's ultraviolet camera system: FSI (Full Sun Imager) photographs the whole disc, while
-    HRI (High Resolution Imager) zooms in on a small patch at much finer detail. Both are especially valuable
-    when Solar Orbiter's orbit swings it closer to the Sun than any other imaging mission.
-  what_it_sees: >
-    FSI images at 174 Å (corona, roughly 1 million K) and 304 Å (chromosphere, He II); HRI has separate channels
-    at 174 Å and, uniquely among instruments on this site, 1216 Å Lyman-alpha light from atomic hydrogen, which
-    highlights the chromosphere and transition region.
-  why_it_matters: >
-    Because Solar Orbiter periodically swings well out of the Sun-Earth line and closer to the Sun than Mercury,
-    EUI can see solar features from angles and at resolutions Earth-orbiting instruments cannot.
-  reading_the_image: >
-    Read FSI's 174 Å like AIA's 171 Å (coronal holes dark, active regions bright). Solar Orbiter's science archive
-    releases slowly, so EUI frames on this site can be well over a year old by the time they're shown, useful for
-    context rather than "what's happening now."
+  what_it_is: 'EUI is Solar Orbiter''s ultraviolet camera system: FSI (Full Sun Imager) photographs the whole disc,
+    while HRI (High Resolution Imager) zooms in on a small patch at much finer detail. Both are especially valuable
+    when Solar Orbiter''s orbit swings it closer to the Sun than any other imaging mission.
+
+    '
+  what_it_sees: 'FSI images at 174 Å (corona, roughly 1 million K) and 304 Å (chromosphere, He II); HRI has separate
+    channels at 174 Å and, uniquely among instruments on this site, 1216 Å Lyman-alpha light from atomic hydrogen,
+    which highlights the chromosphere and transition region.
+
+    '
+  why_it_matters: 'Because Solar Orbiter periodically swings well out of the Sun-Earth line and closer to the Sun
+    than Mercury, EUI can see solar features from angles and at resolutions Earth-orbiting instruments cannot.
+
+    '
+  reading_the_image: 'Read FSI''s 174 Å like AIA''s 171 Å (coronal holes dark, active regions bright). Solar Orbiter''s
+    science archive releases slowly, so EUI frames on this site can be well over a year old by the time they''re
+    shown, useful for context rather than "what''s happening now."
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Solar_Orbiter
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_Orbiter
   links:
-    - title: EUI (Royal Observatory of Belgium / SIDC)
-      url: https://www.sidc.be/EUI/intro
+  - title: EUI (Royal Observatory of Belgium / SIDC)
+    url: https://www.sidc.be/EUI/intro
   meta_labels:
     measurement: EUI channel wavelength in ångströms (174, 304, or 1216)
-    lag_days: Days between when this frame was requested and the newest frame available (EUI has run about 20 months behind on this site)
+    lag_days: Days between when this frame was requested and the newest frame available (EUI has run about 20 months
+      behind on this site)
   picture_types: []
   confidence: from-memory
-
+  instrument_labels:
+    Solar Orbiter EUI FSI: full Sun imager
+    Solar Orbiter EUI HRI: high-resolution imager
 - spacecraft: Solar Orbiter
-  instruments: [Solar Orbiter SoloHI]
+  instruments:
+  - Solar Orbiter SoloHI
   name: Solar Orbiter Heliospheric Imager (SoloHI)
   spacecraft_name: Solar Orbiter spacecraft
   operator: ESA / NASA (built by the US Naval Research Laboratory)
-  what_it_is: >
-    SoloHI is a wide-field imager on Solar Orbiter that, unlike a coronagraph, has no occulting disc; it instead
-    points off to the side of the Sun to photograph the faint white light scattered by the solar wind and
-    interplanetary dust.
-  what_it_sees: >
-    SoloHI records ordinary sunlight Thomson-scattered by electrons in the solar wind, across a wide field built
-    from four camera tiles spanning about 20 degrees half-angle, tracing the solar wind and CMEs well beyond
-    where coronagraphs stop.
-  why_it_matters: >
-    SoloHI extends the heliospheric-imaging approach pioneered by STEREO's HI cameras, tracking CMEs and
-    solar-wind structures out into space rather than just near the Sun, which helps predict when and how hard a
-    CME will hit Earth or Solar Orbiter itself.
-  reading_the_image: >
-    Expect a faint, textured field flecked with stars and dust streaks rather than a crisp solar disc; a CME
-    shows up as a diffuse brightening or arc sweeping across the frame over many hours. Frames on this site have
-    run about five months behind real time.
+  what_it_is: 'SoloHI is a wide-field imager on Solar Orbiter that, unlike a coronagraph, has no occulting disc;
+    it instead points off to the side of the Sun to photograph the faint white light scattered by the solar wind
+    and interplanetary dust.
+
+    '
+  what_it_sees: 'SoloHI records ordinary sunlight Thomson-scattered by electrons in the solar wind, across a wide
+    field built from four camera tiles spanning about 20 degrees half-angle, tracing the solar wind and CMEs well
+    beyond where coronagraphs stop.
+
+    '
+  why_it_matters: 'SoloHI extends the heliospheric-imaging approach pioneered by STEREO''s HI cameras, tracking
+    CMEs and solar-wind structures out into space rather than just near the Sun, which helps predict when and how
+    hard a CME will hit Earth or Solar Orbiter itself.
+
+    '
+  reading_the_image: 'Expect a faint, textured field flecked with stars and dust streaks rather than a crisp solar
+    disc; a CME shows up as a diffuse brightening or arc sweeping across the frame over many hours. Frames on this
+    site have run about five months behind real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Solar_Orbiter
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_Orbiter
   links:
-    - title: SoloHI (US Naval Research Laboratory)
-      url: https://solohi.nrl.navy.mil/
+  - title: SoloHI (US Naval Research Laboratory)
+    url: https://solohi.nrl.navy.mil/
   meta_labels:
     measurement: What the channel records (SoloHI is white light, not a specific wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (SoloHI has run about five months behind on this site)
+    lag_days: Days between when this frame was requested and the newest frame available (SoloHI has run about five
+      months behind on this site)
   picture_types: []
   confidence: verified
-
 - spacecraft: PUNCH
-  instruments: [PUNCH WFI+NFI]
+  instruments:
+  - PUNCH WFI+NFI
   name: PUNCH Wide Field Imagers and Narrow Field Imager
   spacecraft_name: PUNCH four-satellite constellation
   operator: NASA / Southwest Research Institute
-  what_it_is: >
-    PUNCH is a NASA Small Explorer mission launched in March 2025, made of four small satellites flying in
-    formation: three identical Wide Field Imagers (WFI) and one Narrow Field Imager (NFI, a coronagraph).
-    Together their images are combined into one continuous polarized view of the corona and inner solar wind.
-  what_it_sees: >
-    NFI covers the innermost corona like a classic coronagraph, while the three WFI satellites tile a much
-    larger combined field; together they span roughly 1.5 degrees (about 6 solar radii) out to 45 degrees (about
-    180 solar radii) from the Sun, all in polarized white light.
-  why_it_matters: >
-    PUNCH is built to close the gap between where coronagraphs stop and where the "young" solar wind begins,
-    watching a coronal mass ejection continuously as it turns into solar wind rather than losing track of it
-    between instruments.
-  reading_the_image: >
-    The combined image usually shows a small occulted disc near the Sun (from NFI) surrounded by a much wider,
-    fainter field (from the WFIs) than most coronagraphs show; look for a diffuse, expanding structure tracking
-    outward across many frames as a CME crosses the whole field. Frames on this site have run about a month
+  what_it_is: 'PUNCH is a NASA Small Explorer mission launched in March 2025, made of four small satellites flying
+    in formation: three identical Wide Field Imagers (WFI) and one Narrow Field Imager (NFI, a coronagraph). Together
+    their images are combined into one continuous polarized view of the corona and inner solar wind.
+
+    '
+  what_it_sees: 'NFI covers the innermost corona like a classic coronagraph, while the three WFI satellites tile
+    a much larger combined field; together they span roughly 1.5 degrees (about 6 solar radii) out to 45 degrees
+    (about 180 solar radii) from the Sun, all in polarized white light.
+
+    '
+  why_it_matters: 'PUNCH is built to close the gap between where coronagraphs stop and where the "young" solar wind
+    begins, watching a coronal mass ejection continuously as it turns into solar wind rather than losing track of
+    it between instruments.
+
+    '
+  reading_the_image: 'The combined image usually shows a small occulted disc near the Sun (from NFI) surrounded
+    by a much wider, fainter field (from the WFIs) than most coronagraphs show; look for a diffuse, expanding structure
+    tracking outward across many frames as a CME crosses the whole field. Frames on this site have run about a month
     behind real time.
+
+    '
   wikipedia: https://en.wikipedia.org/wiki/Polarimeter_to_Unify_the_Corona_and_Heliosphere
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Polarimeter_to_Unify_the_Corona_and_Heliosphere
   links:
-    - title: PUNCH mission (Southwest Research Institute)
-      url: https://punch.space.swri.edu/
+  - title: PUNCH mission (Southwest Research Institute)
+    url: https://punch.space.swri.edu/
   meta_labels:
     measurement: What the channel records (PUNCH is polarized white light, not a specific wavelength)
-    lag_days: Days between when this frame was requested and the newest frame available (PUNCH has run about a month behind on this site)
+    lag_days: Days between when this frame was requested and the newest frame available (PUNCH has run about a month
+      behind on this site)
   picture_types: []
   confidence: verified

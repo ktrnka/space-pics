@@ -15,7 +15,7 @@ from .digest import Digest, read_digests
 from .models import Candidate, Pick
 from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
 from .pipeline import image_cache_path, materialize_image, materialize_pick_image, safe_name
-from .reference import card_for, readable_meta
+from .reference import caption_items, card_for, readable_meta
 from .sources import Source
 from .store import read_candidates, read_picks
 
@@ -46,7 +46,7 @@ def write_digest_post(d: Digest) -> Path:
         materialize_image(panel.site_image, str(panel.candidate.image_url))
     path = digest_post_path(d)
     path.parent.mkdir(parents=True, exist_ok=True)
-    panels = [(panel, card_for(panel.candidate), readable_meta(panel.candidate, card_for(panel.candidate))) for panel in d.panels]
+    panels = [(panel, card_for(panel.candidate), caption_items(panel.candidate, card_for(panel.candidate))) for panel in d.panels]
     path.write_text(env.get_template("digest.md.j2").render(d=d, panels=panels))
     return path
 

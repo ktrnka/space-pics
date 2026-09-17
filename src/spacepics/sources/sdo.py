@@ -65,7 +65,7 @@ def _title(channel: str) -> str:
 
 
 def _wavelength(channel: str) -> int | None:
-    return int(channel) if channel.isdigit() else None
+    return int(channel) if channel.isdigit() and len(channel) <= 4 else None  # composites like 211193171 are not a wavelength
 
 
 class SdoSource:
