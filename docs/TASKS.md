@@ -24,7 +24,7 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Files | Notes |
 |---|---|---|
-| Vehicle sketch with the active instrument lit | `site/`, cards | SVG per spacecraft on the post. Keith has downloaded reference images to start from (to be added under `data/reference/`). Goes with the next row. |
+| Vehicle sketch with the active instrument lit | `site/`, cards | SVG per spacecraft on the post. Reference diagrams for Perseverance, Curiosity, MRO, and GOES-19 are under `data/reference/sketches/` with sources; SDO and the rest still to collect. Goes with the next row. |
 | Where the vehicle is in the solar system | `site/`, new data | Position relative to Earth and the Sun. Ephemerides via JPL Horizons would do it. Destination: the Mass Effect styled mission-select screen in IDEAS, clickable spacecraft and ground telescopes. |
 
 ## Digest and site
