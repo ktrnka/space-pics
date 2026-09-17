@@ -14,6 +14,16 @@ Research notes for candidate sources not yet built are in `space-image-of-the-da
 - Instruments seen: `MCZ_LEFT`, `MCZ_RIGHT`, `FRONT_HAZCAM_*`, `REAR_HAZCAM_*`, `NAVCAM_*`, and engineering cams. Hazcam and navcam frames are frequent and repetitive; ranking will need per-instrument handling.
 - Curiosity (`category=msl`) returns "No more images" on this endpoint; not pursued.
 
+## curiosity (`sources/curiosity.py`)
+
+- Feed: `https://mars.nasa.gov/api/v1/raw_image_items/?order=sol desc&per_page=100&page=0&condition_1=msl:mission`. No key. The older `rss/api?category=msl` endpoint returns "No more images".
+- Quirk: as with Perseverance, a literal `+` in `order` breaks the request; send a space.
+- Quirk: `extended.url_list` is a single URL identical to `https_url` (2026-09-17), not a list of sizes; no smaller image, so `preview_url` = `image_url` (full-size JPEG). Consider making previews from the cached full image later.
+- Quirk: `link` is feed-relative (`/raw_images/1639694`), so `source_page_url` is None.
+- Raw fields used: `imageid`, `sol`, `instrument` (NAV_RIGHT_B, CHEMCAM_RMI, MAST_LEFT/RIGHT, MAHLI, FHAZ_*, RHAZ_*, MARDI), `date_taken` (ISO, Z), `https_url`, `is_thumbnail` (61 of 100 on the first page; dropped), `image_credit`, `extended.{mast_az,mast_el,lmst}`.
+- Candidate mapping: `spacecraft` = Curiosity; `instrument` = raw string; title like "Curiosity NAV_RIGHT_B, sol 5017".
+- `meta`: `sol`, `mast_az`, `mast_el` (strings as given), `lmst`. No sequence id yet; the imageid encodes one (e.g. `CCAM05016`), worth adding for the explorer.
+
 ## sdo (`sources/sdo.py`)
 
 - Feed: directory listing HTML at `https://sdo.gsfc.nasa.gov/assets/img/browse/YYYY/MM/DD/` (about 1.2 MB). No key. Filenames are `YYYYMMDD_HHMMSS_SIZE_CHANNEL.jpg`, one per channel roughly every 1 to 15 minutes depending on channel. Use these, not `assets/img/latest/` (same URL, changing bytes).
