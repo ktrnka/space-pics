@@ -23,3 +23,7 @@ tmp/
 data/derived/
 
 # data/survey/ (exploration fetches of other dates) is committed so CI explorer pages match local ones.
+
+# Experiment outputs and scratch venv
+experiments/out/
+experiments/.venv/
