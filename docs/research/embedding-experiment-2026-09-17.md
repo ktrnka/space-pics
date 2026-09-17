@@ -27,6 +27,20 @@ make a solar day interesting (a flare, an erupting filament, a CME in a coronagr
   and for coronagraphs, radial-profile residuals. All cheap and physics-shaped.
 - Time-matched comparison across spacecraft (Helioviewer) may be more interesting than anomaly within one.
 
+## SDO: frame differences find events
+
+Second experiment, same cached week at 6-hour cadence, 512 px thumbnails: per channel, mean absolute difference
+between consecutive frames (grayscale, 256 px). Spread is small in absolute terms (rotation dominates a 6-hour
+difference) but the outliers agree across channels, which embeddings never did:
+
+| When (UTC) | Channels flagged | Sigma | What it looks like |
+|---|---|---|---|
+| 09-10 12h to 18h | 94, 335 (the hot flare channels) | +3.9, +4.0 | a bright flare kernel in the active region, visible at 512 px |
+| 09-13 06h | 171, 193, 211, composite | +2.3 to +3.2 | large-scale change in the coronal channels, unexamined |
+
+So the ranker for the Sun should be a difference signal at higher cadence (the browse archive has frames every
+few minutes), per channel, with the hot channels weighted for flares and the coronagraphs for CMEs. Cheap, no model.
+
 ## Perseverance
 
 (pending: preview images downloading after the date survey finishes)

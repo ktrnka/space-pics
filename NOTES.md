@@ -13,6 +13,11 @@
 - 10:47 feeds fetched once for sdo, esa_webb, esa_hubble, epic, apod, hirise; 100 images (23 MB) cached locally so extractor work can be delegated offline
 - 11:30 cleanup pass: per-source failure isolation, chooser seam (with derived-image support for composites), rolling-window store, weights on sources
 - 11:05 four subagents (sdo, esa, epic, apod+hirise) wrote extractors offline in parallel, same working tree, disjoint file sets; 3 to 7 minutes each; all seven sources extract (219 candidates)
+- 12:00-12:50 (Keith at lunch): research subagent surveyed 13 feeds with one verification request each; Helioviewer
+  adapter (29 layers, one API for SOHO/STEREO/GOES/PROBA-2/Hinode/Solar Orbiter/PUNCH) with the embargo pattern visible
+  in the manifest; Curiosity, GOES-19 GeoColor, NOIRLab sources; explorer pages with sequence and time-grid layouts;
+  week-long date survey (about 620 requests, paced, 45 MB); embedding experiment (DINOv2 27 img/s on CPU; global
+  embeddings flat on the Sun, frame differences find a flare); Candidate gained spacecraft, released_at, thumbnail_url
 
 ## Scope changes from the must-do note
 
