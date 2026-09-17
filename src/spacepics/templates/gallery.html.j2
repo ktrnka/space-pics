@@ -18,7 +18,7 @@
 <h1>{{ source.name }} <span class="meta">· {{ source.subject }} · {{ source.release_tier }} · {{ n }} candidates</span></h1>
 <p><a href="index.html">all sources</a></p>
 {% macro fig(c) -%}
-  <figure><a href="{{ c.image_url }}"><img loading="lazy" src="{{ c.thumbnail_url or c.preview_url }}" alt=""></a>
+  <figure><a href="{{ local[c.key] if c.key in local else c.image_url }}"><img loading="lazy" src="{{ local[c.key] if c.key in local else (c.thumbnail_url or c.preview_url) }}" alt=""></a>
   <figcaption title="{{ c.title }} {{ c.captured_at.isoformat() }}">{{ c.captured_at.strftime('%m-%d %H:%M') }} {{ c.meta.get('filter_name') or c.meta.get('measurement') or c.instrument }}</figcaption></figure>
 {%- endmacro %}
 {% if layout == "sequence" %}

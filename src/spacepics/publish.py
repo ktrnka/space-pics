@@ -13,7 +13,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 from .models import Candidate, Pick
 from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
-from .pipeline import materialize_pick_image
+from .pipeline import image_cache_path, materialize_pick_image, safe_name
 from .sources import Source
 from .store import read_candidates, read_picks
 
@@ -86,13 +86,38 @@ def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
     return {"layout": "groups", "groups": {k: v[:60] for k, v in sorted(by_instrument.items())}}
 
 
+RENDER_ON_VIEW = {"helioviewer"}  # image URLs are server-side renders; galleries must not hit them on every page view
+
+
+def localize_previews(source: Source, candidates: list[Candidate]) -> dict[str, str]:
+    """For render-on-view sources, copy cached previews under site/debug/img/ and return key -> relative src."""
+    if source.name not in RENDER_ON_VIEW:
+        return {}
+    out_dir = DEBUG_DIR / "img" / source.name
+    out_dir.mkdir(parents=True, exist_ok=True)
+    local = {}
+    for c in candidates:
+        cached = image_cache_path(str(c.preview_url))
+        if cached.exists():
+            dest = out_dir / f"{safe_name(c.source_id)}{cached.suffix}"
+            if not dest.exists():
+                dest.write_bytes(cached.read_bytes())
+            local[c.key] = f"img/{source.name}/{dest.name}"
+    return local
+
+
 def write_debug_galleries(sources: list[Source], include_survey: bool = True) -> list[Path]:
     DEBUG_DIR.mkdir(parents=True, exist_ok=True)
     paths = []
     for source in sources:
         by_key = {c.key: c for c in (survey_candidates(source) if include_survey else [])}
         by_key.update({c.key: c for c in read_candidates(source.name, days=30)})
-        context = gallery_context(source, list(by_key.values()))
+        candidates = list(by_key.values())
+        local = localize_previews(source, candidates)
+        if source.name in RENDER_ON_VIEW:
+            candidates = [c for c in candidates if c.key in local]  # never link a render URL from a gallery
+        context = gallery_context(source, candidates)
+        context["local"] = local
         path = DEBUG_DIR / f"{source.name}.html"
         path.write_text(env.get_template("gallery.html.j2").render(source=source, n=len(by_key), **context))
         paths.append(path)
