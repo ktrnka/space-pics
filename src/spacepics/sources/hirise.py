@@ -36,6 +36,7 @@ _TAG_RE = re.compile(r"<[^>]+>")
 class HiriseSource:
     name = "hirise"
     subject = "Mars"
+    release_tier = "curated"
     feed_suffix = "xml"
     enabled = True
     freshness_days = 7  # roughly daily
@@ -69,6 +70,7 @@ class HiriseSource:
                 Candidate(
                     source=self.name,
                     source_id=link.rstrip("/").rsplit("/", 1)[-1],
+                    spacecraft="MRO",
                     instrument=self.name,
                     captured_at=captured_at,
                     image_url=image_url,

@@ -71,6 +71,7 @@ def _wavelength(channel: str) -> int | None:
 class SdoSource:
     name = "sdo"
     subject = "Sun"
+    release_tier = "realtime"
     feed_suffix = "html"
     enabled = True
     freshness_days = 2  # the daily listing; older days are separate listings we never fetch
@@ -110,6 +111,7 @@ class SdoSource:
         return Candidate(
             source=self.name,
             source_id=frame.stem,
+            spacecraft="SDO",
             instrument=frame.channel,
             captured_at=frame.captured_at,
             image_url=base + image_name,

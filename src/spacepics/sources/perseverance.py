@@ -52,6 +52,7 @@ class RawFeed(BaseModel):
 class PerseveranceSource:
     name = "perseverance"
     subject = "Mars"
+    release_tier = "realtime"
     feed_suffix = "json"
     enabled = True
     freshness_days = 7
@@ -80,6 +81,7 @@ class PerseveranceSource:
         return Candidate(
             source=self.name,
             source_id=img.imageid,
+            spacecraft="Perseverance",
             instrument=img.camera.instrument,
             captured_at=captured_at,
             image_url=img.image_files.large,

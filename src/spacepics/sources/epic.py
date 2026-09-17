@@ -42,6 +42,7 @@ RAW_RECORDS = TypeAdapter(list[RawRecord])
 class EpicSource:
     name = "epic"
     subject = "Earth"
+    release_tier = "realtime"
     feed_suffix = "json"
     enabled = True
     freshness_days = 10  # latest available day lags real time by several days
@@ -66,6 +67,7 @@ class EpicSource:
         return Candidate(
             source=self.name,
             source_id=rec.identifier,
+            spacecraft="DSCOVR",
             instrument="epic_natural",
             captured_at=captured_at,
             image_url=image_url,

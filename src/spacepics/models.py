@@ -13,10 +13,12 @@ class Candidate(BaseModel):
     stages might want (filter name, sol, RA/Dec) goes in `meta` rather than becoming a field.
     """
 
-    source: str  # adapter name, e.g. "perseverance"
-    source_id: str  # stable within the source; used for the image cache filename
-    instrument: str  # grouping key for per-instrument ranking and debug galleries
-    captured_at: datetime  # UTC, tz-aware
+    source: str  # adapter (feed) name, e.g. "perseverance", "helioviewer"; one adapter may cover several spacecraft
+    source_id: str  # stable within the source
+    spacecraft: str | None = None  # the vehicle, e.g. "Perseverance", "SDO", "SOHO"; None when it varies or is unknown (APOD)
+    instrument: str  # grouping key for per-instrument ranking and galleries
+    captured_at: datetime  # when the image was taken; UTC, tz-aware
+    released_at: datetime | None = None  # when it became public, for embargoed sources; freshness uses this when set
     image_url: HttpUrl  # display-size image (roughly 1000-2000 px)
     preview_url: HttpUrl  # smaller image for embedding/ranking; may equal image_url
     title: str

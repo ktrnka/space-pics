@@ -116,6 +116,7 @@ def _first_sentence(text: str) -> str | None:
 
 class EsaSource:
     subject = "Deep space"
+    release_tier = "curated"
     feed_suffix = "json"
     enabled = True
     freshness_days = 45  # monthly (potm) and weekly (potw) releases
@@ -179,6 +180,7 @@ class EsaSource:
         return Candidate(
             source=self.name,
             source_id=entry.image,
+            spacecraft={"webb": "JWST", "hubble": "Hubble"}[instrument],
             instrument=instrument,
             captured_at=captured_at,
             image_url=entry.formats_url.screen,
