@@ -22,6 +22,8 @@ CREDIT = "NASA/JPL-Caltech"
 # imageid like ZR2_1982_0842891670_957ECM_N0910970ZCAM03022_100085J: the sequence id (ZCAM03022) names one observation,
 # e.g. a multispectral filter set of the same scene or the tiles of a navcam panorama.
 SEQUENCE_RE = re.compile(r"_N\d+([A-Z]{3,4}\d{5})")
+# Fourth field like 957ECM: product type. ECM = processed image, EBY = raw Bayer frame, EJP = JPEG.
+PRODUCT_RE = re.compile(r"^[A-Z0-9]+_\d+_\d+_\d{3}([A-Z]{3})")
 
 
 class RawImageFiles(BaseModel):
@@ -74,7 +76,15 @@ class PerseveranceSource:
 
     def extract(self, raw: bytes) -> list[Candidate]:
         feed = RawFeed.model_validate_json(raw)
-        return [self._to_candidate(img) for img in feed.images if img.sample_type == "Full"]
+        return [self._to_candidate(img) for img in feed.images if self._wanted(img)]
+
+    @staticmethod
+    def _wanted(img: RawImage) -> bool:
+        """Full frames only; drop raw Bayer products (EBY duplicates the processed ECM frame as a grey checkerboard)
+        and the neutral-density solar-filter frames (L7/R7: a small sun disc on black, for atmospheric opacity)."""
+        product = m.group(1) if (m := PRODUCT_RE.search(img.imageid)) else None
+        solar_filter = bool(img.camera.filter_name and "_ND" in img.camera.filter_name)
+        return img.sample_type == "Full" and product != "EBY" and not solar_filter
 
     def _to_candidate(self, img: RawImage) -> Candidate:
         captured_at = datetime.fromisoformat(img.date_taken_utc).replace(tzinfo=UTC)
@@ -94,5 +104,10 @@ class PerseveranceSource:
             title=title,
             credit=CREDIT,
             source_page_url=f"https://mars.nasa.gov/mars2020/multimedia/raw-images/{img.imageid}",
-            meta={"sol": img.sol, "filter_name": filter_name, "sequence": (m.group(1) if (m := SEQUENCE_RE.search(img.imageid)) else None)},
+            meta={
+                "sol": img.sol,
+                "filter_name": filter_name,
+                "product": (m.group(1) if (m := PRODUCT_RE.search(img.imageid)) else None),
+                "sequence": (m.group(1) if (m := SEQUENCE_RE.search(img.imageid)) else None),
+            },
         )

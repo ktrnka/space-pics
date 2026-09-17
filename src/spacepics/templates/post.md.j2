@@ -4,9 +4,10 @@ title: "{{ pick.candidate.title | replace('"', "'") }}"
 date: {{ pick.day.isoformat() }}
 image: /{{ pick.site_image }}
 source: {{ pick.candidate.source }}
+spacecraft: "{{ pick.candidate.spacecraft or '' }}"
 instrument: {{ pick.candidate.instrument }}
 captured_at: {{ pick.candidate.captured_at.isoformat() }}
-credit: "{{ pick.candidate.credit }}"
+credit: "{{ pick.candidate.credit | replace('"', "'") }}"
 source_url: {{ pick.candidate.source_page_url or pick.candidate.image_url }}
 picker: {{ pick.picker }}
 ---
@@ -14,3 +15,23 @@ picker: {{ pick.picker }}
 <img src="{{ '{{' }} '/{{ pick.site_image }}' | absolute_url {{ '}}' }}" alt="{{ pick.candidate.title | replace('"', "'") }}">
 
 {{ pick.caption }}
+{% if card %}
+## About {{ card.name }}{% if card.spacecraft_name %} on {{ card.spacecraft_name }}{% endif %}
+
+{{ card.what_it_is | trim }}
+
+**What it sees.** {{ card.what_it_sees | trim }}
+{% if card.reading_the_image %}
+**Reading this image.** {{ card.reading_the_image | trim }}
+{% endif %}{% if card.why_it_matters %}
+**Why it exists.** {{ card.why_it_matters | trim }}
+{% endif %}
+{% if card.wikipedia %}[{{ card.name }} on Wikipedia]({{ card.wikipedia }}){% endif %}{% if card.spacecraft_wikipedia %} · [{{ card.spacecraft_name or card.spacecraft }} on Wikipedia]({{ card.spacecraft_wikipedia }}){% endif %}{% for l in card.links %} · [{{ l.title }}]({{ l.url }}){% endfor %}
+{% endif %}
+## Image details
+
+| | |
+|---|---|
+{% for label, value in meta_lines %}| {{ label }} | {{ value }} |
+{% endfor %}| Source | [{{ pick.candidate.source }}]({{ pick.candidate.source_page_url or pick.candidate.image_url }}) |
+| Credit | {{ pick.candidate.credit }} |

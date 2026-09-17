@@ -14,6 +14,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 from .models import Candidate, Pick
 from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
 from .pipeline import image_cache_path, materialize_pick_image, safe_name
+from .reference import card_for, readable_meta
 from .sources import Source
 from .store import read_candidates, read_picks
 
@@ -30,7 +31,8 @@ def write_post(pick: Pick) -> Path:
     materialize_pick_image(pick)
     path = post_path(pick)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(env.get_template("post.md.j2").render(pick=pick))
+    card = card_for(pick.candidate)
+    path.write_text(env.get_template("post.md.j2").render(pick=pick, card=card, meta_lines=readable_meta(pick.candidate, card)))
     return path
 
 
