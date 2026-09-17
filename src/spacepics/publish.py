@@ -43,7 +43,7 @@ def digest_post_path(d: Digest) -> Path:
 
 def write_digest_post(d: Digest) -> Path:
     for panel in d.panels:
-        materialize_image(panel.site_image, str(panel.candidate.image_url))
+        materialize_image(panel.site_image, str(panel.candidate.image_url), panel.derived_image)
     path = digest_post_path(d)
     path.parent.mkdir(parents=True, exist_ok=True)
     panels = [

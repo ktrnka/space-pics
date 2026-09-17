@@ -30,6 +30,8 @@ class Panel(BaseModel):
     site_image: str  # relative to site/
     heading: str  # e.g. "Mastcam-Z, left eye"
     blurb: str  # one or two sentences from the instrument card
+    derived_image: str | None = None  # relative to data/: a locally built image (e.g. a wigglegram) shown instead of the candidate's
+    derived_from: list[str] = []
 
 
 class Digest(BaseModel):
@@ -141,12 +143,48 @@ def build_digest(sources: list[Source], day: date) -> Digest:
     if not picks:
         raise RuntimeError(f"recipe for {subject} produced no panels")
     panels = [_panel(c, day) for c in picks]
+    if subject == "Mars":
+        panels += _wigglegram_panel(pools.get("perseverance", []), day)
     spacecraft = sorted({c.spacecraft for c in picks if c.spacecraft})
     intro = INTROS[subject].format(n=len(panels), craft=", ".join(spacecraft) or "public feeds")
     d = Digest(day=day, subject=subject, title=TITLES[subject].format(day=day.isoformat()), intro=intro, panels=panels)
     upsert_digest(d)
     logger.info("digest for %s: %s with %d panels", day, subject, len(panels))
     return d
+
+
+def _wigglegram_panel(candidates: list[Candidate], day: date) -> list[Panel]:
+    """Best effort: a Mastcam-Z stereo pair alternated as a GIF. Nothing qualifies, or anything fails: no panel."""
+    try:
+        from .publish import survey_candidates  # survey pages (committed) widen the search beyond the daily page-0 feed
+        from .sources import SOURCES
+        from .wiggle import best_wigglegram  # numpy/Pillow import kept out of the hot path
+
+        source = SOURCES["perseverance"]
+        pool = {c.key: c for c in fresh(survey_candidates(source), day, source.freshness_days)}
+        pool.update({c.key: c for c in candidates})
+        found = best_wigglegram(list(pool.values()), day)
+        if not found:
+            logger.info("wigglegram: no qualifying Mastcam-Z colour pair among %d candidates", len(pool))
+    except Exception:
+        logger.exception("wigglegram step failed; skipping")
+        return []
+    if not found:
+        return []
+    left, right, rel, _spread, ms = found
+    return [
+        Panel(
+            candidate=left,
+            site_image=str(Path("assets/img") / day.isoformat() / Path(rel).name),
+            heading=f"Mastcam-Z stereo pair as a wigglegram, sequence {left.meta.get('sequence')}",
+            blurb=(
+                f"The left and right eyes of Mastcam-Z sit 24 cm apart. Alternating their two frames every {ms} ms, aligned on the "
+                "subject, fakes depth without glasses: things nearer or farther than the subject wobble. An old trick called a wigglegram."
+            ),
+            derived_image=rel,
+            derived_from=[left.key, right.key],
+        )
+    ]
 
 
 def _panel(c: Candidate, day: date) -> Panel:

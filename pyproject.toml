@@ -12,6 +12,8 @@ dependencies = [
     "click",
     "httpx",
     "jinja2",
+    "numpy>=2.5.3",
+    "pillow>=12.3.0",
     "pydantic",
     "python-dotenv>=1.2.3",
     "pyyaml>=6.0.3",
