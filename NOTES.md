@@ -24,6 +24,10 @@
 - 13:55 first unattended-style CI run of the full pipeline succeeded end to end (fetch, extract, download, digest,
   publish, bot commit, Jekyll build, Pages deploy); the earlier attempt failed only on a push race with my own pushes
 - 14:00 all 47 instrument keys have a verified or from-memory card (3 subagents, ~6 to 9 minutes each)
+- 14:20 Keith's review of the live Mars page: captions to one line with tooltips, explorer links per panel, colloquial headings
+- 14:30 stall: push-triggered runs had never deployed since 10:40 (deploy job silently skipped because the pipeline job
+  upstream was skipped on push; only the bot's own runs deployed). Found via last-modified headers. One-line fix.
+  Also: Helioviewer digest images were saved with the render URL's query string as the extension (404 on Pages).
 
 ## Scope changes from the must-do note
 
