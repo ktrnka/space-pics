@@ -13,21 +13,22 @@ Format: one bullet per idea, dated, with where it came from and enough context t
   target (grey rings, colour chips, shadow post). Could we find caltarget frames (fixed mast pointing), estimate
   per-channel gains from the chips' known reflectances, and apply them to same-sol frames? Limits: 8-bit JPEGs with
   unknown onboard processing, so "looks right", not science-grade. Depends on picture-type labels to find the frames.
+  Keith: sounds fun.
 - **Mastcam-Z near-IR decorrelation stretch** (2026-09-17, Keith). The right eye's 800-1022 nm filters target
   iron-mineral absorption features; the team publishes band-ratio and decorrelation-stretch composites that make rock
   composition visible. Same sequence, same eye, no alignment needed. Day-sized, and the chooser seam already supports
-  derived images.
+  derived images. Keith: if this can spot iron, yes. It can, in the sense of a mineralogy contrast map: hematite,
+  olivine, and pyroxene-rich patches separate by their near-IR absorption; not a chemical assay.
 - **Use press-release images as targets for composite tuning** (2026-09-17, Keith). Match an ESA/NASA finished image to
   the raw frames it came from, then tune our composite pipeline against it. For Webb that means raw per-filter frames
-  via MAST (FITS-sized). Less guess-and-check.
-- **Feature the ND solar-filter frames as an occasional treat** (2026-09-17). L7/R7 frames are Sun shots for dust
-  opacity and Phobos/Deimos transits; they're excluded from picking now, but a transit is worth showing.
-- **Build our own SUVI composite** (2026-09-17, Keith). SUVI has the same channel set as AIA; a 3-channel composite
-  beside AIA's 211/193/171 makes a two-spacecraft comparison. Other AIA composites worth trying: 304/171/193, and
-  094/335/193 for flares.
+  via MAST (FITS-sized). Less guess-and-check. Blocked on getting raw Webb/Hubble frames at all; later.
+- **Build our own SUVI composite** (2026-09-17). Same channel set as AIA, so a 3-channel composite beside AIA's is a
+  two-spacecraft comparison. Keith: probably fun, probably not amazing. Low priority. Other AIA composites worth
+  trying: 304/171/193, and 094/335/193 for flares.
 - **Sun story arcs** (2026-09-17). An eruption on the disc (AIA 304/171) becomes a CME in LASCO hours later; the
-  difference detector could pair them automatically. Keith: "I'm not sure what story would be interesting from the
-  Sun views, I have more questions than anything", so this needs a worked example before it's a task.
+  difference detector could pair them automatically. Keith: the eruption-to-CME story would be awesome; beyond that
+  he doesn't know what a Sun story is. So: build the one worked example (on the board as the end-of-day-2 item)
+  and judge from there.
 
 ## Digest
 
@@ -38,11 +39,12 @@ Format: one bullet per idea, dated, with where it came from and enough context t
 
 ## Learning layer
 
-- **Mission-select screen** (2026-09-17, Keith). A UI showing where each spacecraft is relative to Earth and the Sun,
-  like a game's mission select. The vehicle sketch on the board is the first step.
-- **Classic space UI theme, or a Mass Effect one** (2026-09-17, Keith). Pure fun; the site is deliberately bare today.
-- **Curiosity A-side / B-side, and left / right, discoverable from a post** (2026-09-17, Keith). The explorer link per
-  panel gets you to the sequence; a "see the other eye" link would be the direct version.
+- **Mission-select screen, Mass Effect styled** (2026-09-17, Keith, enthusiastic). A small themed UI of the solar system
+  where you click into a spacecraft or a ground-based telescope and get its instruments and latest images. The
+  vehicle sketch and the position-in-the-solar-system rows on the board are the pieces; this is the destination.
+- **"See the other eye" from a post** (2026-09-17, Keith). Partly covered by the wigglegram. Curiosity publishes both
+  computers' pairs (NAV_LEFT_A/B, NAV_RIGHT_A/B), so its extractor can feed the same wigglegram code once both eyes
+  are extracted; today's page happened to carry only right-B frames.
 
 ## Image selection
 
@@ -60,7 +62,7 @@ Format: one bullet per idea, dated, with where it came from and enough context t
   really exposes is that each instrument produces several picture *types* the metadata doesn't label. Details in
   `docs/research/embedding-experiment-2026-09-17.md`.
 - **Global embeddings are flat on the Sun and Earth**; frame differences find events (a flare on 09-10). Same-framing
-  sources need a difference signal, not an embedding.
+  sources are timelapses, so the signal is "what changed since the previous frame", not distance from a mean.
 - **SDO channels map temperature, not element.** Each AIA channel is mostly an iron ion line at a characteristic
   temperature; element distribution isn't reachable from AIA.
 - **Perseverance product codes**: `ECM` is the processed image, `EBY` the raw Bayer frame (grey checkerboard look);

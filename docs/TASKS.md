@@ -25,12 +25,13 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 | Task | Files | Notes |
 |---|---|---|
 | Vehicle sketch with the active instrument lit | `site/`, cards | SVG per spacecraft on the post. Keith has downloaded reference images to start from (to be added under `data/reference/`). Goes with the next row. |
-| Where the vehicle is in the solar system | `site/`, new data | Position relative to Earth and the Sun on the post or a mission-select style page. Ephemerides via JPL Horizons would do it. |
+| Where the vehicle is in the solar system | `site/`, new data | Position relative to Earth and the Sun. Ephemerides via JPL Horizons would do it. Destination: the Mass Effect styled mission-select screen in IDEAS, clickable spacecraft and ground telescopes. |
 
 ## Digest and site
 
 | Task | Files | Notes |
 |---|---|---|
+| Phobos and Deimos transits as a treat | `sources/perseverance.py`, `digest.py` | Keith: would be amazing. ND solar-filter frames (L7/R7) are dropped at extraction today; keep them as a separate pool, detect a transit as a bite out of the disc (or from the sequence id on transit days), and give it a panel when it happens. |
 | Earth needs a reason to exist (research task) | `digest.py`, `sources/gibs.py` | Keith 2026-09-17: least interesting subject as built, and it isn't obvious what would be interesting. Candidates: GIBS specialty layers by date (fires, sea surface temperature, night lights), "Earth from far away" only, or Earth one day in five. Start by browsing GIBS layers. |
 | Storage growth: feeds, Helioviewer previews, digest images | `pipeline.py`, `publish.py`, `.github/workflows/daily.yml` | Committed growth today: feeds about 216 KB/day packed (1.75 MB/day in the checkout), Helioviewer previews about 6 MB/day, digest images 1-3 MB/day. Options: retention windows in the tree, git-lfs, S3 (possibly with DVC). Decide before it matters, around 2026-10-01 if the project continues. gzip rejected (no packed-size win, loses greppability). |
 
