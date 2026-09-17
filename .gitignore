@@ -27,3 +27,6 @@ data/derived/
 # Experiment outputs and scratch venv
 experiments/out/
 experiments/.venv/
+
+# Local-only docs (third-party copies, private notes); not published
+docs/local/

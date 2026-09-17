@@ -59,7 +59,7 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | When | Task | Files | Notes |
 |---|---|---|---|
-| Before 2026-12-01 | APOD: migrate to the new endpoint | `sources/apod.py`, `tests/fixtures/apod_*` | Legacy `api.nasa.gov/planetary/apod` is archived then. New: `https://science.nasa.gov/wp-json/wp/v2/apod-basic` (no key, returns a list, `url` is the article permalink and the image is `hdurl`). Keith's copy of the guide: `docs/apod-feed-and-api-user-guide`. Could also backfill a week. |
+| Before 2026-12-01 | APOD: migrate to the new endpoint | `sources/apod.py`, `tests/fixtures/apod_*` | Legacy `api.nasa.gov/planetary/apod` is archived then. New: `https://science.nasa.gov/wp-json/wp/v2/apod-basic` (no key, returns a list, `url` is the article permalink and the image is `hdurl`). Keith's local copy of the guide (not committed): `docs/local/apod-feed-and-api-user-guide.md`; the source is https://schlotterer.notion.site/APOD-Feed-And-API-User-Guide-39697d8747c38015a53edfdde76d4f5e. Could also backfill a week. |
 | December 2026 | BepiColombo as a source | new source | Orbit insertion 2026-11-21, science from 2027-04; flyby images so far were press releases. |
 
 ## Done
