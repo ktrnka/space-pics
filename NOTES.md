@@ -43,4 +43,5 @@
   (1) expand sources per subject (Sun, Mars, Earth first) so subject-of-the-day is viable; (2) survey more dates for
   existing sources to look for stories; (3) explorer pages grouped by subject with a time axis; (4) embargo-aware
   sources (release tier, released_at) with reference lookups by time or sky position. The pick-1 job keeps running as
-  the fallback that keeps the site alive.
+  the fallback that keeps the site alive. (Superseded 13:58: the single-image post was retired from the daily
+  job once the digest existed; `pick` remains a manual command.)

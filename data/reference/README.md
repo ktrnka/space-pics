@@ -20,6 +20,12 @@ Schema (all strings unless noted; keep prose plain, no markdown headers):
     ...
   reading_the_image: >                 # 1-3 sentences: what a viewer should look for, common artefacts, how to read the type of frame
     ...
+  formal_name: Mast Camera Zoom        # optional: long official name, shown once in the card text
+  instrument_labels:                   # optional: instrument value -> colloquial detail for headings
+    MCZ_LEFT: left eye
+    MCZ_RIGHT: right eye
+  value_labels:                        # optional: meta key -> {raw value: colloquial label}
+    product: {ECM: Processed image}
   wikipedia: https://en.wikipedia.org/wiki/Mastcam-Z          # instrument article if one exists, else the spacecraft article
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Perseverance_(rover)
   links: []                            # optional list of {title, url} for an official instrument page

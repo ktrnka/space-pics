@@ -3,18 +3,20 @@
 ## Stages
 
 ```
-fetch      network   source feeds  ->  data/feeds/<source>/<date>.json      (saved verbatim)
-extract    offline   saved feed    ->  data/candidates/<source>/<date>.jsonl (list of Candidate)
-download   network   candidates    ->  data/images/<source>/<id>.preview.jpg (gitignored cache)
-pick       offline   candidates    ->  data/picks.jsonl                      (one Pick per day)
-publish    offline*  picks         ->  site/_posts/<date>-<source>.md + site/assets/img/<date>/
-debug-pages offline  candidates    ->  site/debug/<source>.html              (per-instrument galleries)
+fetch      network   source feeds  ->  data/feeds/<source>/<date>.json        (saved verbatim)
+extract    offline   saved feed    ->  data/candidates/<source>/<date>.jsonl   (list of Candidate)
+download   network   candidates    ->  data/images/<hash>.<ext>                (gitignored cache keyed by URL hash)
+digest     offline*  candidates    ->  data/digests.jsonl                      (one subject Digest per day)
+pick       offline   candidates    ->  data/picks.jsonl                        (single-image fallback; manual only)
+publish    offline*  digests,picks ->  site/_posts/<date>-<subject|source>.md + site/assets/img/<date>/
+debug-pages offline  candidates    ->  site/debug/<source>.html                (explorer pages)
 ```
 
-`*` publish downloads the one display-size image for the pick if it isn't cached.
+`*` digest may download two previews to build a wigglegram; publish downloads each panel's display image if it isn't cached.
 
 Each stage reads and writes files, so any stage can be developed against what's already on disk.
-`spacepics pipeline` runs fetch, extract, pick, publish, debug-pages in order; that's what the daily job calls.
+`spacepics pipeline` runs fetch, extract, download (render-on-view sources only), digest, publish, debug-pages in
+order; that's what the daily job calls. `pick` is a separate command the daily job does not run.
 
 fetch and extract isolate failures per source: one broken feed is logged and skipped, the rest continue, and the
 picker works with whatever sources have fresh candidates. A source that fails every day just stops contributing.
@@ -22,8 +24,8 @@ picker works with whatever sources have fresh candidates. A source that fails ev
 `store.read_candidates(source, days=N)` concatenates the newest N daily files, de-duplicated by key with the newest
 winning. The picker reads one day; the ranker's rolling window will ask for more.
 
-The image cache (`data/images/`, gitignored, keyed by URL hash) can be pointed elsewhere with `SPACEPICS_IMAGES_DIR`
-so several worktrees share one cache instead of re-downloading.
+The image cache (`data/images/`, gitignored, flat files keyed by URL hash) can be pointed elsewhere with
+`SPACEPICS_IMAGES_DIR` so several worktrees share one cache instead of re-downloading.
 
 ## The contract between sources and everything else
 
@@ -87,8 +89,9 @@ chooser; nothing else changes.
 Plain HTML per source, opened from disk or served by Pages, linking to remote images (lazy-loaded). Layout is chosen
 per source in `publish.gallery_context`: rovers get sol -> sequence -> frames (a sequence is one observation, e.g. a
 filter set side by side); SDO gets a channel-by-time grid; everything else groups by instrument. Pages fold in the
-last 30 days of committed candidates plus anything under `data/survey/<source>/` (gitignored exploration fetches of
-other dates, run through the same extractor). The CI-built pages therefore show less history than local ones.
+last 30 days of committed candidates plus anything under `data/survey/<source>/` (committed exploration fetches of
+other dates, run through the same extractor). Render-on-view sources (`publish.RENDER_ON_VIEW`, currently
+`helioviewer`) never link the live render URL; cached previews are copied under `site/debug/img/<source>/` instead.
 
 ## Site and deploy
 

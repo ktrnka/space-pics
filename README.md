@@ -6,15 +6,17 @@ Site: https://ktrnka.github.io/space-pics/ · Feed: https://ktrnka.github.io/spa
 
 ## How it works
 
-A daily GitHub Actions job runs `spacepics pipeline`: fetch the sources' feeds, extract candidate images,
-pick one, write a Jekyll post with the image, commit, and deploy to GitHub Pages. The pick is currently a
-seeded random choice; ranking and a vision-model caption come next.
+A daily GitHub Actions job runs `spacepics pipeline`: fetch the sources' feeds, extract candidate images, build a
+subject-of-the-day digest (Sun, Mars, or Earth, rotating daily) of a few panels with instrument cards, write a Jekyll
+post, commit, and deploy to GitHub Pages. A single-image `pick` command still exists as a manual fallback but isn't
+part of the daily job. Explorer pages under `/debug/` show every candidate per source, grouped by instrument.
 
 ## Develop
 
 ```bash
 uv sync
 uv run spacepics pipeline
+uv run spacepics digest --day 2026-09-17   # rebuild one day's subject digest offline; see docs/ARCHITECTURE.md
 uv run pytest -q
 cd site && bundle install && bundle exec jekyll serve
 ```

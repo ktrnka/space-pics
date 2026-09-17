@@ -84,7 +84,7 @@ def debug_pages(source_names):
 @source_opt
 @day_opt
 def pipeline_cmd(source_names, day):
-    """fetch -> extract -> digest -> publish -> debug-pages, for the daily job."""
+    """fetch -> extract -> download (render-on-view sources) -> digest -> publish -> debug-pages, for the daily job."""
     sources = get_sources(source_names)
     d = _day(day)
     pipeline.fetch(sources, d)

@@ -28,7 +28,7 @@ Debug galleries need no Jekyll: `uv run spacepics debug-pages` then open `site/d
 | Pipeline stages | `src/spacepics/pipeline.py`, `src/spacepics/publish.py` |
 | Raw feed responses (committed) | `data/feeds/<source>/<date>.json` |
 | Extracted candidates (committed) | `data/candidates/<source>/<date>.jsonl` |
-| Downloaded images (gitignored cache) | `data/images/<source>/` |
+| Downloaded images (gitignored cache, flat, keyed by URL hash) | `data/images/<hash>.<ext>` |
 | Daily digests and picks | `data/digests.jsonl`, `data/picks.jsonl` |
 | Instrument cards (hand-maintained) | `data/reference/instruments/*.yaml` |
 | Date-survey feeds (committed, exploration) | `data/survey/<source>/` |
@@ -37,7 +37,7 @@ Debug galleries need no Jekyll: `uv run spacepics debug-pages` then open `site/d
 
 ## Conventions
 
-- Network and processing are separate stages. `fetch` and `download` touch the network; `extract`, `pick`, `publish` work from disk. Iterate on parsing and picking without re-hitting the sites.
+- Network and processing are separate stages. `fetch` and `download` touch the network; `extract`, `digest`, `pick`, `publish` work from disk. Iterate on parsing and choosing without re-hitting the sites.
 - Each source keeps its own raw pydantic models for the feed shape. Only `Candidate` crosses into the rest of the pipeline; source-specific extras go in `Candidate.meta`.
 - Never download FITS, JPEG2000, or full-resolution products. Use each source's JPEG/PNG previews.
 - Tests are slim: one fixture plus a parse test per source. Save a trimmed real response as the fixture, not a hand-written one.
@@ -60,4 +60,4 @@ runs from `data/`. Per-source knobs (`enabled`, `freshness_days`, `weight`) live
 
 Claim the task in `docs/TASKS.md` with the files you expect to touch. Adding a source touches only
 `src/spacepics/sources/<name>.py`, its registration line in `sources/__init__.py`, one fixture, one test file,
-and a section in `docs/SOURCES.md`.
+a section in `docs/SOURCES.md`, and an instrument card in `data/reference/instruments/<subject>.yaml`.

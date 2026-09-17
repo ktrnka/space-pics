@@ -95,6 +95,3 @@ Research notes for candidate sources not yet built are in `space-image-of-the-da
 - Quirk: the Hubble POTW list's newest entry on 2026-09-17 is dated 2025-12-29; the feed is stale or the series paused. Not compensated for.
 - Candidate mapping: `instrument` = `webb` or `hubble`; `image_url` = `formats_url["screen"]` (about 1280 px); `preview_url` = `formats_url["screen640"]`; `credit` from the detail when present, else a fixed agency credit; `source_page_url` = `{host}/images/{image_id}/`.
 - `meta`: `release_id`, `ra`, `dec` (decimal degrees), `fov` (`width_arcmin`, `height_arcmin`, computed from dimension x scale), `constellation` (regexed from the free-text description; often None), `object` (from `Subject.Name`), `description` (first sentence). All None for releases without a detail record.
-
-## Candidates not yet built (see research doc for endpoints)
-
