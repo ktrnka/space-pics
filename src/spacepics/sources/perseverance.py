@@ -52,6 +52,7 @@ class RawFeed(BaseModel):
 class PerseveranceSource:
     name = "perseverance"
     feed_suffix = "json"
+    enabled = True
 
     def __init__(self, num: int = DEFAULT_NUM):
         self.num = num

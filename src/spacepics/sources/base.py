@@ -16,7 +16,8 @@ class Source(Protocol):
     """
 
     name: str
-    feed_suffix: str  # file extension for the saved feed, e.g. "json" or "xml"
+    feed_suffix: str  # file extension for the saved feed, e.g. "json", "xml", "html"
+    enabled: bool  # False while extract() is unimplemented; the daily job only runs enabled sources
 
     def fetch_feed(self, client: httpx.Client) -> bytes: ...
 

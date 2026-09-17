@@ -23,3 +23,4 @@ Add a date and where the idea came from (which debug page, which pick).
 ## Site
 
 - Per-instrument debug galleries for every source, linked from a debug index (exists for perseverance; keep it as sources are added).
+- User interface theme inspired from classic space UIs, or actually maybe Mass Effect? It'd be pretty dope to have a ME theme

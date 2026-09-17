@@ -4,10 +4,13 @@ Feeds and candidates are saved to disk between stages so extraction and picking 
 iterated on without touching the source sites again.
 """
 
+import hashlib
 import logging
 import random
+import time
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import httpx
 
@@ -65,22 +68,23 @@ def extract(sources: list[Source], day: date | None) -> dict[str, list[Candidate
     return out
 
 
-def image_cache_path(candidate: Candidate, display: bool = False) -> Path:
-    url = str(candidate.image_url if display else candidate.preview_url)
-    ext = Path(url).suffix.lower() or ".jpg"
-    kind = "display" if display else "preview"
-    return IMAGES_DIR / candidate.source / f"{candidate.source_id}.{kind}{ext}"
+def image_cache_path(url: str) -> Path:
+    """Cache keyed by URL so images can be downloaded before an extractor exists for the source."""
+    ext = Path(urlsplit(url).path).suffix.lower() or ".jpg"
+    return IMAGES_DIR / (hashlib.sha1(url.encode()).hexdigest()[:16] + ext)
 
 
-def download_image(client: httpx.Client, candidate: Candidate, display: bool = False) -> Path:
-    path = image_cache_path(candidate, display)
+def download_url(client: httpx.Client, url: str, pause: float = 0.5) -> Path:
+    """Fetch one image into the cache if not already there. Sleeps after a real download to stay polite."""
+    path = image_cache_path(url)
     if path.exists():
         return path
-    url = str(candidate.image_url if display else candidate.preview_url)
     resp = client.get(url)
     resp.raise_for_status()
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(resp.content)
+    logger.debug("downloaded %s (%d bytes)", url, len(resp.content))
+    time.sleep(pause)
     return path
 
 
@@ -90,7 +94,7 @@ def download(sources: list[Source], limit: int | None) -> int:
     with make_client() as client:
         for source in sources:
             for candidate in read_candidates(source.name)[:limit]:
-                download_image(client, candidate)
+                download_url(client, str(candidate.preview_url))
                 n += 1
     logger.info("downloaded %d preview images", n)
     return n
@@ -136,7 +140,7 @@ def materialize_pick_image(pick: Pick) -> Path:
     if dest.exists():
         return dest
     with make_client() as client:
-        src = download_image(client, pick.candidate, display=True)
+        src = download_url(client, str(pick.candidate.image_url))
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(src.read_bytes())
     return dest
