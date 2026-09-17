@@ -28,6 +28,10 @@
 - 14:30 stall: push-triggered runs had never deployed since 10:40 (deploy job silently skipped because the pipeline job
   upstream was skipped on push; only the bot's own runs deployed). Found via last-modified headers. One-line fix.
   Also: Helioviewer digest images were saved with the render URL's query string as the extension (404 on Pages).
+- 14:55 all three subject pages reviewed live by Keith and revised: captions, headings, Sun ordering, Earth slimmed
+- 15:09 wigglegram proof of concept (three Perseverance stereo pairs) as an experiment page
+- 15:11 final CI run dispatched; **code freeze 16:00** (no code after the final run's bot commit)
+- biggest single stall of the day: push-triggered deploys silently skipped for four hours (found 14:30, one-line fix)
 
 ## Scope changes from the must-do note
 

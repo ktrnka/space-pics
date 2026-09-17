@@ -12,6 +12,13 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
+| Day 2, first: Sun difference detector as the SDO chooser | `digest.py`, new `signals.py` | Frame differences at native cadence per channel; validated 2026-09-17 (found a flare). Pair AIA eruptions with LASCO CMEs hours later. |
+| Day 2, second: picture-type labels per instrument | `publish.py` (explorer), new `labels.py`, `data/reference/` | Cluster DINOv2 embeddings per instrument, show clusters in the explorer, Keith names them once; then rank within type. |
+| Day 2, third: vehicle sketch with the active instrument lit | `site/`, cards | SVG per spacecraft on the post; extension of where-in-the-universe. |
+| Digest panels grouped by spacecraft | `templates/digest.md.j2` | |
+| Notation explainers on the remaining Sun cards | `data/reference/instruments/sun.yaml` | Follow the AIA pattern (ion, temperature, why a wavelength isolates it). |
+| Earth: a different angle or a smaller share of the rotation | `digest.py`, `sources/gibs.py` | See IDEAS: GIBS specialty layers, or Earth one day in five. |
+| Wigglegram into the Mars digest | `digest.py`, `publish.py` | Proof of concept at site/debug/experiment-wigglegram.html; needs numpy/Pillow in the project deps. |
 | Helioviewer preview growth | `publish.py` | Local previews under `site/debug/img/helioviewer/` cost about 6 MB/day committed. Prune to the last N days, or downscale to 256 px, before it matters. |
 | Source: NASA GIBS WMS (Earth, many layers) | `sources/gibs.py` | Date-addressable GetMap PNGs; pick a few layers (true colour, night lights, sea surface temperature). |
 | Source: STEREO-A beacon (fresher than Helioviewer's 3-day lag) | `sources/stereo.py` | latest-style URLs; needs the Last-Modified cache key (see research note). |
@@ -20,10 +27,6 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 | Helioviewer: SDO through the same adapter for time-matched comparisons | `sources/helioviewer.py` | SDO layers exist in Helioviewer (sourceIds 8-19); useful for same-instant comparisons with other spacecraft. |
 | Feed storage growth (revisit around 2026-10-01 if the project continues) | `pipeline.py`, `.github/workflows/daily.yml` | Decided 2026-09-17 to leave feeds committed as-is: git packs them to about 216 KB/day; checkout grows 1.75 MB/day. Likely fix is a 30-day retention window in the tree. gzip rejected (no packed-size win, loses greppability). |
 | APOD: migrate to the new endpoint before 2026-12-01 | `sources/apod.py`, `tests/fixtures/apod_*` | Legacy api.nasa.gov/planetary/apod is archived 2026-12-01. New: `https://science.nasa.gov/wp-json/wp/v2/apod-basic` (no key, returns a list; `url` is now the article permalink, image is `hdurl`). Keith's copy of the user guide: `docs/apod-feed-and-api-user-guide`. |
-| Perseverance paging | `sources/perseverance.py` | Pull pages 0..N so a full sol is covered. |
-| Ranker: per-instrument embedding anomaly | `rank.py`, `pipeline.py`, `pyproject.toml` | DINOv2-small on CPU; rolling window persisted under `data/embeddings/`. |
-| Picker: vision model pick + caption | `pick.py`, `pipeline.py` | Decision on provider pending. |
-| Index page: last N picks as a grid | `site/index.md`, `site/assets/css/style.css` | |
 
 ## Done
 
