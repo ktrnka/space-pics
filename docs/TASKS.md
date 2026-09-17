@@ -12,11 +12,8 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Files | Notes |
 |---|---|---|
-| Source: GOES-19 GeoColor (Earth) | `sources/goes.py` | Timestamped full-disk JPEGs on cdn.star.nesdis.noaa.gov; see docs/research/feed-access-2026-09-17.md. Fetch half by the main session. |
 | Source: NASA GIBS WMS (Earth, many layers) | `sources/gibs.py` | Date-addressable GetMap PNGs; pick a few layers (true colour, night lights, sea surface temperature). |
-| Source: NOIRLab image of the week | `sources/noirlab.py` | RSS with enclosures; weekly; curated. |
 | Source: STEREO-A beacon (fresher than Helioviewer's 3-day lag) | `sources/stereo.py` | latest-style URLs; needs the Last-Modified cache key (see research note). |
-| Curiosity: sequence id in meta | `sources/curiosity.py` | Parse from imageid so the explorer groups by observation like Perseverance. |
 | Newly-released treatment for delayed layers | `pipeline.py`, `sources/helioviewer.py` | Track the latest date per Helioviewer layer across manifests; when it jumps, that's a release. Pair with a realtime layer at the same capture time. |
 | Sky-position reference lookup for deep space | new `references.py` | ESA meta has RA/Dec/FOV; MAST and ESA archives support cone search. |
 | Helioviewer: SDO through the same adapter for time-matched comparisons | `sources/helioviewer.py` | SDO layers exist in Helioviewer (sourceIds 8-19); useful for same-instant comparisons with other spacecraft. |
@@ -31,6 +28,7 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Commit |
 |---|---|
+| Sources goes (GOES-19 GeoColor) and noirlab; Curiosity sequence ids | (12:25 commits) |
 | Sources helioviewer (29 layers) and curiosity; explorer pages with sequence and time-grid layouts; week-long survey folded in | 2a8d9b8 and this commit |
 | Skeleton: models, Perseverance source, stages, CLI, Jekyll site, workflows, docs | 27bb139..5b4f945 |
 | Sources sdo, esa_webb, esa_hubble, epic, apod, hirise: fetch halves by main session, extractors by 4 parallel subagents | a1fb6a1 |

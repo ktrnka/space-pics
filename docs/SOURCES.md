@@ -44,6 +44,21 @@ Research notes for candidate sources not yet built are in `space-image-of-the-da
 - `meta`: `helioviewer_source_id`, `measurement`, `native_scale_arcsec_px`, `native_width`, `lag_days`.
 - No rate limit published; be gentle, it is a shared public service.
 
+## goes (`sources/goes.py`)
+
+- Feed: directory listing HTML at `https://cdn.star.nesdis.noaa.gov/GOES19/ABI/FD/GEOCOLOR/` (about 1.6 MB, roughly 10 days of full-disk frames at 10-minute cadence). No key.
+- Filenames: `YYYYDDDHHMM_GOES19-ABI-FD-GEOCOLOR-{339x339,678x678,1808x1808,5424x5424,10848x10848,21696x21696}.jpg`; DDD is day of year. `latest.jpg` is the 10848 px file (18 MB): never use.
+- Subsampling: earliest frame in each 3-hour bucket per day, so about 8 per day, 80 per listing.
+- Candidate mapping: `spacecraft` GOES-19, `instrument` "ABI GeoColor"; display 1808 px, preview 678 px, thumbnail 339 px. GeoColor is a composite (true colour by day, IR plus static city lights at night).
+- Other products live in sibling directories (e.g. `.../FD/13/` for a single infrared band, `.../CONUS/GEOCOLOR/`); GOES-18 (West) at `GOES18/...`. Not wired yet.
+
+## noirlab (`sources/noirlab.py`)
+
+- Feed: RSS 2.0 at `https://noirlab.edu/public/images/iotw/feed/`, 25 items, weekly. No key. Curated press images from Gemini, Blanco, Kitt Peak, and Rubin.
+- Each item has an `<enclosure>` with the screen-size JPEG (100 to 500 KB), a link to the image page, `pubDate`, and an HTML description.
+- Candidate mapping: `spacecraft` None (ground-based), `instrument` "iotw", `source_id` from the link slug (e.g. `iotw2637a`); `captured_at` is the publish date, not the observation date.
+- `meta`: `description` (HTML stripped, truncated to 500 characters).
+
 ## epic (`sources/epic.py`)
 
 - Feed: `https://api.nasa.gov/EPIC/api/natural` with `NASA_API_KEY` (`DEMO_KEY` works at low volume). Returns the most recent available day's images (10 to 20), not a chosen date.
