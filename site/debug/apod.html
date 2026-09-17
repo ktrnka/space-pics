@@ -1,25 +1,27 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>apod candidates</title>
+<title>apod explorer</title>
 <style>
   body { font-family: system-ui, sans-serif; margin: 1rem; background: #111; color: #ddd; }
-  h2 { margin-top: 2rem; }
-  .grid { display: flex; flex-wrap: wrap; gap: 8px; }
-  figure { margin: 0; width: 200px; }
-  img { width: 200px; height: 150px; object-fit: cover; background: #222; }
-  figcaption { font-size: 11px; color: #999; word-break: break-all; }
+  h2 { margin: 2rem 0 0.25rem; } h3 { margin: 1rem 0 0.25rem; font-weight: normal; color: #aaa; }
+  .grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  figure { margin: 0; width: 160px; }
+  img { width: 160px; height: 120px; object-fit: cover; background: #222; display: block; }
+  figcaption { font-size: 11px; color: #999; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
   a { color: #8cf; }
+  table { border-collapse: collapse; } th { font-size: 11px; color: #aaa; font-weight: normal; padding: 2px 4px; position: sticky; top: 0; background: #111; }
+  th.row { text-align: left; position: sticky; left: 0; }
+  td { padding: 1px; } td img { width: 96px; height: 96px; object-fit: cover; }
+  .wrap { overflow-x: auto; }
+  .meta { color: #888; font-size: 12px; }
 </style>
-<h1>apod</h1>
+<h1>apod <span class="meta">· Various · curated · 1 candidates</span></h1>
 <p><a href="index.html">all sources</a></p>
 
-<h2>apod <small>(1 shown)</small></h2>
-<div class="grid">
 
-  <figure>
-    <a href="https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest_800.jpg"><img loading="lazy" src="https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest_800.jpg" alt=""></a>
-    <figcaption>2026-09-17 00:00<br></figcaption>
-  </figure>
-
-</div>
+  
+  <h2>apod <span class="meta">(1 shown)</span></h2>
+  <div class="grid"><figure><a href="https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest_800.jpg"><img loading="lazy" src="https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest_800.jpg" alt=""></a>
+  <figcaption title="A Treasure Chest in the Carina Nebula 2026-09-17T00:00:00+00:00">09-17 00:00 apod</figcaption></figure></div>
+  
 

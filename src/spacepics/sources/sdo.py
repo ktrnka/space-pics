@@ -116,6 +116,7 @@ class SdoSource:
             captured_at=frame.captured_at,
             image_url=base + image_name,
             preview_url=base + preview_name,
+            thumbnail_url=base + preview_name.replace(f"_{DISPLAY_SIZE}_", "_512_"),
             title=_title(frame.channel),
             credit=CREDIT,
             source_page_url="https://sdo.gsfc.nasa.gov/data/",

@@ -21,3 +21,6 @@ tmp/
 
 # Locally generated images (composites); the published copy is under site/assets/img/
 data/derived/
+
+# Date-survey feeds and thumbnails (exploration only; re-fetchable)
+data/survey/

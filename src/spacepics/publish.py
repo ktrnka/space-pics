@@ -11,8 +11,8 @@ from pathlib import Path
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
-from .models import Pick
-from .paths import DEBUG_DIR, POSTS_DIR
+from .models import Candidate, Pick
+from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
 from .pipeline import materialize_pick_image
 from .sources import Source
 from .store import read_candidates, read_picks
@@ -42,16 +42,59 @@ def publish(day: date | None) -> list[Path]:
     return paths
 
 
-def write_debug_galleries(sources: list[Source], per_instrument_limit: int = 60) -> list[Path]:
+def survey_candidates(source: Source) -> list[Candidate]:
+    """Extra candidates from data/survey/<source>/ feeds (exploration fetches), run through the same extractor."""
+    out: list[Candidate] = []
+    for f in sorted((SURVEY_DIR / source.name).glob(f"*.{source.feed_suffix}")):
+        try:
+            out.extend(source.extract(f.read_bytes()))
+        except Exception:
+            logger.exception("survey extract failed for %s", f)
+    return out
+
+
+def _bucket(c: Candidate, hours: int) -> str:
+    return f"{c.captured_at:%m-%d} {(c.captured_at.hour // hours) * hours:02d}h"
+
+
+def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
+    """Pick a layout per source and shape the candidates for it.
+
+    sequence: rovers; sol -> sequence id -> frames (a filter set or panorama tiles side by side).
+    timegrid: rows = instrument, columns = time buckets (a flipbook of the day/week).
+    groups: everything else; instrument -> newest frames.
+    """
+    candidates = sorted(candidates, key=lambda c: c.captured_at, reverse=True)
+    if source.subject == "Mars" and any(c.meta.get("sequence") for c in candidates):
+        sols: dict[int, dict[str, list[Candidate]]] = defaultdict(lambda: defaultdict(list))
+        for c in candidates:
+            sols[c.meta.get("sol", 0)][c.meta.get("sequence") or c.instrument].append(c)
+        for seqs in sols.values():
+            for frames in seqs.values():
+                frames.sort(key=lambda c: c.captured_at)
+        return {"layout": "sequence", "sols": dict(sorted(sols.items(), reverse=True))}
+    if source.name == "sdo":
+        hours = 3 if len({c.captured_at.date() for c in candidates}) == 1 else 6
+        columns = sorted({_bucket(c, hours) for c in candidates})
+        rows: dict[str, dict[str, Candidate]] = defaultdict(dict)
+        for c in candidates:
+            rows[c.instrument].setdefault(_bucket(c, hours), c)
+        return {"layout": "timegrid", "columns": columns, "rows": dict(sorted(rows.items()))}
+    by_instrument: dict[str, list[Candidate]] = defaultdict(list)
+    for c in candidates:
+        by_instrument[c.instrument].append(c)
+    return {"layout": "groups", "groups": {k: v[:60] for k, v in sorted(by_instrument.items())}}
+
+
+def write_debug_galleries(sources: list[Source], include_survey: bool = True) -> list[Path]:
     DEBUG_DIR.mkdir(parents=True, exist_ok=True)
     paths = []
     for source in sources:
-        by_instrument = defaultdict(list)
-        for c in sorted(read_candidates(source.name), key=lambda c: c.captured_at, reverse=True):
-            by_instrument[c.instrument].append(c)
-        groups = {k: v[:per_instrument_limit] for k, v in sorted(by_instrument.items())}
+        by_key = {c.key: c for c in (survey_candidates(source) if include_survey else [])}
+        by_key.update({c.key: c for c in read_candidates(source.name, days=30)})
+        context = gallery_context(source, list(by_key.values()))
         path = DEBUG_DIR / f"{source.name}.html"
-        path.write_text(env.get_template("gallery.html.j2").render(source=source.name, groups=groups))
+        path.write_text(env.get_template("gallery.html.j2").render(source=source, n=len(by_key), **context))
         paths.append(path)
     by_subject: dict[str, list[str]] = defaultdict(list)
     for source in sources:

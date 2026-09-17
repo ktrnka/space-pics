@@ -5,6 +5,7 @@ Hundreds of frames per sol. Mastcam-Z frames carry a per-filter name (e.g. ZCAM_
 which is what makes this the multispectral-composite source later.
 """
 
+import re
 from datetime import UTC, datetime
 
 import httpx
@@ -18,6 +19,9 @@ FEED_URL = "https://mars.nasa.gov/rss/api/"
 FEED_PARAMS = {"feed": "raw_images", "category": "mars2020", "feedtype": "json", "order": "sol desc", "page": 0}
 DEFAULT_NUM = 100  # the API caps a page at 100 regardless of num
 CREDIT = "NASA/JPL-Caltech"
+# imageid like ZR2_1982_0842891670_957ECM_N0910970ZCAM03022_100085J: the sequence id (ZCAM03022) names one observation,
+# e.g. a multispectral filter set of the same scene or the tiles of a navcam panorama.
+SEQUENCE_RE = re.compile(r"_N\d+([A-Z]{3,4}\d{5})")
 
 
 class RawImageFiles(BaseModel):
@@ -86,8 +90,9 @@ class PerseveranceSource:
             captured_at=captured_at,
             image_url=img.image_files.large,
             preview_url=img.image_files.medium,
+            thumbnail_url=img.image_files.small,
             title=title,
             credit=CREDIT,
             source_page_url=f"https://mars.nasa.gov/mars2020/multimedia/raw-images/{img.imageid}",
-            meta={"sol": img.sol, "filter_name": filter_name},
+            meta={"sol": img.sol, "filter_name": filter_name, "sequence": (m.group(1) if (m := SEQUENCE_RE.search(img.imageid)) else None)},
         )

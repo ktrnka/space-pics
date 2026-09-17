@@ -1,14 +1,18 @@
 from .apod import ApodSource
 from .base import Source
+from .curiosity import CuriositySource
 from .epic import EpicSource
 from .esa import EsaSource
+from .helioviewer import HelioviewerSource
 from .hirise import HiriseSource
 from .perseverance import PerseveranceSource
 from .sdo import SdoSource
 
 ALL_SOURCES: list[Source] = [
     PerseveranceSource(),
+    CuriositySource(),
     SdoSource(),
+    HelioviewerSource(),
     EsaSource("esa_webb", "https://esawebb.org", "potm"),
     EsaSource("esa_hubble", "https://esahubble.org", "potw"),
     EpicSource(),

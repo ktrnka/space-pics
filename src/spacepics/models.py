@@ -21,6 +21,7 @@ class Candidate(BaseModel):
     released_at: datetime | None = None  # when it became public, for embargoed sources; freshness uses this when set
     image_url: HttpUrl  # display-size image (roughly 1000-2000 px)
     preview_url: HttpUrl  # smaller image for embedding/ranking; may equal image_url
+    thumbnail_url: HttpUrl | None = None  # tiny image for wide galleries (roughly 300-500 px); galleries fall back to preview_url
     title: str
     credit: str
     source_page_url: HttpUrl | None = None
