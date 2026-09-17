@@ -23,9 +23,9 @@ Add a date and where the idea came from (which debug page, which pick).
   from a fixed pointing). Day-sized and would actually show something.
 - **Exclude or feature the ND solar frames** (2026-09-17). L7 (590 nm, ND6) and R7 (880 nm, ND5) are Sun shots for
   dust opacity and moon transits: a small disc on black. Either filter them from picking or make transits a treat.
-- **Calibration frames and anomaly scores** (2026-09-17). Two guesses on the board: caltarget frames are so common
-  they'll sit at the embedding centroid (low score, good), or they're visually odd enough to be high outliers.
-  Check empirically once embeddings exist.
+- **Calibration frames and anomaly scores** (2026-09-17). Settled: over a five-sol window, caltarget, sun-shot, and
+  hardware frames are the HIGH outliers (Keith's guess). Raw anomaly is a garbage/hardware detector; see
+  docs/research/embedding-experiment-2026-09-17.md for what to do with that.
 - **Navcam love** (2026-09-17, Keith). Navcam frames deserve a fair share; don't let ranking bury them.
 - **SDO channels are temperature, not element** (2026-09-17). Each AIA channel is mostly an iron ion line at a
   different temperature; the 211/193/171 composite is already a temperature map. Element mapping isn't reachable

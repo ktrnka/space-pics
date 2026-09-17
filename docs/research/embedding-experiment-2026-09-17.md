@@ -41,6 +41,31 @@ difference) but the outliers agree across channels, which embeddings never did:
 So the ranker for the Sun should be a difference signal at higher cadence (the browse archive has frames every
 few minutes), per channel, with the hot channels weighted for flares and the coronagraphs for CMEs. Cheap, no model.
 
-## Perseverance
+## Perseverance: anomaly finds the unusual, and the unusual is mostly not what we want
 
-(pending: preview images downloading after the date survey finishes)
+815 images (five sols of survey thumbnails plus today's previews), 28 img/s. Rover instruments spread far more
+than the Sun: scores from 0.1 to 0.8. Contact sheets (top-8 versus bottom-8 per instrument):
+
+| Instrument | Top outliers | Bottom |
+|---|---|---|
+| MCZ_RIGHT | ND5 solar-filter sun shots, then four calibration-target frames (grey rings, colour chips, gnomon), one corrupted frame with a dropout band | rock close-ups, repeated |
+| MCZ_LEFT | robotic-arm turret hardware shots, sun shots, dark frames | rock close-ups |
+| NAVCAM_LEFT | the sun, deck and arm hardware, a self-portrait of the mast shadow | horizons, all alike |
+| FRONT_HAZCAM | one sequence (FHAZ02008) dominates the top | the usual view over the wheels |
+
+So Keith's guess in IDEAS.md was right and mine was wrong: calibration frames are high outliers, not centroid
+dwellers, at least over a five-sol window. Same for sun shots and hardware. Consequences for the ranker:
+
+- Raw anomaly is a garbage-and-hardware detector first. That's useful (it caught a corrupted frame), but the
+  interesting rock or landscape sits in the middle of the distribution, not the tail.
+- Filters before ranking: drop ND filters (L7/R7), drop known caltarget sequences (learnable from the anomaly tail),
+  drop frames whose mast elevation points at the deck. Then rank what's left, and consider "moderately unusual
+  terrain" rather than the extreme tail.
+- Or invert the framing: use anomaly to build the exclusion list and let the vision model choose among the rest.
+
+Browsable version: `site/debug/experiment-anomaly.html` (12 most and 6 least anomalous per instrument).
+
+## Curiosity and EPIC
+
+Curiosity's single sequence gives one outlier (a different pointing) and nothing else; too little data. EPIC's Earth
+frames barely move (0.02 mean), like the Sun: same-object, same-framing sources need a different signal.
