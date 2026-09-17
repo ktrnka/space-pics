@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np, torch
 from PIL import Image
 from transformers import AutoImageProcessor, AutoModel
-sys.path.insert(0, "/home/keith/code/space-pics/src")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from spacepics.pipeline import image_cache_path
 from spacepics.sources import get_sources
 from spacepics.store import read_candidates

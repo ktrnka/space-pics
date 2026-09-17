@@ -1,8 +1,9 @@
 """Physics-shaped Sun signal: per channel, mean absolute difference between consecutive cached frames (6-hourly, 7 days)."""
 import sys
+from pathlib import Path
 import numpy as np
 from PIL import Image
-sys.path.insert(0, "/home/keith/code/space-pics/src")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from spacepics.pipeline import image_cache_path
 from spacepics.sources import SOURCES
 from spacepics.publish import survey_candidates

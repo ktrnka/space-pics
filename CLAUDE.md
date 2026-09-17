@@ -52,7 +52,7 @@ Use a git worktree per task so sessions don't share a working tree:
 ```bash
 git worktree add ../space-pics-<task> -b <task>
 cd ../space-pics-<task> && uv sync
-export SPACEPICS_IMAGES_DIR=/home/keith/code/space-pics/data/images   # share the main tree's image cache; never re-download
+export SPACEPICS_IMAGES_DIR="$(git rev-parse --show-toplevel)/../space-pics/data/images"   # share the main tree's image cache; never re-download
 ```
 
 At natural pauses (Keith reviewing a page, a subagent running), offer one ready-to-paste side-quest prompt he can
