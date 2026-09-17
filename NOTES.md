@@ -31,7 +31,8 @@
 - 14:55 all three subject pages reviewed live by Keith and revised: captions, headings, Sun ordering, Earth slimmed
 - 15:09 wigglegram proof of concept (three Perseverance stereo pairs) as an experiment page
 - 15:11 final CI run dispatched, succeeded (pipeline, bot commit, build, deploy)
-- 15:14 last code push (wigglegram speed from parallax spread); **code freeze** from here, docs only
+- 15:14 wigglegram speed from parallax spread
+- 15:30 last code push: wigglegram pair selection by parallax spread after Keith's review of the three pairs; **code freeze** from here, docs only
 - biggest single stall of the day: push-triggered deploys silently skipped for four hours (found 14:30, one-line fix)
 
 ## Scope changes from the must-do note
