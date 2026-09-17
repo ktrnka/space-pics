@@ -100,13 +100,17 @@ def download_url(client: httpx.Client, url: str, pause: float = 0.5) -> Path:
 
 def download(sources: list[Source], limit: int | None) -> int:
     """Fill the preview image cache for the latest candidates. Sequential, to be polite to the hosts."""
-    n = 0
+    n = failed = 0
     with make_client() as client:
         for source in sources:
             for candidate in read_candidates(source.name)[:limit]:
-                download_url(client, str(candidate.preview_url))
-                n += 1
-    logger.info("downloaded %d preview images", n)
+                try:
+                    download_url(client, str(candidate.preview_url))
+                    n += 1
+                except httpx.HTTPError as ex:
+                    failed += 1
+                    logger.warning("download failed for %s: %s", candidate.key, ex)
+    logger.info("downloaded %d preview images (%d failed)", n, failed)
     return n
 
 
