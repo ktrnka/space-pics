@@ -30,6 +30,14 @@ Format: one bullet per idea, dated, with where it came from and enough context t
   he doesn't know what a Sun story is. So: build the one worked example (on the board as the end-of-day-2 item)
   and judge from there.
 
+## Sources
+
+- **Rubin, the original inspiration** (2026-09-17 morning thread). The idea started as "showcase one interesting NASA
+  image from yesterday, inspired by Vera Rubin". Rubin's public alert stream carries tiny difference-image cutouts,
+  not frames (full images are under a proprietary period), so the feature would be "brightest new transient last
+  night, and where it is in the sky", paired with the sky-position reference lookup on the board. Press images come
+  through NOIRLab. Details in `docs/research/space-image-of-the-day-research.md`.
+
 ## Digest
 
 - **Group panels by spacecraft?** (2026-09-17). Was a task; demoted after weaving SUVI 195 in beside AIA 193 worked
