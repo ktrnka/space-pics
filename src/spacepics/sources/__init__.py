@@ -3,8 +3,10 @@ from .base import Source
 from .curiosity import CuriositySource
 from .epic import EpicSource
 from .esa import EsaSource
+from .goes import GoesSource
 from .helioviewer import HelioviewerSource
 from .hirise import HiriseSource
+from .noirlab import NoirlabSource
 from .perseverance import PerseveranceSource
 from .sdo import SdoSource
 
@@ -16,8 +18,10 @@ ALL_SOURCES: list[Source] = [
     EsaSource("esa_webb", "https://esawebb.org", "potm"),
     EsaSource("esa_hubble", "https://esahubble.org", "potw"),
     EpicSource(),
+    GoesSource(),
     ApodSource(),
     HiriseSource(),
+    NoirlabSource(),
 ]
 SOURCES: dict[str, Source] = {s.name: s for s in ALL_SOURCES}
 
