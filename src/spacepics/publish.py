@@ -83,6 +83,20 @@ def _bucket(c: Candidate, hours: int) -> str:
     return f"{c.captured_at:%m-%d} {(c.captured_at.hour // hours) * hours:02d}h"
 
 
+def instrument_labels(candidates: list[Candidate]) -> dict[str, str]:
+    """Human heading per raw instrument id, from the cards: 'EPIC on DSCOVR' rather than 'epic_natural'."""
+    labels: dict[str, str] = {}
+    for c in candidates:
+        if c.instrument in labels:
+            continue
+        card = card_for(c)
+        if card:
+            detail = card.instrument_labels.get(c.instrument)
+            name = f"{card.name}, {detail}" if detail else card.name
+            labels[c.instrument] = f"{name} on {card.spacecraft_name}" if card.spacecraft_name else name
+    return labels
+
+
 def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
     """Pick a layout per source and shape the candidates for it.
 
@@ -105,11 +119,11 @@ def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
         rows: dict[str, dict[str, Candidate]] = defaultdict(dict)
         for c in candidates:
             rows[c.instrument].setdefault(_bucket(c, hours), c)
-        return {"layout": "timegrid", "columns": columns, "rows": dict(sorted(rows.items()))}
+        return {"layout": "timegrid", "columns": columns, "rows": dict(sorted(rows.items())), "labels": instrument_labels(candidates)}
     by_instrument: dict[str, list[Candidate]] = defaultdict(list)
     for c in candidates:
         by_instrument[c.instrument].append(c)
-    return {"layout": "groups", "groups": {k: v[:60] for k, v in sorted(by_instrument.items())}}
+    return {"layout": "groups", "groups": {k: v[:60] for k, v in sorted(by_instrument.items())}, "labels": instrument_labels(candidates)}
 
 
 RENDER_ON_VIEW = {"helioviewer"}  # image URLs are server-side renders; galleries must not hit them on every page view

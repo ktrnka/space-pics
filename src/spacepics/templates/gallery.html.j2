@@ -34,14 +34,14 @@
   <div class="wrap"><table>
     <tr><th class="row"></th>{% for col in columns %}<th>{{ col }}</th>{% endfor %}</tr>
     {% for instrument, cells in rows.items() %}
-    <tr><th class="row">{{ instrument }}</th>
+    <tr><th class="row" title="{{ labels.get(instrument, instrument) }}">{{ instrument }}</th>
       {% for col in columns %}<td>{% if cells.get(col) %}<a href="{{ cells[col].image_url }}"><img loading="lazy" src="{{ cells[col].thumbnail_url or cells[col].preview_url }}" title="{{ cells[col].captured_at.isoformat() }}"></a>{% endif %}</td>{% endfor %}
     </tr>
     {% endfor %}
   </table></div>
 {% else %}
   {% for instrument, items in groups.items() %}
-  <h2>{{ instrument }} <span class="meta">({{ items | length }} shown)</span></h2>
+  <h2>{{ labels.get(instrument, instrument) }} <span class="meta">{{ instrument }} · {{ items | length }} shown</span></h2>
   <div class="grid">{% for c in items %}{{ fig(c) }}{% endfor %}</div>
   {% endfor %}
 {% endif %}
