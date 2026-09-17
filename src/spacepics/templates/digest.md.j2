@@ -1,0 +1,21 @@
+---
+layout: post
+title: "{{ d.title }}"
+date: {{ d.day.isoformat() }}
+subject: {{ d.subject }}
+image: /{{ d.panels[0].site_image }}
+panels: {{ d.panels | length }}
+---
+
+{{ d.intro }}
+{% set seen = namespace(instruments=[]) %}
+{% for panel, card, meta_lines in panels %}
+## {{ panel.heading }}
+
+<img src="{{ '{{' }} '/{{ panel.site_image }}' | absolute_url {{ '}}' }}" alt="{{ panel.candidate.title | replace('"', "'") }}">
+
+*{{ panel.candidate.title }}.* {% for label, value in meta_lines if label != 'Captured' %}{{ label }} {{ value }}. {% endfor %}Captured {{ panel.candidate.captured_at.strftime('%Y-%m-%d %H:%M') }} UTC. Credit: {{ panel.candidate.credit }}. [Source]({{ panel.candidate.source_page_url or panel.candidate.image_url }}).
+{% if panel.blurb and panel.heading not in seen.instruments %}{% set seen.instruments = seen.instruments + [panel.heading] %}
+{{ panel.blurb }}{% if card and card.reading_the_image %} {{ card.reading_the_image | trim }}{% endif %}
+{% if card and card.wikipedia %}[{{ card.name }} on Wikipedia]({{ card.wikipedia }}){% if card.spacecraft_wikipedia %} · [{{ card.spacecraft_name or card.spacecraft }}]({{ card.spacecraft_wikipedia }}){% endif %}{% endif %}
+{% endif %}{% endfor %}

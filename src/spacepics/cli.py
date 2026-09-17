@@ -4,7 +4,7 @@ from datetime import date
 import click
 from dotenv import load_dotenv
 
-from . import pipeline, publish
+from . import digest, pipeline, publish
 from .sources import SOURCES, get_sources
 
 source_opt = click.option("--source", "-s", "source_names", multiple=True, type=click.Choice(sorted(SOURCES)), help="Default: all sources")
@@ -55,6 +55,15 @@ def pick(source_names, day):
     click.echo(f"{p.day}: {p.candidate.key}  {p.candidate.image_url}")
 
 
+@cli.command("digest")
+@source_opt
+@day_opt
+def digest_cmd(source_names, day):
+    """Build the subject-of-the-day digest (rotating Sun, Mars, Earth) and record it in data/digests.jsonl."""
+    d = digest.build_digest(get_sources(source_names), _day(day))
+    click.echo(f"{d.day}: {d.subject}, {len(d.panels)} panels: " + ", ".join(p.candidate.key for p in d.panels))
+
+
 @cli.command("publish")
 @day_opt
 def publish_cmd(day):
@@ -75,11 +84,11 @@ def debug_pages(source_names):
 @source_opt
 @day_opt
 def pipeline_cmd(source_names, day):
-    """fetch -> extract -> pick -> publish -> debug-pages, for the daily job."""
+    """fetch -> extract -> digest -> publish -> debug-pages, for the daily job."""
     sources = get_sources(source_names)
     d = _day(day)
     pipeline.fetch(sources, d)
     pipeline.extract(sources, d)
-    pipeline.pick(sources, d)
+    digest.build_digest(sources, d)
     publish.publish(d)
     publish.write_debug_galleries(sources)

@@ -189,16 +189,20 @@ def safe_name(s: str) -> str:
     return "".join(ch if ch.isalnum() or ch in "-_" else "-" for ch in s)
 
 
-def materialize_pick_image(pick: Pick) -> Path:
-    """Copy the pick's display image into site/: a derived image from data/, else the candidate's image (downloaded on demand)."""
-    dest = SITE_DIR / pick.site_image
+def materialize_image(site_image: str, image_url: str | None = None, derived_image: str | None = None) -> Path:
+    """Copy an image into site/: a derived image from data/, else a URL (downloaded on demand through the cache)."""
+    dest = SITE_DIR / site_image
     if dest.exists():
         return dest
-    if pick.derived_image:
-        src = DATA_DIR / pick.derived_image
+    if derived_image:
+        src = DATA_DIR / derived_image
     else:
         with make_client() as client:
-            src = download_url(client, str(pick.candidate.image_url))
+            src = download_url(client, str(image_url))
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(src.read_bytes())
     return dest
+
+
+def materialize_pick_image(pick: Pick) -> Path:
+    return materialize_image(pick.site_image, str(pick.candidate.image_url), pick.derived_image)

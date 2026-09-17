@@ -11,9 +11,10 @@ from pathlib import Path
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
+from .digest import Digest, read_digests
 from .models import Candidate, Pick
 from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
-from .pipeline import image_cache_path, materialize_pick_image, safe_name
+from .pipeline import image_cache_path, materialize_image, materialize_pick_image, safe_name
 from .reference import card_for, readable_meta
 from .sources import Source
 from .store import read_candidates, read_picks
@@ -36,11 +37,26 @@ def write_post(pick: Pick) -> Path:
     return path
 
 
+def digest_post_path(d: Digest) -> Path:
+    return POSTS_DIR / f"{d.day.isoformat()}-{d.subject.lower()}.md"
+
+
+def write_digest_post(d: Digest) -> Path:
+    for panel in d.panels:
+        materialize_image(panel.site_image, str(panel.candidate.image_url))
+    path = digest_post_path(d)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    panels = [(panel, card_for(panel.candidate), readable_meta(panel.candidate, card_for(panel.candidate))) for panel in d.panels]
+    path.write_text(env.get_template("digest.md.j2").render(d=d, panels=panels))
+    return path
+
+
 def publish(day: date | None) -> list[Path]:
-    """Write posts for every pick (idempotent). Restrict to one day if given."""
+    """Write posts for every recorded digest and pick (idempotent). Restrict to one day if given."""
+    digests = [d for d in read_digests() if day is None or d.day == day]
     picks = [p for p in read_picks() if day is None or p.day == day]
-    paths = [write_post(p) for p in picks]
-    logger.info("wrote %d posts", len(paths))
+    paths = [write_digest_post(d) for d in digests] + [write_post(p) for p in picks]
+    logger.info("wrote %d posts (%d digests, %d picks)", len(paths), len(digests), len(picks))
     return paths
 
 
