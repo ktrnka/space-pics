@@ -22,7 +22,7 @@ from .store import read_candidates, upsert_pick, write_candidates
 logger = logging.getLogger(__name__)
 
 USER_AGENT = "spacepics/0.1 (github.com/ktrnka/space-pics; personal daily-image project)"
-FRESHNESS = timedelta(days=7)
+DEFAULT_FRESHNESS_DAYS = 7
 
 
 def today() -> date:
@@ -100,8 +100,8 @@ def download(sources: list[Source], limit: int | None) -> int:
     return n
 
 
-def fresh(candidates: list[Candidate], day: date) -> list[Candidate]:
-    cutoff = datetime.combine(day, datetime.min.time(), tzinfo=UTC) - FRESHNESS
+def fresh(candidates: list[Candidate], day: date, days: int = DEFAULT_FRESHNESS_DAYS) -> list[Candidate]:
+    cutoff = datetime.combine(day, datetime.min.time(), tzinfo=UTC) - timedelta(days=days)
     return [c for c in candidates if c.captured_at >= cutoff]
 
 
@@ -109,7 +109,7 @@ def pick_random(sources: list[Source], day: date) -> Pick:
     """Placeholder picker: a seeded random choice among recent candidates. Replaced by ranking + VLM later."""
     pool = []
     for source in sources:
-        pool.extend(fresh(read_candidates(source.name), day))
+        pool.extend(fresh(read_candidates(source.name), day, getattr(source, "freshness_days", DEFAULT_FRESHNESS_DAYS)))
     if not pool:
         raise RuntimeError("no fresh candidates; run fetch and extract first")
     candidate = random.Random(day.isoformat()).choice(pool)

@@ -8,9 +8,11 @@ Channels: AIA 0094 0131 0171 0193 0211 0304 0335 1600 1700 4500; HMI HMIB HMIBC 
 composites 211193171 (and 'n', 'rg' variants), 304211171, HMI171. Sizes: 512, 1024, 2048, 4096.
 """
 
+import re
 from datetime import UTC, date, datetime
 
 import httpx
+from pydantic import BaseModel
 
 from ..models import Candidate
 
@@ -21,11 +23,56 @@ CREDIT = "NASA/SDO and the AIA, EVE, and HMI science teams"
 CHANNELS = ["0094", "0131", "0171", "0193", "0211", "0304", "0335", "1600", "1700", "HMIIC", "211193171"]
 CADENCE_HOURS = 3
 
+# Channels whose name isn't a bare wavelength in angstroms.
+CHANNEL_NAMES = {
+    "HMIIC": "SDO HMI intensitygram",
+    "211193171": "SDO AIA 211/193/171 composite",
+}
+
+# Directory-listing hrefs look like 20260917_173710_1024_0171.jpg: date, time, pixel size, channel.
+HREF_RE = re.compile(r'href="(\d{8})_(\d{6})_(\d+)_([A-Za-z0-9]+)\.jpg"')
+
+DISPLAY_SIZE = "1024"
+IMAGE_SIZE = "2048"
+
+
+class RawFrame(BaseModel):
+    """One parsed href from the directory listing."""
+
+    captured_at: datetime
+    size: int
+    channel: str
+
+    @property
+    def stem(self) -> str:
+        return f"{self.captured_at:%Y%m%d_%H%M%S}_{self.size}_{self.channel}"
+
+
+def _parse_frames(raw: bytes) -> list[RawFrame]:
+    frames = []
+    for date_str, time_str, size_str, channel in HREF_RE.findall(raw.decode("utf-8", errors="ignore")):
+        captured_at = datetime.strptime(f"{date_str}_{time_str}", "%Y%m%d_%H%M%S").replace(tzinfo=UTC)
+        frames.append(RawFrame(captured_at=captured_at, size=int(size_str), channel=channel))
+    return frames
+
+
+def _title(channel: str) -> str:
+    if channel in CHANNEL_NAMES:
+        return CHANNEL_NAMES[channel]
+    if channel.isdigit():
+        return f"SDO AIA {int(channel)} Å"
+    return f"SDO {channel}"
+
+
+def _wavelength(channel: str) -> int | None:
+    return int(channel) if channel.isdigit() else None
+
 
 class SdoSource:
     name = "sdo"
     feed_suffix = "html"
-    enabled = False
+    enabled = True
+    freshness_days = 2  # the daily listing; older days are separate listings we never fetch
 
     def __init__(self, day: date | None = None):
         self.day = day
@@ -37,4 +84,36 @@ class SdoSource:
         return resp.content
 
     def extract(self, raw: bytes) -> list[Candidate]:
-        raise NotImplementedError("see docs/TASKS.md: Source: SDO")
+        frames = [f for f in _parse_frames(raw) if f.size == int(DISPLAY_SIZE) and f.channel in CHANNELS]
+
+        by_channel: dict[str, dict[int, RawFrame]] = {}
+        for frame in frames:
+            bucket = frame.captured_at.hour // CADENCE_HOURS
+            slots = by_channel.setdefault(frame.channel, {})
+            existing = slots.get(bucket)
+            if existing is None or frame.captured_at < existing.captured_at:
+                slots[bucket] = frame
+
+        candidates = []
+        for channel in CHANNELS:
+            for bucket in sorted(by_channel.get(channel, {})):
+                candidates.append(self._to_candidate(by_channel[channel][bucket]))
+        return candidates
+
+    def _to_candidate(self, frame: RawFrame) -> Candidate:
+        y, m, d = frame.captured_at.year, frame.captured_at.month, frame.captured_at.day
+        base = BROWSE_URL.format(y=y, m=m, d=d)
+        preview_name = f"{frame.stem}.jpg"
+        image_name = preview_name.replace(f"_{DISPLAY_SIZE}_", f"_{IMAGE_SIZE}_")
+        return Candidate(
+            source=self.name,
+            source_id=frame.stem,
+            instrument=frame.channel,
+            captured_at=frame.captured_at,
+            image_url=base + image_name,
+            preview_url=base + preview_name,
+            title=_title(frame.channel),
+            credit=CREDIT,
+            source_page_url="https://sdo.gsfc.nasa.gov/data/",
+            meta={"channel": frame.channel, "size": int(DISPLAY_SIZE), "wavelength_angstrom": _wavelength(frame.channel)},
+        )

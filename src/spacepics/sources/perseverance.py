@@ -53,6 +53,7 @@ class PerseveranceSource:
     name = "perseverance"
     feed_suffix = "json"
     enabled = True
+    freshness_days = 7
 
     def __init__(self, num: int = DEFAULT_NUM):
         self.num = num

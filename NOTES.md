@@ -11,6 +11,7 @@
 - stall: Mars feed 302'd to HTML because `order=sol+desc` had its `+` percent-encoded (about 5 min)
 
 - 10:47 feeds fetched once for sdo, esa_webb, esa_hubble, epic, apod, hirise; 100 images (23 MB) cached locally so extractor work can be delegated offline
+- 11:05 four subagents (sdo, esa, epic, apod+hirise) wrote extractors offline in parallel, same working tree, disjoint file sets; 3 to 7 minutes each; all seven sources extract (219 candidates)
 
 ## Scope changes from the must-do note
 

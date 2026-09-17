@@ -15,6 +15,7 @@ Add a date and where the idea came from (which debug page, which pick).
   `extended` block should identify them), estimate per-channel gains from the known swatch reflectances, and apply
   them to same-sol frames? Limits: 8-bit JPEG browse products with unknown onboard processing, so "looks right",
   not science-grade.
+- Use PR photos as training data for multi-spectral work, if we can match a PR photo to the sources (this way there's a little less guess and check for MS work)
 
 ## Sources
 
@@ -24,3 +25,8 @@ Add a date and where the idea came from (which debug page, which pick).
 
 - Per-instrument debug galleries for every source, linked from a debug index (exists for perseverance; keep it as sources are added).
 - User interface theme inspired from classic space UIs, or actually maybe Mass Effect? It'd be pretty dope to have a ME theme
+- Some sort of UI that shows where each spacecraft is, relative to earth-sol? Like the mission select screen
+
+## Image selection
+
+- High outliers are probably calibration stuff. Possibly tune a range from an outlier detection model to select interesting stuff

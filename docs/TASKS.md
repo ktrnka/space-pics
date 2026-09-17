@@ -7,10 +7,6 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Owner | Files | Notes |
 |---|---|---|---|
-| Source: SDO extract | subagent (Claude, main tree) | `sources/sdo.py`, `tests/test_sdo.py`, `tests/fixtures/sdo_*` | Feed + images already fetched by Keith's session; no network. |
-| Source: ESA Webb/Hubble extract | subagent (Claude, main tree) | `sources/esa.py`, `tests/test_esa.py`, `tests/fixtures/esa_*` | Same. |
-| Source: EPIC extract | subagent (Claude, main tree) | `sources/epic.py`, `tests/test_epic.py`, `tests/fixtures/epic_*` | Same. |
-| Source: APOD + HiRISE extract | subagent (Claude, main tree) | `sources/apod.py`, `sources/hirise.py`, `tests/test_apod.py`, `tests/test_hirise.py`, fixtures | Same. |
 
 ## Ready
 
@@ -27,4 +23,6 @@ Keep claims small and disjoint. Mark done with the commit hash. Newest at the to
 
 | Task | Commit |
 |---|---|
-| Skeleton: models, Perseverance source, stages, CLI, Jekyll site, workflows, docs | |
+| Skeleton: models, Perseverance source, stages, CLI, Jekyll site, workflows, docs | 27bb139..5b4f945 |
+| Sources sdo, esa_webb, esa_hubble, epic, apod, hirise: fetch halves by main session, extractors by 4 parallel subagents | (this commit) |
+| Per-source freshness window | (this commit) |
