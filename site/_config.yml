@@ -1,0 +1,26 @@
+title: Space Pics
+description: One recent image from space, every day, picked automatically from public raw feeds.
+# Project Pages site; every internal link goes through relative_url so baseurl is honoured.
+url: "https://ktrnka.github.io"
+baseurl: "/space-pics"
+lang: en
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  posts_limit: 30
+
+permalink: /:year/:month/:day/:title/
+markdown: kramdown
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor/
+
+# Debug galleries are plain HTML; copy them through untouched.
+keep_files:
+  - debug
