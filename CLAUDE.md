@@ -55,6 +55,9 @@ cd ../space-pics-<task> && uv sync
 export SPACEPICS_IMAGES_DIR=/home/keith/code/space-pics/data/images   # share the main tree's image cache; never re-download
 ```
 
+At natural pauses (Keith reviewing a page, a subagent running), offer one ready-to-paste side-quest prompt he can
+launch in another window; keeping concurrency cheap for him is part of the job. Candidates live in `docs/TASKS.md`.
+
 Subagents and parallel sessions work offline: the main session fetches feeds and images once, everything else
 runs from `data/`. Per-source knobs (`enabled`, `freshness_days`, `weight`) live on the adapter class.
 
