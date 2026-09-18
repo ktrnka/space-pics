@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Fri, 18 Sep 2026 8:38:22 MST</pubDate>		
+
+
+		<item><title>HiPOD: Ridges near Vernal Crater</title><link>https://uahirise.org/hipod/ESP_065223_1855</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065223_1855.jpg' alt='HiRISE Picture of the Day for Fri, 18 Sep 2026' border='0' width='960' height='720' /><br />In this scene, there is contact between a ridged unit and a presumably underlying non-ridged unit. Our high resolution observation can help to see if ridges penetrate both units or are confined to just the upper unit. The 55-kilometer diameter Vernal Crater, where hot springs may have once existed, is to the east of this image.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
