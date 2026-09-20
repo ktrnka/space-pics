@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 20 Sep 2026 8:37:01 MST</pubDate>		
+
+
+		<item><title>HiPOD: Deposits along the Northern Wall of Melas Chasma </title><link>https://uahirise.org/ESP_045960_1705</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_045960_1705.jpg' alt='HiRISE Picture of the Day for Sun, 20 Sep 2026' border='0' width='960' height='720' /><br />Spectral data from the CRISM instrument indicate that the larger mounds are composed of sulfates. Some of the wall rock deposits are also made up of sulfates, but others contain clays or mixtures of several kinds of hydrated materials.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
