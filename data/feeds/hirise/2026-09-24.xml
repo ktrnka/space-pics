@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Thu, 24 Sep 2026 8:40:00 MST</pubDate>		
+
+
+		<item><title>HiPOD: Dune Day in Schaeberle Crater</title><link>https://uahirise.org/ESP_043582_1555</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_043582_1555.jpg' alt='HiRISE Picture of the Day for Thu, 24 Sep 2026' border='0' width='960' height='720' /><br />The light-colored, rough surface is covered with small impact craters, showing that this landscape has been exposed for a long time. Resting on top of this older terrain are smooth, dark dunes that formed by wind-blown sand.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
