@@ -16,6 +16,7 @@ from .paths import DATA_DIR
 from .pipeline import fresh, image_ext, safe_name
 from .reference import card_for, panel_heading
 from .sources import Source
+from .sources.perseverance import is_mastcam_color
 from .store import read_candidates, survey_candidates
 
 logger = logging.getLogger(__name__)
@@ -86,7 +87,7 @@ def recipe_mars(rng: random.Random, pools: dict[str, list[Candidate]]) -> list[C
     latest_sol = max((c.meta.get("sol", 0) for c in p), default=None)
     sol = [c for c in p if c.meta.get("sol") == latest_sol]
     picks = []
-    picks += _pick(rng, _by(sol, instrument=["MCZ_LEFT", "MCZ_RIGHT"], filter_name=["ZCAM_L0_RGB", "ZCAM_R0_RGB"]), 2)
+    picks += _pick(rng, [c for c in sol if is_mastcam_color(c)], 2)
     picks += _pick(rng, _by(sol, instrument=["NAVCAM_LEFT", "NAVCAM_RIGHT"]), 1)
     picks += _pick(rng, _by(sol, instrument=["SUPERCAM_RMI", "SHERLOC_WATSON"]), 1)
     picks += _pick(rng, pools.get("curiosity", []), 1)
