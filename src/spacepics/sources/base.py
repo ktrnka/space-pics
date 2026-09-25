@@ -4,6 +4,8 @@ import httpx
 
 from ..models import Candidate
 
+DEFAULT_GALLERY_LAYOUT = "groups"  # instrument -> newest frames; publish.gallery_context's fallback layout
+
 
 class Source(Protocol):
     """A feed of recent images.
@@ -22,6 +24,7 @@ class Source(Protocol):
     enabled: bool  # False while extract() is unimplemented; the daily job only runs enabled sources
     freshness_days: int  # how old a candidate may be and still be picked; weekly/monthly sources need more than daily ones
     weight: float  # relative chance of this source being chosen by the placeholder picker (raw feeds > curated)
+    gallery_layout: str  # explorer page layout: "sequence" (rovers), "timegrid" (SDO), else DEFAULT_GALLERY_LAYOUT ("groups")
 
     def fetch_feed(self, client: httpx.Client) -> bytes: ...
 

@@ -55,11 +55,13 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Files | Notes |
 |---|---|---|
-| Decide the fate of the single-image pick path | `pipeline.pick`, `models.Pick`, `publish.write_post`, `post.md.j2`, `cli pick` | Nobody runs it since the digest. Keep as a documented manual escape hatch (then fix its raw source/instrument ids in the template) or delete it. |
-| Source declares its explorer layout | `sources/base.py`, `publish.gallery_context` | Layout is chosen by `subject == "Mars"` / `name == "sdo"` checks; a `gallery_layout` attribute keeps new sources out of publish.py. |
-| Untangle the digest/publish import cycle | `digest.py`, `publish.py`, `store.py` | `survey_candidates` lives in publish and digest imports it inside a function; move it to store. |
-| One shared "Mastcam-Z colour frame" predicate | `digest.py`, `wiggle.py` | Two different filters for the same idea. |
+| Decide the fate of the single-image pick path | `pipeline.pick`, `models.Pick`, `publish.write_post`, `post.md.j2`, `cli pick` | Nobody runs it since the digest. Keep as a documented manual escape hatch (then fix its raw source/instrument ids in the template) or delete it. KT-282 q5 recommends keeping it (see `review/REVIEW.md` in that worktree); rough delete diff was ~180 lines across 7 files. Still undecided. |
 | Card fields nobody reads | `reference.Card`, `data/reference/README.md` | `picture_types` and `confidence` are filled on every card but unused; surface `confidence` on posts or drop both. |
+
+Done 2026-09-25 (KT-282 quest 5, no behaviour change): source declares its explorer layout (`Source.gallery_layout`,
+`sources/base.py` / `publish.gallery_context`); `survey_candidates` moved from `publish.py` to `store.py`, breaking
+the digest/publish import cycle; one shared Mastcam-Z colour predicate (`sources.perseverance.is_mastcam_color`,
+used by both `digest.py` and `wiggle.py` — they never actually disagreed on real data).
 
 ## Dated maintenance
 

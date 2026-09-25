@@ -15,6 +15,7 @@ from PIL import Image
 from .models import Candidate
 from .paths import DATA_DIR
 from .pipeline import download_url, make_client
+from .sources.perseverance import is_mastcam_color
 
 logger = logging.getLogger(__name__)
 
@@ -60,7 +61,7 @@ def mastcam_pairs(candidates: list[Candidate]) -> list[tuple[Candidate, Candidat
     """Left/right color Mastcam-Z frames of the same sequence, paired by order (the eyes expose minutes apart)."""
     seqs: dict[tuple, dict[str, list[Candidate]]] = {}
     for c in candidates:
-        if c.instrument in ("MCZ_LEFT", "MCZ_RIGHT") and (c.meta.get("filter_name") or "").endswith("RGB") and c.meta.get("sequence"):
+        if is_mastcam_color(c) and c.meta.get("sequence"):
             seqs.setdefault((c.meta.get("sol"), c.meta["sequence"]), {"L": [], "R": []})[c.instrument[4]].append(c)
     pairs = []
     for (_sol, _seq), d in sorted(seqs.items(), reverse=True):
