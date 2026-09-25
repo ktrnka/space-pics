@@ -8,6 +8,12 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Owner | Files | Notes |
 |---|---|---|---|
+| KT-282 q1: Perseverance pages 0..3 | main session (Claude Code, 2026-09-25) | `sources/perseverance.py`, `pipeline.py` (fetch), test | worktree `../space-pics-q1-paging` |
+| KT-282 q2: subject navigation page | subagent | `site/` (new page, nav link) | worktree `../space-pics-q2-subject-nav` |
+| KT-282 q3: grey-world white balance | subagent | new `src/spacepics/colour.py`, `experiments/` | worktree `../space-pics-q3-white-balance` |
+| KT-282 q4: Sun card notation explainers | subagent | `data/reference/instruments/sun.yaml` | worktree `../space-pics-q4-sun-explainers` |
+| KT-282 q5: code health (layout attr, survey_candidates to store, colour predicate) | subagent | `sources/base.py`, `sources/*.py` (one attr), `publish.py`, `digest.py`, `wiggle.py`, `store.py` | worktree `../space-pics-q5-code-health` |
+| KT-282 q6: picture-type clusters in the explorer | subagent | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/reference/` | worktree `../space-pics-q6-picture-types` |
 
 ## Day 2, in order (Keith's ordering, 2026-09-17 debrief)
 
