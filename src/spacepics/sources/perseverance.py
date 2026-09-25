@@ -26,7 +26,7 @@ SEQUENCE_RE = re.compile(r"_N\d+([A-Z]{3,4}\d{5})")
 PRODUCT_RE = re.compile(r"^[A-Z0-9]+_\d+_\d+_\d{3}([A-Z]{3})")
 # Position 0 (L0/R0) is the Bayer color filter, i.e. an ordinary RGB image; positions 1-6 are narrowband science
 # filters (see data/reference/instruments/mars.yaml). The shared predicate for "a Mastcam-Z color frame": digest.py's
-# panel recipe and wiggle.py's stereo pairing both need it and used to filter differently (see NOTES.md).
+# panel recipe and wiggle.py's stereo pairing both need it and used to filter differently.
 MASTCAM_INSTRUMENTS = ("MCZ_LEFT", "MCZ_RIGHT")
 MASTCAM_COLOR_FILTERS = frozenset({"ZCAM_L0_RGB", "ZCAM_R0_RGB"})
 

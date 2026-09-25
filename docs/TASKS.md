@@ -55,7 +55,7 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Files | Notes |
 |---|---|---|
-| Decide the fate of the single-image pick path | `pipeline.pick`, `models.Pick`, `publish.write_post`, `post.md.j2`, `cli pick` | Nobody runs it since the digest. Keep as a documented manual escape hatch (then fix its raw source/instrument ids in the template) or delete it. KT-282 q5 recommends keeping it (see `review/REVIEW.md` in that worktree); rough delete diff was ~180 lines across 7 files. Still undecided. |
+| Single-image pick path: fix its template ids | `post.md.j2`, `publish.write_post` | Decided 2026-09-25 (KT-282): keep `spacepics pick` as a manual escape hatch. It's isolated from the digest, and deleting it would save only about 180 lines. What's left is small: its post template still shows raw source/instrument ids instead of card names. |
 | Card fields nobody reads | `reference.Card`, `data/reference/README.md` | `picture_types` and `confidence` are filled on every card but unused; surface `confidence` on posts or drop both. |
 
 Done 2026-09-25 (KT-282 quest 5, no behaviour change): source declares its explorer layout (`Source.gallery_layout`,
