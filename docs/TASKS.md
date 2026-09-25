@@ -8,12 +8,11 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Owner | Files | Notes |
 |---|---|---|---|
-| KT-282 q1: Perseverance pages 0..3 | main session (Claude Code, 2026-09-25) | `sources/perseverance.py`, `pipeline.py` (fetch), test | worktree `.claude/worktrees/q1-paging` |
-| KT-282 q2: subject navigation page | subagent | `site/` (new page, nav link) | worktree `.claude/worktrees/q2-subject-nav` |
-| KT-282 q3: grey-world white balance | subagent | new `src/spacepics/colour.py`, `experiments/` | worktree `.claude/worktrees/q3-white-balance` |
-| KT-282 q4: Sun card notation explainers | subagent | `data/reference/instruments/sun.yaml` | worktree `.claude/worktrees/q4-sun-explainers` |
-| KT-282 q5: code health (layout attr, survey_candidates to store, colour predicate) | subagent | `sources/base.py`, `sources/*.py` (one attr), `publish.py`, `digest.py`, `wiggle.py`, `store.py` | worktree `.claude/worktrees/q5-code-health` |
-| KT-282 q6: picture-type clusters in the explorer | subagent | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/reference/` | worktree `.claude/worktrees/q6-picture-types` |
+| KT-282 q4: Sun card explainers + Wikipedia links | subagent | `data/reference/instruments/sun.yaml` | branch `worktree-agent-a118c3aa19bb96e4f`; links not yet checked against live articles (Keith: not now) |
+| KT-282 q6: picture-type clusters in the explorer | subagent | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/reference/` | branch `worktree-agent-ae18c05303d00a8b1` |
+
+KT-282 on 2026-09-25: q1 (paging, real-colour panel, no repeat wigglegrams), q2 (subject page) and q5 (code health)
+are merged; q3 (white balance) is shelved on branch `experiment/white-balance`, see `docs/research/white-balance-2026-09-25.md`.
 
 ## Day 2, in order (Keith's ordering, 2026-09-17 debrief)
 
