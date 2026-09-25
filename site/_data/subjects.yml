@@ -1,0 +1,22 @@
+# Subjects rotated by the daily digest (src/spacepics/digest.py ROTATION), plus which debug/explorer
+# galleries belong to each one (mirrors the grouping in site/debug/index.html). Used by site/subjects/index.md.
+- name: Sun
+  explorers:
+    - source: sdo
+      label: SDO
+    - source: helioviewer
+      label: Helioviewer (GOES/SOHO)
+- name: Mars
+  explorers:
+    - source: perseverance
+      label: Perseverance
+    - source: curiosity
+      label: Curiosity
+    - source: hirise
+      label: HiRISE
+- name: Earth
+  explorers:
+    - source: epic
+      label: EPIC
+    - source: goes
+      label: GOES
