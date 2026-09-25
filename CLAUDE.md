@@ -47,12 +47,13 @@ Debug galleries need no Jekyll: `uv run spacepics debug-pages` then open `site/d
 
 ## Parallel work
 
-Use a git worktree per task so sessions don't share a working tree. Worktrees live inside the repo under
-`.worktrees/` (gitignored), so agents stay inside Keith's working directory and don't trigger outside-directory prompts:
+Use a git worktree per task so sessions don't share a working tree. Use Claude Code's built-in worktrees
+(`claude --worktree <name>`, `EnterWorktree`, or subagent `isolation: worktree`); they live under
+`.claude/worktrees/<name>/` (gitignored). Never create sibling `../` worktrees: Keith blocks reads outside the working
+directory, so they prompt on every command. Inside a worktree, run commands from the worktree root, with no `cd` and
+no absolute paths outside the repo, and use `review/` or `tmp/` (gitignored) instead of `/tmp`.
 
 ```bash
-git worktree add .worktrees/<task> -b <task>
-cd .worktrees/<task> && uv sync
 export SPACEPICS_IMAGES_DIR="$(git rev-parse --path-format=absolute --git-common-dir)/../data/images"   # share the main tree's image cache; never re-download
 mkdir -p site/.bundle && printf -- '---\nBUNDLE_PATH: "%s/site/vendor/bundle"\n' "$(git rev-parse --path-format=absolute --git-common-dir)/.." > site/.bundle/config   # reuse main's gems, no bundle install
 ```

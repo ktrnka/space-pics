@@ -32,5 +32,5 @@ experiments/.venv/
 docs/local/
 
 # Per-task git worktrees and their review packages (see CLAUDE.md, Parallel work)
-.worktrees/
+.claude/worktrees/
 review/
