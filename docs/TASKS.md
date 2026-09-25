@@ -9,7 +9,7 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 | Task | Owner | Files | Notes |
 |---|---|---|---|
 | KT-282 q4: Sun card explainers + Wikipedia links | subagent | `data/reference/instruments/sun.yaml` | branch `worktree-agent-a118c3aa19bb96e4f`; links not yet checked against live articles (Keith: not now) |
-| KT-282 q6: picture-type clusters in the explorer | subagent | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/reference/` | branch `worktree-agent-ae18c05303d00a8b1` |
+| KT-282 q6: picture-type clusters in the explorer (parked) | none | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/clusters/`, `data/reference/picture_types/` | Parked on branch `worktree-agent-ae18c05303d00a8b1` (worktree `.claude/worktrees/agent-ae18c05303d00a8b1`), not merged. Keith 2026-09-25: likes the clusters but isn't sure what we'd do with them yet, or how it fits GitHub Actions. CI needs no torch, because the explorer only reads committed JSON, but new images get clusters only when someone reruns the embedding script locally. Candidate uses: rank picks down on flat, calibration-target or hardware frames; find calibration-target frames for real colour calibration. |
 
 KT-282 on 2026-09-25: q1 (paging, real-colour panel, no repeat wigglegrams), q2 (subject page) and q5 (code health)
 are merged; q3 (white balance) is shelved on branch `experiment/white-balance`, see `docs/research/white-balance-2026-09-25.md`.
