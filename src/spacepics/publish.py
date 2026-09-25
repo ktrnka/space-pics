@@ -13,12 +13,12 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 from .digest import Digest, read_digests
 from .models import Candidate, Pick
-from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
+from .paths import DEBUG_DIR, POSTS_DIR
 from .pipeline import image_cache_path, materialize_image, materialize_pick_image, safe_name
 from .reference import caption_items, card_for, readable_meta
 from .sources import SOURCES, Source
 from .sources.base import DEFAULT_GALLERY_LAYOUT
-from .store import read_candidates, read_picks
+from .store import read_candidates, read_picks, survey_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -67,17 +67,6 @@ def publish(day: date | None) -> list[Path]:
     paths = [write_digest_post(d) for d in digests] + [write_post(p) for p in picks]
     logger.info("wrote %d posts (%d digests, %d picks)", len(paths), len(digests), len(picks))
     return paths
-
-
-def survey_candidates(source: Source) -> list[Candidate]:
-    """Extra candidates from data/survey/<source>/ feeds (exploration fetches), run through the same extractor."""
-    out: list[Candidate] = []
-    for f in sorted((SURVEY_DIR / source.name).glob(f"*.{source.feed_suffix}")):
-        try:
-            out.extend(source.extract(f.read_bytes()))
-        except Exception:
-            logger.exception("survey extract failed for %s", f)
-    return out
 
 
 def _bucket(c: Candidate, hours: int) -> str:

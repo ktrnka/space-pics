@@ -16,7 +16,7 @@ from .paths import DATA_DIR
 from .pipeline import fresh, image_ext, safe_name
 from .reference import card_for, panel_heading
 from .sources import Source
-from .store import read_candidates
+from .store import read_candidates, survey_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -156,11 +156,10 @@ def build_digest(sources: list[Source], day: date) -> Digest:
 def _wigglegram_panel(candidates: list[Candidate], day: date) -> list[Panel]:
     """Best effort: a Mastcam-Z stereo pair alternated as a GIF. Nothing qualifies, or anything fails: no panel."""
     try:
-        from .publish import survey_candidates  # survey pages (committed) widen the search beyond the daily page-0 feed
         from .sources import SOURCES
         from .wiggle import best_wigglegram  # numpy/Pillow import kept out of the hot path
 
-        source = SOURCES["perseverance"]
+        source = SOURCES["perseverance"]  # survey pages (committed) widen the search beyond the daily page-0 feed
         pool = {c.key: c for c in fresh(survey_candidates(source), day, source.freshness_days)}
         pool.update({c.key: c for c in candidates})
         found = best_wigglegram(list(pool.values()), day)
