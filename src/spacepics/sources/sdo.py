@@ -76,6 +76,7 @@ class SdoSource:
     enabled = True
     freshness_days = 2  # the daily listing; older days are separate listings we never fetch
     weight = 2
+    gallery_layout = "timegrid"
 
     def __init__(self, day: date | None = None):
         self.day = day

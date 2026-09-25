@@ -8,6 +8,7 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Owner | Files | Notes |
 |---|---|---|---|
+| KT-282 quest 5: code health refactors (no behaviour change) | agent-a732a6365f3fb621c | `sources/base.py`, `publish.py`, `digest.py`, `wiggle.py`, `store.py` | Explorer layout attribute, `survey_candidates` move, shared Mastcam-Z colour predicate. |
 
 ## Day 2, in order (Keith's ordering, 2026-09-17 debrief)
 

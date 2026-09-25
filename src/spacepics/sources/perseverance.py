@@ -63,6 +63,7 @@ class PerseveranceSource:
     enabled = True
     freshness_days = 7
     weight = 3
+    gallery_layout = "sequence"
 
     def __init__(self, num: int = DEFAULT_NUM):
         self.num = num
