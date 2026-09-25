@@ -110,7 +110,13 @@
     we don''t yet show either, though they exist in HMI''s data stream.
 
     '
-  reading_the_image: 'Dark, sharp-edged spots are sunspots, cooler regions where a strong magnetic field suppresses
+  reading_the_image: 'A note on the name: HMI takes several images ("filtergrams") at slightly different points
+    across that 617.3 nm iron line''s profile. Combining the ones taken away from the line''s centre — its "continuum,"
+    where the gas isn''t doing much special absorbing — gives an ordinary brightness image like this one. Combining
+    the ones nearer the line''s centre, where the line shifts and splits in response to motion and magnetic fields,
+    is what yields HMI''s dopplergrams and magnetograms instead.
+
+    Dark, sharp-edged spots are sunspots, cooler regions where a strong magnetic field suppresses
     convection; the mottled texture elsewhere is granulation, the tops of convection cells roughly 1,000 km across.
     The disc''s edge looks dimmer than its centre from limb darkening, not from any real feature.
 
@@ -193,7 +199,12 @@
     have since taken over as the primary EUV imagers.
 
     '
-  reading_the_image: 'As with AIA, filaments look dark against the disc in 304 and bright at the limb as prominences;
+  reading_the_image: 'A note on the labels, as with AIA: ''Fe XII'' means an iron atom that has lost eleven of its
+    electrons (the Roman numeral counts one more than the electrons already stripped away, so IX is eight gone and
+    XII is eleven). Only an atom in that exact ionization state glows strongly at 195 Å, which is why tuning to one
+    wavelength isolates one temperature of plasma rather than just one color.
+
+    As with AIA, filaments look dark against the disc in 304 and bright at the limb as prominences;
     coronal holes are dark patches in 171/195; bright compact knots are active regions. EIT frames on this site
     typically run about three weeks behind real time, since its archive is slower to release than the newer instruments.
 
@@ -219,16 +230,22 @@
     the side of the Sun not visible from Earth.
 
     '
-  what_it_sees: 'EUVI images the disc in the same four EUV channels as SOHO/EIT: 171 Å (Fe IX, quiet corona), 195
-    Å (Fe XII, general corona), 284 Å (Fe XV, hot active regions) and 304 Å (He II, chromosphere and prominences),
-    at similar field of view and resolution to EIT.
+  what_it_sees: 'EUVI images the disc in the same four EUV channels as SOHO/EIT: 171 Å (Fe IX, about 1 million K,
+    quiet corona), 195 Å (Fe XII, about 1.5 million K, general corona), 284 Å (Fe XV, about 2 million K, hot active
+    regions) and 304 Å (He II, roughly 60,000 to 80,000 K, chromosphere and prominences), at similar field of view
+    and resolution to EIT.
 
     '
   why_it_matters: 'Because STEREO-A sits at a different longitude than Earth, EUVI gives a preview of active regions
     before they rotate into Earth''s view, useful for flare and CME forecasting.
 
     '
-  reading_the_image: 'Read it like EIT or AIA at a matching wavelength: dark patches are coronal holes, bright knots
+  reading_the_image: 'A note on the labels: the Roman numeral after each element (''Fe XII,'' for instance) counts
+    how many electrons that atom has lost, one more per numeral than the label before it; reaching that ionization
+    state takes a specific temperature, and the resulting ion then glows at its own set of wavelengths, which is
+    why one filter isolates one temperature of plasma. EUVI reuses SOHO/EIT''s exact channels and this same shorthand.
+
+    Read it like EIT or AIA at a matching wavelength: dark patches are coronal holes, bright knots
     are active regions, dark threads on the disc in 304 are filaments. Frames on this site typically run about three
     days behind real time.
 
@@ -304,7 +321,11 @@
     up the larger SOHO and SDO missions and occasionally catching CME onsets and EUV waves.
 
     '
-  reading_the_image: 'Read it like a 171 Å AIA or EIT frame: dark patches are coronal holes, bright knotted regions
+  reading_the_image: 'A note on the label: ''Fe IX/Fe X'' means iron atoms that have lost eight or nine electrons,
+    a stripping level that only occurs around 1 million K, which is why this single wavelength reliably isolates
+    that one temperature of plasma without needing extra channels to compare against.
+
+    Read it like a 171 Å AIA or EIT frame: dark patches are coronal holes, bright knotted regions
     are active regions, faint structure fading outward past the disc''s edge is the extended corona. Frames on this
     site are normally within minutes of real time.
 
@@ -329,9 +350,12 @@
     It cycles continuously through six wavelength channels.
 
     '
-  what_it_sees: 'SUVI''s six channels, 94, 131, 171, 195, 284 and 304 Å, sample much the same ions and temperatures
-    as SDO/AIA and SOHO/EIT: about 630,000 K in 171 Å, several million K in 94 and 131 Å, and the cooler chromosphere
-    in 304 Å. Its design and role closely mirror EIT''s.
+  what_it_sees: 'SUVI''s six channels are chosen to match AIA''s: 304 Å, He II, about 50,000 K: chromosphere and
+    prominences. 171 Å, Fe IX, about 630,000 K: quiet corona. 195 Å, Fe XII, about 1.2 to 1.5 million K: general
+    corona (AIA''s equivalent channel sits a couple of ångströms away at 193 Å, but isolates the same ion). 284 Å,
+    Fe XV, about 2 million K: hotter active-region plasma. 131 Å, Fe VIII plus Fe XXI/XXIII, roughly 400,000 K to
+    16 million K: flares across a wide temperature range. 94 Å, Fe XVIII, about 6 million K: flaring plasma. Its
+    design and role closely mirror AIA''s, at lower spatial resolution since SUVI is a much smaller telescope.
 
     '
   why_it_matters: 'SUVI is a core input to NOAA''s operational space-weather forecasts, feeding flare detection
@@ -339,7 +363,10 @@
 
     '
   reading_the_image: 'SUVI''s 195 Å channel and SDO AIA''s 193 Å channel both isolate the same ion, Fe XII at about
-    1.2 million K, so the two should show the same coronal structures from nearly the same vantage; differences
+    1.2 million K. As with AIA, the Roman numeral after the element counts electrons stripped away, and a given
+    ion always glows at the same wavelength no matter which telescope is looking, which is exactly what lets two
+    different instruments cross-check each other at matching channels. So the two should show the same coronal
+    structures from nearly the same vantage; differences
     are mostly resolution (SUVI is a much smaller telescope) and processing. That makes SUVI a good sanity check
     on AIA, and a fallback when SDO data is late. Read it like AIA or EIT at a matching wavelength: dark patches
     are coronal holes, bright knots are active regions, sudden brightening is a flare. Frames on this site are normally
@@ -413,7 +440,13 @@
     for decades.
 
     '
-  reading_the_image: 'Dark, thread-like filaments crossing the disc are cool plasma suspended by magnetic fields;
+  reading_the_image: 'A note on the name: hydrogen''s visible spectral lines form a series first catalogued by
+    Johann Balmer, labelled with Greek letters in order of wavelength (alpha, beta, gamma, and so on). H-alpha,
+    the longest-wavelength and normally the brightest of them, comes from an electron falling from the third energy
+    level of a hydrogen atom to the second; that specific, low-energy transition is what makes it such a sensitive
+    tracer of the relatively cool, dense chromosphere rather than the much hotter corona.
+
+    Dark, thread-like filaments crossing the disc are cool plasma suspended by magnetic fields;
     bright patches (plage) surround active regions; a sudden bright ribbon-shaped brightening is a flare. Because
     stations hand off through the day, image quality can vary with local weather and seeing.
 
@@ -438,9 +471,12 @@
     it uses an occulting disc to block the Sun''s overwhelming disc.
 
     '
-  what_it_sees: 'K-Cor images the polarized "K-corona," visible light from the photosphere scattered by free electrons
-    (Thomson scattering), from about 1.05 to 3 solar radii, at roughly 6 arcseconds per pixel. It has operated since
-    2013, replacing an older instrument called Mark-IV.
+  what_it_sees: 'K-Cor images the polarized "K-corona" (the K is a historical label from German kontinuierlich,
+    "continuous": electrons moving at high speed Doppler-smear the Sun''s dark absorption lines into a featureless
+    continuum, unlike the farther-out "F-corona," dust-scattered sunlight that keeps those lines and is named for
+    Fraunhofer instead), visible light from the photosphere scattered by free electrons (Thomson scattering), from
+    about 1.05 to 3 solar radii, at roughly 6 arcseconds per pixel. It has operated since 2013, replacing an older
+    instrument called Mark-IV.
 
     '
   why_it_matters: 'Being ground-based, K-Cor can run at a much higher cadence than most space coronagraphs, giving
@@ -508,7 +544,8 @@
     when Solar Orbiter''s orbit swings it closer to the Sun than any other imaging mission.
 
     '
-  what_it_sees: 'FSI images at 174 Å (corona, roughly 1 million K) and 304 Å (chromosphere, He II); HRI has separate
+  what_it_sees: 'FSI images at 174 Å (Fe IX/Fe X, corona, roughly 1 million K, the same ion and near wavelength
+    as SWAP and AIA/EIT''s 171 Å) and 304 Å (He II, chromosphere, roughly 50,000 to 80,000 K); HRI has separate
     channels at 174 Å and, uniquely among instruments on this site, 1216 Å Lyman-alpha light from atomic hydrogen,
     which highlights the chromosphere and transition region.
 
@@ -517,7 +554,13 @@
     than Mercury, EUI can see solar features from angles and at resolutions Earth-orbiting instruments cannot.
 
     '
-  reading_the_image: 'Read FSI''s 174 Å like AIA''s 171 Å (coronal holes dark, active regions bright). Solar Orbiter''s
+  reading_the_image: 'A note on the label: Lyman-alpha is named the same way as hydrogen''s more familiar H-alpha
+    line (see the GONG card), just from a different series. Both are the first, longest-wavelength line of their
+    series, and both are named with Greek letters in order. H-alpha comes from an electron dropping from the third
+    energy level to the second; Lyman-alpha comes from a drop all the way down to the first, ground level, which
+    takes much more energy and pushes the line deep into the ultraviolet at 1216 Å instead of the visible.
+
+    Read FSI''s 174 Å like AIA''s 171 Å (coronal holes dark, active regions bright). Solar Orbiter''s
     science archive releases slowly, so EUI frames on this site can be well over a year old by the time they''re
     shown, useful for context rather than "what''s happening now."
 
