@@ -17,5 +17,5 @@ footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid #1f2430;
 .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
 .subject-card { background: #12151d; border: 1px solid #1f2430; border-radius: 6px; padding: 0.75rem; }
 .subject-card h2 { margin: 0 0 0.5rem; }
-.subject-card img { width: 100%; height: auto; display: block; border-radius: 4px; background: #161a24; }
+.subject-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; border-radius: 4px; background: #161a24; }
 .subject-card .explore { color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0 0; }
