@@ -82,12 +82,34 @@ def _by(pool: list[Candidate], **conds) -> list[Candidate]:
     return out
 
 
+MAX_COLOUR_CHECKS = 8  # preview downloads per Mars day spent looking for real colour among Mastcam-Z "RGB" frames
+
+
+def _real_colour(rng: random.Random, pool: list[Candidate], n: int) -> list[Candidate]:
+    """Up to n frames whose preview is really in colour. Most Mastcam-Z colour-filter previews are published greyscale
+    (46 of 56 checked on 2026-09-25), so a filter-name match alone labels grey frames as colour. Checks at most
+    MAX_COLOUR_CHECKS previews, in seeded random order; one that can't be fetched or opened is skipped."""
+    from .pipeline import download_url, is_greyscale, make_client
+
+    found = []
+    with make_client() as client:
+        for c in _pick(rng, pool, MAX_COLOUR_CHECKS):
+            try:
+                if not is_greyscale(download_url(client, str(c.preview_url))):
+                    found.append(c)
+            except Exception:
+                logger.exception("colour check failed for %s; skipping it", c.key)
+            if len(found) == n:
+                break
+    return found
+
+
 def recipe_mars(rng: random.Random, pools: dict[str, list[Candidate]]) -> list[Candidate]:
     p = pools.get("perseverance", [])
     latest_sol = max((c.meta.get("sol", 0) for c in p), default=None)
     sol = [c for c in p if c.meta.get("sol") == latest_sol]
     picks = []
-    picks += _pick(rng, [c for c in sol if is_mastcam_color(c)], 2)
+    picks += _real_colour(rng, [c for c in sol if is_mastcam_color(c)], 2)
     picks += _pick(rng, _by(sol, instrument=["NAVCAM_LEFT", "NAVCAM_RIGHT"]), 1)
     picks += _pick(rng, _by(sol, instrument=["SUPERCAM_RMI", "SHERLOC_WATSON"]), 1)
     picks += _pick(rng, pools.get("curiosity", []), 1)
@@ -154,16 +176,22 @@ def build_digest(sources: list[Source], day: date) -> Digest:
     return d
 
 
+def used_wigglegram_keys(digests: list[Digest], day: date) -> set[str]:
+    """Candidate keys of every frame already shown in a wigglegram on another day."""
+    return {k for d in digests if d.day != day for p in d.panels if p.derived_image and "wiggle-" in p.derived_image for k in p.derived_from}
+
+
 def _wigglegram_panel(candidates: list[Candidate], day: date) -> list[Panel]:
     """Best effort: a Mastcam-Z stereo pair alternated as a GIF. Nothing qualifies, or anything fails: no panel."""
     try:
         from .sources import SOURCES
         from .wiggle import best_wigglegram  # numpy/Pillow import kept out of the hot path
 
-        source = SOURCES["perseverance"]  # survey pages (committed) widen the search beyond the daily page-0 feed
+        source = SOURCES["perseverance"]  # survey pages (committed) widen the search beyond the daily feed
         pool = {c.key: c for c in fresh(survey_candidates(source), day, source.freshness_days)}
         pool.update({c.key: c for c in candidates})
-        found = best_wigglegram(list(pool.values()), day)
+        used = used_wigglegram_keys(read_digests(), day)  # a wigglegram should feel special: never show the same pair twice
+        found = best_wigglegram([c for c in pool.values() if c.key not in used], day)
         if not found:
             logger.info("wigglegram: no qualifying Mastcam-Z color pair among %d candidates", len(pool))
     except Exception:
