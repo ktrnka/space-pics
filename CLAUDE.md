@@ -50,13 +50,18 @@ Debug galleries need no Jekyll: `uv run spacepics debug-pages` then open `site/d
 Use a git worktree per task so sessions don't share a working tree. Use Claude Code's built-in worktrees
 (`claude --worktree <name>`, `EnterWorktree`, or subagent `isolation: worktree`); they live under
 `.claude/worktrees/<name>/` (gitignored). Never create sibling `../` worktrees: Keith blocks reads outside the working
-directory, so they prompt on every command. Inside a worktree, run commands from the worktree root, with no `cd` and
-no absolute paths outside the repo, and use `review/` or `tmp/` (gitignored) instead of `/tmp`.
+directory, so they prompt on every command.
 
-```bash
-export SPACEPICS_IMAGES_DIR="$(git rev-parse --path-format=absolute --git-common-dir)/../data/images"   # share the main tree's image cache; never re-download
-mkdir -p site/.bundle && printf -- '---\nBUNDLE_PATH: "%s/site/vendor/bundle"\n' "$(git rev-parse --path-format=absolute --git-common-dir)/.." > site/.bundle/config   # reuse main's gems, no bundle install
-```
+Every Bash call is ONE simple command (program + literal args). No cd, &&, ;, |, &, $VAR, $(…), <(…), heredocs,
+python -c. Use Read/Grep/Glob for searching; write multi-step work to `scratch/<name>.py` (gitignored) and run the
+file; use run_in_background for servers. Use `review/` or `scratch/` instead of `/tmp`.
+
+In a new worktree, create these with the Write tool (both gitignored), not the shell:
+
+- `.env` with `SPACEPICS_IMAGES_DIR=<main tree>/data/images` (share the image cache; never re-download), then run
+  Python as `uv run --env-file .env ...`. Subagents that must stay offline also add `HTTP_PROXY=http://127.0.0.1:9`
+  and `HTTPS_PROXY=http://127.0.0.1:9`, so an accidental fetch fails loudly.
+- `site/.bundle/config` with `BUNDLE_PATH: "<main tree>/site/vendor/bundle"`, to reuse main's gems with no `bundle install`.
 
 Review packages go in `review/` inside the worktree (gitignored). A worktree's `.venv` hardcodes its path: after
 `git worktree move`, run `rm -rf .venv && uv sync --offline`.

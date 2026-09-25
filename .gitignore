@@ -33,4 +33,5 @@ docs/local/
 
 # Per-task git worktrees and their review packages (see CLAUDE.md, Parallel work)
 .claude/worktrees/
+scratch/
 review/
