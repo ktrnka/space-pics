@@ -47,13 +47,18 @@ Debug galleries need no Jekyll: `uv run spacepics debug-pages` then open `site/d
 
 ## Parallel work
 
-Use a git worktree per task so sessions don't share a working tree:
+Use a git worktree per task so sessions don't share a working tree. Worktrees live inside the repo under
+`.worktrees/` (gitignored), so agents stay inside Keith's working directory and don't trigger outside-directory prompts:
 
 ```bash
-git worktree add ../space-pics-<task> -b <task>
-cd ../space-pics-<task> && uv sync
-export SPACEPICS_IMAGES_DIR="$(git rev-parse --show-toplevel)/../space-pics/data/images"   # share the main tree's image cache; never re-download
+git worktree add .worktrees/<task> -b <task>
+cd .worktrees/<task> && uv sync
+export SPACEPICS_IMAGES_DIR="$(git rev-parse --path-format=absolute --git-common-dir)/../data/images"   # share the main tree's image cache; never re-download
+mkdir -p site/.bundle && printf -- '---\nBUNDLE_PATH: "%s/site/vendor/bundle"\n' "$(git rev-parse --path-format=absolute --git-common-dir)/.." > site/.bundle/config   # reuse main's gems, no bundle install
 ```
+
+Review packages go in `review/` inside the worktree (gitignored). A worktree's `.venv` hardcodes its path: after
+`git worktree move`, run `rm -rf .venv && uv sync --offline`.
 
 At natural pauses (Keith reviewing a page, a subagent running), offer one ready-to-paste side-quest prompt he can
 launch in another window; keeping concurrency cheap for him is part of the job. Candidates live in `docs/TASKS.md`.
