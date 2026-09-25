@@ -7,7 +7,7 @@ Research notes for candidate sources not yet built are in `docs/research/space-i
 
 - Feed: `https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&order=sol desc&num=100&page=0`. No key.
 - Quirk: the documented `order=sol+desc` breaks when the `+` is percent-encoded (the API 302s to an HTML page). Send a space instead.
-- Quirk: the API caps a page at 100 items regardless of `num`. Paging (`page=1,2,...`) is not implemented yet.
+- Quirk: the API caps a page at 100 items regardless of `num`. The daily fetch reads pages 0..3 (1 s apart, stops early on a short page) and saves them merged as one file shaped like a single page, plus `pages_fetched`; duplicates across pages (the feed can shift mid-fetch) are dropped by `imageid`. Page 0 alone missed the sol's Mastcam-Z colour frames on 2026-09-17 to 09-21.
 - Raw fields used: `imageid`, `sol`, `date_taken_utc` (naive string, UTC), `sample_type` (`Full` or `Thumbnail`), `camera.instrument`, `camera.filter_name`, `image_files.{small,medium,large,full_res}`.
 - Candidate mapping: `image_url` = `large` (1200 px JPEG), `preview_url` = `medium` (800 px). Thumbnails dropped. `filter_name` of `UNK` becomes `None`.
 - `meta`: `sol`, `filter_name` (e.g. `ZCAM_R2_866NM`; Mastcam-Z filter sets are the multispectral composite source).

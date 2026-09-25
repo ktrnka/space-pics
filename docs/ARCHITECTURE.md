@@ -12,7 +12,9 @@ publish    offline*  digests,picks ->  site/_posts/<date>-<subject|source>.md + 
 debug-pages offline  candidates    ->  site/debug/<source>.html                (explorer pages)
 ```
 
-`*` digest may download two previews to build a wigglegram; publish downloads each panel's display image if it isn't cached.
+`*` on Mars days, digest may download up to 8 Mastcam-Z previews to find frames that are really in colour (most
+colour-filter previews are published greyscale), plus two per wigglegram attempt. publish downloads each panel's
+display image if it isn't cached. Wigglegrams never reuse a pair already shown on an earlier day (`data/digests.jsonl`).
 
 Each stage reads and writes files, so any stage can be developed against what's already on disk.
 `spacepics pipeline` runs fetch, extract, download (render-on-view sources only), digest, publish, debug-pages in

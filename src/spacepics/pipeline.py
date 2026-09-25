@@ -98,6 +98,16 @@ def download_url(client: httpx.Client, url: str, pause: float = 0.5) -> Path:
     return path
 
 
+def is_greyscale(path: Path, tolerance: int = 2) -> bool:
+    """True when every pixel has R, G and B within `tolerance`. Many Mastcam-Z "RGB" previews are published this way."""
+    from PIL import Image, ImageChops  # imaging import kept out of the hot path
+
+    img = Image.open(path).convert("RGB")
+    img.thumbnail((256, 256))
+    r, g, b = img.split()
+    return max(ImageChops.difference(r, g).getextrema()[1], ImageChops.difference(g, b).getextrema()[1]) <= tolerance
+
+
 def download(sources: list[Source], limit: int | None) -> int:
     """Fill the preview image cache for the latest candidates. Sequential, to be polite to the hosts."""
     n = failed = 0
