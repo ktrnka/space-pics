@@ -5,7 +5,9 @@ Hundreds of frames per sol. Mastcam-Z frames carry a per-filter name (e.g. ZCAM_
 which is what makes this the multispectral-composite source later.
 """
 
+import json
 import re
+import time
 from datetime import UTC, datetime
 
 import httpx
@@ -18,6 +20,9 @@ FEED_URL = "https://mars.nasa.gov/rss/api/"
 # A space (encoded %20) is accepted.
 FEED_PARAMS = {"feed": "raw_images", "category": "mars2020", "feedtype": "json", "order": "sol desc", "page": 0}
 DEFAULT_NUM = 100  # the API caps a page at 100 regardless of num
+# Page 0 alone is often one sol of navcam tiles and misses that sol's Mastcam-Z colour frames (2026-09-17 to 09-21).
+DEFAULT_PAGES = 4
+PAGE_PAUSE_S = 1.0
 CREDIT = "NASA/JPL-Caltech"
 # imageid like ZR2_1982_0842891670_957ECM_N0910970ZCAM03022_100085J: the sequence id (ZCAM03022) names one observation,
 # e.g. a multispectral filter set of the same scene or the tiles of a navcam panorama.
@@ -64,15 +69,31 @@ class PerseveranceSource:
     freshness_days = 7
     weight = 3
 
-    def __init__(self, num: int = DEFAULT_NUM):
+    def __init__(self, num: int = DEFAULT_NUM, pages: int = DEFAULT_PAGES):
         self.num = num
+        self.pages = pages
 
     def fetch_feed(self, client: httpx.Client) -> bytes:
-        resp = client.get(FEED_URL, params={**FEED_PARAMS, "num": self.num})
-        resp.raise_for_status()
-        if "json" not in resp.headers.get("content-type", ""):
-            raise RuntimeError(f"expected JSON from {resp.url}, got {resp.headers.get('content-type')}")
-        return resp.content
+        """Pages 0..pages-1 merged into one response shaped like a single page, so extract and the saved-feed layout don't change."""
+        merged: dict | None = None
+        seen: set[str] = set()
+        for page in range(self.pages):
+            if page:
+                time.sleep(PAGE_PAUSE_S)
+            resp = client.get(FEED_URL, params={**FEED_PARAMS, "num": self.num, "page": page})
+            resp.raise_for_status()
+            if "json" not in resp.headers.get("content-type", ""):
+                raise RuntimeError(f"expected JSON from {resp.url}, got {resp.headers.get('content-type')}")
+            body = resp.json()
+            if merged is None:
+                merged = {**body, "images": [], "pages_fetched": 0}
+            new = [img for img in body.get("images", []) if img.get("imageid") not in seen]  # the feed can shift between requests
+            seen.update(img.get("imageid") for img in new)
+            merged["images"].extend(new)
+            merged["pages_fetched"] = page + 1
+            if len(body.get("images", [])) < self.num:
+                break
+        return json.dumps(merged).encode()
 
     def extract(self, raw: bytes) -> list[Candidate]:
         feed = RawFeed.model_validate_json(raw)
