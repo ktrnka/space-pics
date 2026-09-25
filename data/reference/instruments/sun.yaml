@@ -172,7 +172,9 @@
     planets, or sungrazing comets. LASCO frames on this site are normally within minutes of real time.'
   wikipedia: https://en.wikipedia.org/wiki/Large_Angle_and_Spectrometric_Coronagraph
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory
-  links: []
+  links:
+  - title: Thomson scattering (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Thomson_scattering
   meta_labels:
     measurement: What the channel records (LASCO is white light, not a specific wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (LASCO is usually current
@@ -217,7 +219,9 @@
     '
   wikipedia: https://en.wikipedia.org/wiki/Extreme_ultraviolet_Imaging_Telescope
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory
-  links: []
+  links:
+  - title: Spectroscopic notation (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Spectroscopic_notation
   meta_labels:
     measurement: EIT channel wavelength in ångströms (171, 195, 284, or 304)
     lag_days: Days between when this frame was requested and the newest frame available (EIT typically runs about
@@ -261,6 +265,8 @@
   links:
   - title: SECCHI EUVI (LMSAL)
     url: http://secchi.lmsal.com/EUVI/
+  - title: Spectroscopic notation (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Spectroscopic_notation
   meta_labels:
     measurement: EUVI channel wavelength in ångströms
     lag_days: Days between when this frame was requested and the newest frame available (STEREO-A typically runs
@@ -302,6 +308,8 @@
   links:
   - title: SECCHI COR1 (NASA)
     url: https://cor1.gsfc.nasa.gov
+  - title: Thomson scattering (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Thomson_scattering
   meta_labels:
     measurement: What the channel records (COR1 and COR2 are white light, not a specific wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (STEREO-A typically runs
@@ -342,7 +350,9 @@
     '
   wikipedia: https://en.wikipedia.org/wiki/SWAP_(instrument)
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/PROBA-2
-  links: []
+  links:
+  - title: Spectroscopic notation (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Spectroscopic_notation
   meta_labels:
     measurement: SWAP channel wavelength in ångströms (174)
     lag_days: Days between when this frame was requested and the newest frame available (SWAP is usually current
@@ -383,7 +393,9 @@
     within minutes of real time.'
   wikipedia: https://en.wikipedia.org/wiki/Solar_Ultraviolet_Imager
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/GOES-19
-  links: []
+  links:
+  - title: Spectroscopic notation (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Spectroscopic_notation
   meta_labels:
     measurement: SUVI channel wavelength in ångströms
     lag_days: Days between when this frame was requested and the newest frame available (SUVI is usually current
@@ -426,6 +438,8 @@
   links:
   - title: CCOR-1 instrument overview (NOAA GOES-R)
     url: https://www.goes-r.gov/spacesegment/CCOR.html
+  - title: Thomson scattering (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Thomson_scattering
   meta_labels:
     measurement: What the channel records (CCOR-1 is white light, not a specific wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (CCOR-1 is usually current
@@ -467,7 +481,11 @@
     '
   wikipedia: https://en.wikipedia.org/wiki/Global_Oscillation_Network_Group
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Global_Oscillation_Network_Group
-  links: []
+  links:
+  - title: H-alpha (Wikipedia)
+    url: https://en.wikipedia.org/wiki/H-alpha
+  - title: Balmer series (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Balmer_series
   meta_labels:
     measurement: What the channel records (H-alpha, 656.3 nm)
     lag_days: Days between when this frame was requested and the newest frame available (GONG is usually current
@@ -505,7 +523,9 @@
     '
   wikipedia: https://en.wikipedia.org/wiki/Mauna_Loa_Solar_Observatory
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Mauna_Loa_Solar_Observatory
-  links: []
+  links:
+  - title: Fraunhofer lines (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Fraunhofer_lines
   meta_labels:
     measurement: What the channel records (K-Cor is polarized white light, not a specific wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (K-Cor is usually current
@@ -545,7 +565,9 @@
     '
   wikipedia: https://en.wikipedia.org/wiki/Hinode_(satellite)
   spacecraft_wikipedia: https://en.wikipedia.org/wiki/Hinode_(satellite)
-  links: []
+  links:
+  - title: Bremsstrahlung (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Bremsstrahlung
   meta_labels:
     measurement: What the channel records (XRT is broadband soft X-ray, not a single wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (XRT is usually current
@@ -590,6 +612,10 @@
   links:
   - title: EUI (Royal Observatory of Belgium / SIDC)
     url: https://www.sidc.be/EUI/intro
+  - title: Lyman series (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Lyman_series
+  - title: H-alpha (Wikipedia)
+    url: https://en.wikipedia.org/wiki/H-alpha
   meta_labels:
     measurement: EUI channel wavelength in ångströms (174, 304, or 1216)
     lag_days: Days between when this frame was requested and the newest frame available (EUI has run about 20 months
@@ -635,6 +661,8 @@
   links:
   - title: SoloHI (US Naval Research Laboratory)
     url: https://solohi.nrl.navy.mil/
+  - title: Thomson scattering (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Thomson_scattering
   meta_labels:
     measurement: What the channel records (SoloHI is white light, not a specific wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (SoloHI has run about five
@@ -679,6 +707,10 @@
   links:
   - title: PUNCH mission (Southwest Research Institute)
     url: https://punch.space.swri.edu/
+  - title: Thomson scattering (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Thomson_scattering
+  - title: Polarization (Wikipedia)
+    url: https://en.wikipedia.org/wiki/Polarization
   meta_labels:
     measurement: What the channel records (PUNCH is polarized white light, not a specific wavelength)
     lag_days: Days between when this frame was requested and the newest frame available (PUNCH has run about a month
