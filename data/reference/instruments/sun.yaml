@@ -155,7 +155,13 @@
     than any other instrument in history by imaging small sungrazers crossing its field.
 
     '
-  reading_the_image: 'A coronagraph hides the Sun''s disc behind an occulting disc (the dark circle) to show the
+  reading_the_image: 'A note on the term: ''Thomson scattering'' is ordinary sunlight bouncing directly off free
+    electrons in the thin coronal plasma, rather than being absorbed and re-emitted at one wavelength the way an
+    ion in an AIA or EIT channel does. There is no single spectral line to tune to, which is why LASCO and the
+    coronagraphs below it all record plain white light instead of a temperature-coded channel, brighter wherever
+    there happen to be more free electrons along the line of sight.
+
+    A coronagraph hides the Sun''s disc behind an occulting disc (the dark circle) to show the
     faint outer corona: Nothing here maps directly onto the
     disc images above; the connection is in time. An eruption seen in AIA 304 or 171 on the disc becomes a coronal
     mass ejection expanding through the LASCO field a few hours later, and streamers here trace the magnetic structures
@@ -282,7 +288,11 @@
     lets scientists triangulate its true speed and direction instead of estimating from one flat image.
 
     '
-  reading_the_image: 'The dark disc at the centre is the instrument''s occulting mask, not the Sun; an expanding
+  reading_the_image: 'As with LASCO (see that card for what ''Thomson scattering'' means), COR1 and COR2 record
+    the same kind of broadband, electron-scattered white light rather than a filtered wavelength, which is exactly
+    what lets two occulted white-light views of the same eruption from different vantage points be compared directly.
+
+    The dark disc at the centre is the instrument''s occulting mask, not the Sun; an expanding
     bright arc or cloud across a sequence of frames is a coronal mass ejection, and thin radial streaks are the
     ordinary streamer belt. Frames on this site typically run about three days behind real time.
 
@@ -402,7 +412,11 @@
     late 1980s.
 
     '
-  reading_the_image: 'As with LASCO, the dark central disc is an artificial mask, not the Sun; an expanding bright
+  reading_the_image: 'A note on the term, as with LASCO (see that card): the white light here is sunlight
+    Thomson-scattered by free coronal electrons rather than a filtered wavelength, so CCOR-1 records one broadband
+    brightness instead of a temperature-coded channel.
+
+    As with LASCO, the dark central disc is an artificial mask, not the Sun; an expanding bright
     cloud or arc across a sequence of frames is a coronal mass ejection. Frames on this site are normally within
     minutes of real time.
 
@@ -518,7 +532,13 @@
     Hinode''s other instruments.
 
     '
-  reading_the_image: 'Bright compact spots scattered across the disc away from any obvious active region are X-ray
+  reading_the_image: 'A note on the wavelength: XRT doesn''t isolate one ion''s spectral line the way AIA or EIT
+    do. Soft X-rays here are continuum ("thermal bremsstrahlung") radiation, given off whenever fast-moving electrons
+    swerve past ions in very hot plasma, a process that only turns on at the high temperatures XRT is built to
+    see. So a broadband X-ray filter ends up selecting for the hottest plasma present, rather than one specific
+    temperature the way a single EUV line does.
+
+    Bright compact spots scattered across the disc away from any obvious active region are X-ray
     bright points, small transient heating events; large bright loop systems are active-region cores. The corona
     looks patchier and less uniform than in EUV images because only the hottest plasma shows up at all.
 
@@ -600,7 +620,12 @@
     hard a CME will hit Earth or Solar Orbiter itself.
 
     '
-  reading_the_image: 'Expect a faint, textured field flecked with stars and dust streaks rather than a crisp solar
+  reading_the_image: 'A note on the design: SoloHI has no occulting disc because pointing well off to the side of
+    the Sun keeps the blinding disc itself out of the field entirely. What it records further out is the same
+    Thomson-scattered white light as a coronagraph like LASCO (see that card), from solar-wind electrons rather
+    than the denser inner corona, mixed with a good deal of dust-scattered sunlight along the way.
+
+    Expect a faint, textured field flecked with stars and dust streaks rather than a crisp solar
     disc; a CME shows up as a diffuse brightening or arc sweeping across the frame over many hours. Frames on this
     site have run about five months behind real time.
 
@@ -637,7 +662,13 @@
     it between instruments.
 
     '
-  reading_the_image: 'The combined image usually shows a small occulted disc near the Sun (from NFI) surrounded
+  reading_the_image: 'A note on the term: light Thomson-scattered by free electrons (see the LASCO card) comes
+    out partially polarized, and how strongly polarized it is depends on the scattering angle, which in turn
+    depends roughly on how far the scattering material sits from the observer''s sightline. Recording that
+    polarization, as PUNCH and K-Cor both do, lets scientists estimate coronal structures'' rough 3-D position
+    from what is otherwise a flat 2-D image.
+
+    The combined image usually shows a small occulted disc near the Sun (from NFI) surrounded
     by a much wider, fainter field (from the WFIs) than most coronagraphs show; look for a diffuse, expanding structure
     tracking outward across many frames as a CME crosses the whole field. Frames on this site have run about a month
     behind real time.
