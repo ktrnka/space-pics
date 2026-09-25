@@ -13,11 +13,12 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 from .digest import Digest, read_digests
 from .models import Candidate, Pick
-from .paths import DEBUG_DIR, POSTS_DIR, SURVEY_DIR
+from .paths import DEBUG_DIR, POSTS_DIR
 from .pipeline import image_cache_path, materialize_image, materialize_pick_image, safe_name
 from .reference import caption_items, card_for, readable_meta
 from .sources import SOURCES, Source
-from .store import read_candidates, read_picks
+from .sources.base import DEFAULT_GALLERY_LAYOUT
+from .store import read_candidates, read_picks, survey_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -68,17 +69,6 @@ def publish(day: date | None) -> list[Path]:
     return paths
 
 
-def survey_candidates(source: Source) -> list[Candidate]:
-    """Extra candidates from data/survey/<source>/ feeds (exploration fetches), run through the same extractor."""
-    out: list[Candidate] = []
-    for f in sorted((SURVEY_DIR / source.name).glob(f"*.{source.feed_suffix}")):
-        try:
-            out.extend(source.extract(f.read_bytes()))
-        except Exception:
-            logger.exception("survey extract failed for %s", f)
-    return out
-
-
 def _bucket(c: Candidate, hours: int) -> str:
     return f"{c.captured_at:%m-%d} {(c.captured_at.hour // hours) * hours:02d}h"
 
@@ -105,7 +95,8 @@ def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
     groups: everything else; instrument -> newest frames.
     """
     candidates = sorted(candidates, key=lambda c: c.captured_at, reverse=True)
-    if source.subject == "Mars" and any(c.meta.get("sequence") for c in candidates):
+    layout = getattr(source, "gallery_layout", DEFAULT_GALLERY_LAYOUT)
+    if layout == "sequence" and any(c.meta.get("sequence") for c in candidates):
         sols: dict[int, dict[str, list[Candidate]]] = defaultdict(lambda: defaultdict(list))
         for c in candidates:
             sols[c.meta.get("sol", 0)][c.meta.get("sequence") or c.instrument].append(c)
@@ -113,7 +104,7 @@ def gallery_context(source: Source, candidates: list[Candidate]) -> dict:
             for frames in seqs.values():
                 frames.sort(key=lambda c: c.captured_at)
         return {"layout": "sequence", "sols": dict(sorted(sols.items(), reverse=True)), "labels": instrument_labels(candidates)}
-    if source.name == "sdo":
+    if layout == "timegrid":
         hours = 3 if len({c.captured_at.date() for c in candidates}) == 1 else 6
         columns = sorted({_bucket(c, hours) for c in candidates})
         rows: dict[str, dict[str, Candidate]] = defaultdict(dict)

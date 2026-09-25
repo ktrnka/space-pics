@@ -68,6 +68,7 @@ class CuriositySource:
     enabled = True
     freshness_days = 7
     weight = 2
+    gallery_layout = "sequence"
 
     def __init__(self, per_page: int = DEFAULT_PER_PAGE):
         self.per_page = per_page

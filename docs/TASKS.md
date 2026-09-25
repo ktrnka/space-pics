@@ -8,12 +8,12 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Owner | Files | Notes |
 |---|---|---|---|
-| KT-282 q1: Perseverance pages 0..3 | main session (Claude Code, 2026-09-25) | `sources/perseverance.py`, `pipeline.py` (fetch), test | worktree `../space-pics-q1-paging` |
-| KT-282 q2: subject navigation page | subagent | `site/` (new page, nav link) | worktree `../space-pics-q2-subject-nav` |
-| KT-282 q3: grey-world white balance | subagent | new `src/spacepics/colour.py`, `experiments/` | worktree `../space-pics-q3-white-balance` |
-| KT-282 q4: Sun card notation explainers | subagent | `data/reference/instruments/sun.yaml` | worktree `../space-pics-q4-sun-explainers` |
-| KT-282 q5: code health (layout attr, survey_candidates to store, colour predicate) | subagent | `sources/base.py`, `sources/*.py` (one attr), `publish.py`, `digest.py`, `wiggle.py`, `store.py` | worktree `../space-pics-q5-code-health` |
-| KT-282 q6: picture-type clusters in the explorer | subagent | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/reference/` | worktree `../space-pics-q6-picture-types` |
+| KT-282 q1: Perseverance pages 0..3 | main session (Claude Code, 2026-09-25) | `sources/perseverance.py`, `pipeline.py` (fetch), test | worktree `.claude/worktrees/q1-paging` |
+| KT-282 q2: subject navigation page | subagent | `site/` (new page, nav link) | worktree `.claude/worktrees/q2-subject-nav` |
+| KT-282 q3: grey-world white balance | subagent | new `src/spacepics/colour.py`, `experiments/` | worktree `.claude/worktrees/q3-white-balance` |
+| KT-282 q4: Sun card notation explainers | subagent | `data/reference/instruments/sun.yaml` | worktree `.claude/worktrees/q4-sun-explainers` |
+| KT-282 q5: code health (layout attr, survey_candidates to store, colour predicate) | subagent | `sources/base.py`, `sources/*.py` (one attr), `publish.py`, `digest.py`, `wiggle.py`, `store.py` | worktree `.claude/worktrees/q5-code-health` |
+| KT-282 q6: picture-type clusters in the explorer | subagent | new `labels.py`, `publish.py` (explorer), `experiments/`, `data/reference/` | worktree `.claude/worktrees/q6-picture-types` |
 
 ## Day 2, in order (Keith's ordering, 2026-09-17 debrief)
 
@@ -55,11 +55,13 @@ The build-day timeline is in `NOTES.md`; what's done is in `git log`.
 
 | Task | Files | Notes |
 |---|---|---|
-| Decide the fate of the single-image pick path | `pipeline.pick`, `models.Pick`, `publish.write_post`, `post.md.j2`, `cli pick` | Nobody runs it since the digest. Keep as a documented manual escape hatch (then fix its raw source/instrument ids in the template) or delete it. |
-| Source declares its explorer layout | `sources/base.py`, `publish.gallery_context` | Layout is chosen by `subject == "Mars"` / `name == "sdo"` checks; a `gallery_layout` attribute keeps new sources out of publish.py. |
-| Untangle the digest/publish import cycle | `digest.py`, `publish.py`, `store.py` | `survey_candidates` lives in publish and digest imports it inside a function; move it to store. |
-| One shared "Mastcam-Z colour frame" predicate | `digest.py`, `wiggle.py` | Two different filters for the same idea. |
+| Single-image pick path: fix its template ids | `post.md.j2`, `publish.write_post` | Decided 2026-09-25 (KT-282): keep `spacepics pick` as a manual escape hatch. It's isolated from the digest, and deleting it would save only about 180 lines. What's left is small: its post template still shows raw source/instrument ids instead of card names. |
 | Card fields nobody reads | `reference.Card`, `data/reference/README.md` | `picture_types` and `confidence` are filled on every card but unused; surface `confidence` on posts or drop both. |
+
+Done 2026-09-25 (KT-282 quest 5, no behaviour change): source declares its explorer layout (`Source.gallery_layout`,
+`sources/base.py` / `publish.gallery_context`); `survey_candidates` moved from `publish.py` to `store.py`, breaking
+the digest/publish import cycle; one shared Mastcam-Z colour predicate (`sources.perseverance.is_mastcam_color`,
+used by both `digest.py` and `wiggle.py` — they never actually disagreed on real data).
 
 ## Dated maintenance
 

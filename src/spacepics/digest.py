@@ -16,7 +16,8 @@ from .paths import DATA_DIR
 from .pipeline import fresh, image_ext, safe_name
 from .reference import card_for, panel_heading
 from .sources import Source
-from .store import read_candidates
+from .sources.perseverance import is_mastcam_color
+from .store import read_candidates, survey_candidates
 
 logger = logging.getLogger(__name__)
 
@@ -86,7 +87,7 @@ def recipe_mars(rng: random.Random, pools: dict[str, list[Candidate]]) -> list[C
     latest_sol = max((c.meta.get("sol", 0) for c in p), default=None)
     sol = [c for c in p if c.meta.get("sol") == latest_sol]
     picks = []
-    picks += _pick(rng, _by(sol, instrument=["MCZ_LEFT", "MCZ_RIGHT"], filter_name=["ZCAM_L0_RGB", "ZCAM_R0_RGB"]), 2)
+    picks += _pick(rng, [c for c in sol if is_mastcam_color(c)], 2)
     picks += _pick(rng, _by(sol, instrument=["NAVCAM_LEFT", "NAVCAM_RIGHT"]), 1)
     picks += _pick(rng, _by(sol, instrument=["SUPERCAM_RMI", "SHERLOC_WATSON"]), 1)
     picks += _pick(rng, pools.get("curiosity", []), 1)
@@ -156,11 +157,10 @@ def build_digest(sources: list[Source], day: date) -> Digest:
 def _wigglegram_panel(candidates: list[Candidate], day: date) -> list[Panel]:
     """Best effort: a Mastcam-Z stereo pair alternated as a GIF. Nothing qualifies, or anything fails: no panel."""
     try:
-        from .publish import survey_candidates  # survey pages (committed) widen the search beyond the daily page-0 feed
         from .sources import SOURCES
         from .wiggle import best_wigglegram  # numpy/Pillow import kept out of the hot path
 
-        source = SOURCES["perseverance"]
+        source = SOURCES["perseverance"]  # survey pages (committed) widen the search beyond the daily page-0 feed
         pool = {c.key: c for c in fresh(survey_candidates(source), day, source.freshness_days)}
         pool.update({c.key: c for c in candidates})
         found = best_wigglegram(list(pool.values()), day)

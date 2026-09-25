@@ -1,10 +1,14 @@
 """JSONL persistence for candidates and picks. Kept hand-editable."""
 
+import logging
 from datetime import date
 from pathlib import Path
 
 from .models import Candidate, Pick
-from .paths import CANDIDATES_DIR, PICKS_FILE
+from .paths import CANDIDATES_DIR, PICKS_FILE, SURVEY_DIR
+from .sources.base import Source
+
+logger = logging.getLogger(__name__)
 
 
 def write_candidates(source: str, day: date, candidates: list[Candidate]) -> Path:
@@ -29,6 +33,17 @@ def read_candidates(source: str, day: date | None = None, days: int = 1) -> list
                     c = Candidate.model_validate_json(line)
                     by_key[c.key] = c
     return list(by_key.values())
+
+
+def survey_candidates(source: Source) -> list[Candidate]:
+    """Extra candidates from data/survey/<source>/ feeds (exploration fetches), run through the same extractor."""
+    out: list[Candidate] = []
+    for f in sorted((SURVEY_DIR / source.name).glob(f"*.{source.feed_suffix}")):
+        try:
+            out.extend(source.extract(f.read_bytes()))
+        except Exception:
+            logger.exception("survey extract failed for %s", f)
+    return out
 
 
 def read_picks() -> list[Pick]:
