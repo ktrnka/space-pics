@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 27 Sep 2026 8:38:31 MST</pubDate>		
+
+
+		<item><title>HiPOD: An Eroded Crater near Lowell Crater</title><link>https://uahirise.org/hipod/ESP_065265_1325</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065265_1325.jpg' alt='HiRISE Picture of the Day for Sun, 27 Sep 2026' border='0' width='960' height='720' /><br />This small crater is on the outskirts of a large eroded crater, next to Lowell Crater. The ground around the chosen region is very pockmarked, and has lots of bumps and ridges as well. The section of the crater wall shows signs of erosion much more significant than the other parts of the wall. This erosion could be from water or lava, but water seems much more likely. Lowell is to the east of this locale.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
