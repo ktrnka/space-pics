@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Tue, 29 Sep 2026 8:43:22 MST</pubDate>		
+
+
+		<item><title>HiPOD: Overlapping Landslides</title><link>https://uahirise.org/hipod/ESP_077318_1920</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077318_1920.jpg' alt='HiRISE Picture of the Day for Tue, 29 Sep 2026' border='0' width='960' height='720' /><br />There are multiple overlapping landslides in this crater. The crater is deformed by a large lobate scarp, from which these landslides appear to originate. Studying these landslides and dating them will help better understand the tectonic history of the region, and might provide insights into erosion rates in this area.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
