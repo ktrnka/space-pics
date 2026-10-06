@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Tue, 6 Oct 2026 8:42:51 MST</pubDate>		
+
+
+		<item><title>HiPOD: Streamlined Landforms</title><link>https://uahirise.org/hipod/ESP_077332_1895</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077332_1895.jpg' alt='HiRISE Picture of the Day for Tue, 6 Oct 2026' border='0' width='960' height='720' /><br />These streamlined landforms adjacent to Shalbatana Vallis show multiple levels of fluvial dissection. A digital terrain model will help us to study this better. An outflow channel carved by massive floods of escaping groundwater, Shalbatana Vallis is over 1300 km long (808 miles). This channel, and all others in this region, drain into Chryse Planitia.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
