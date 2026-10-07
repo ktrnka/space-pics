@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Wed, 7 Oct 2026 8:49:18 MST</pubDate>		
+
+
+		<item><title>HiPOD: Crommelin Dunes</title><link>https://uahirise.org/hipod/ESP_077344_1855</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077344_1855.jpg' alt='HiRISE Picture of the Day for Wed, 7 Oct 2026' border='0' width='960' height='720' /><br />This is one of many observations we acquire to aid in the classification and volume estimates of dunes in the USGS global dune database. Dunes are particularly suited to comprehensive planetary studies because they are abundant over a wide range of elevations and terrain types. Crommelin is 114 kilometers in diameter and was named after British astronomer Andrew Crommelin.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
