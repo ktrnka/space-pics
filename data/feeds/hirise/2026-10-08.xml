@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Thu, 8 Oct 2026 8:44:47 MST</pubDate>		
+
+
+		<item><title>HiPOD: Cutting through Lava Flows on Olympus Mons</title><link>https://uahirise.org/hipod/ESP_065254_1975</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065254_1975.jpg' alt='HiRISE Picture of the Day for Thu, 8 Oct 2026' border='0' width='960' height='720' /><br />There appears a single deep channel that is cutting through a field of lava flows on the eastern flank of Olympus Mons. Although the elevation of the region is generally decreasing as it goes down the volcano, there is a slight increase in elevation for a short distance. This slight increase could have caused the large channel to be created. As the lava pooled together, there finally was enough to break through the hill in a single location.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
