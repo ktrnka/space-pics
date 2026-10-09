@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Fri, 9 Oct 2026 8:45:01 MST</pubDate>		
+
+
+		<item><title>HiPOD: Dunes with Erosion-Resistant Layers</title><link>https://uahirise.org/hipod/ESP_057025_1220</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_057025_1220.jpg' alt='HiRISE Picture of the Day for Fri, 9 Oct 2026' border='0' width='960' height='720' /><br />Dunes with exposed bright bedding have been proposed to contain evaporites (minerals found in the sedimentary deposit of soluble salts that results from the evaporation of water). In this observation, there are dunes with erosion-resistant and ripple-covered bright layers that could be cemented materials.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
