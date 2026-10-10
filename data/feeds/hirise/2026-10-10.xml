@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sat, 10 Oct 2026 8:42:22 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Ridge in Arabia Terra</title><link>https://uahirise.org/hipod/ESP_065300_2100</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065300_2100.jpg' alt='HiRISE Picture of the Day for Sat, 10 Oct 2026' border='0' width='960' height='720' /><br />The objective of this observation is to examine a straight ridge (faint, just above center) that might be a dike. Sometimes magma (molten rock) below the surface may fill an existing fracture, even pushing the fracture open in the process. As the magma cools, it solidifies into a tabular rock mass, and that resulting cooled volcanic rock is called a dike.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
