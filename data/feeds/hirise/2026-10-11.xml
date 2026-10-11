@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 11 Oct 2026 8:42:36 MST</pubDate>		
+
+
+		<item><title>HiPOD: Mounds and Pits East of Bamberg Crater</title><link>https://uahirise.org/hipod/ESP_069669_2220</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_069669_2220.jpg' alt='HiRISE Picture of the Day for Sun, 11 Oct 2026' border='0' width='960' height='720' /><br />The objective of this observation is to determine the nature of a group of mounds, some of which have small pits at their summits. These features may be caused by ground ice melting and possibly turning into steam. They are barely visible in Context Camera image, so our camera’s resolution can help us to determine how they were formed.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
