@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Tue, 13 Oct 2026 8:45:31 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Canyon Wall in Coprates Chasma</title><link>https://uahirise.org/hipod/ESP_077359_1640</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077359_1640.jpg' alt='HiRISE Picture of the Day for Tue, 13 Oct 2026' border='0' width='960' height='720' /><br />The walls here potentially expose pristine crustal material. This is an area of interest that could be accessed and is within potential future rotorcraft mission traverse. This image footprint is in eastern Coprates Chasma, a major trough in the Valles Marineris canyon system. The chasma stretches for 960 km (600 miles) from Melas Chasma to the west and Capri Chasma to the east.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
