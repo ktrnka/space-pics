@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 18 Oct 2026 8:38:39 MST</pubDate>		
+
+
+		<item><title>HiPOD: Exposed on Mounds</title><link>https://uahirise.org/hipod/ESP_065260_2115</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065260_2115.jpg' alt='HiRISE Picture of the Day for Sun, 18 Oct 2026' border='0' width='960' height='720' /><br />The objective of this observation is to examine layers exposed on mounds in a valley to the south of Nilosyrtis Mensae. Nilosyrtis is just to the east of Protonilus Mensae and both lie along the Martian dichotomy boundary. This region has also been imaged by the Context Camera, another instrument on MRO, and may have contained large amounts of ice.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
