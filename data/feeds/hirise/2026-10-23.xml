@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Fri, 23 Oct 2026 8:43:24 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Knobby Unit in a Degraded Crater</title><link>https://uahirise.org/hipod/ESP_065260_1715</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065260_1715.jpg' alt='HiRISE Picture of the Day for Fri, 23 Oct 2026' border='0' width='960' height='720' /><br />This observation targets light-toned knobby units located within a heavily degraded crater. This unit is superficially similar to others located within a paleolake basin in the Eridania region, which appear to be altered ashfall deposits that washed into the lake or hydrothermally altered basin floor deposits. The units here may be the result of a similar process.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
