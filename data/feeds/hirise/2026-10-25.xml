@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 25 Oct 2026 8:38:45 MST</pubDate>		
+
+
+		<item><title>HiPOD: Boulders near Hale Crater</title><link>https://uahirise.org/hipod/ESP_065343_1435</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065343_1435.jpg' alt='HiRISE Picture of the Day for Sun, 25 Oct 2026' border='0' width='960' height='720' /><br />The objective of this observation is to determine what formed piles of boulders near Hale Crater. There may be some interesting process that sorted these large boulders in these particular spots. The scene is also visible in a Context Camera image. Our scene is at full resolution.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
