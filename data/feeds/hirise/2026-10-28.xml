@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Wed, 28 Oct 2026 8:38:12 MST</pubDate>		
+
+
+		<item><title>HiPOD: Glacial and Periglacial Terrains</title><link>https://uahirise.org/hipod/ESP_077421_2255</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077421_2255.jpg' alt='HiRISE Picture of the Day for Wed, 28 Oct 2026' border='0' width='960' height='720' /><br />This image will help define the fine-grained shapes of a glacial terrain just east of a periglacial mantle that appeared in earlier HiRISE observation. The periglacial terrain lays on top of a mantle that may retain the cratering history of the region. We also can constrain the age of the area.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
