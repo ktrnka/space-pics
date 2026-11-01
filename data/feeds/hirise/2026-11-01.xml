@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 1 Nov 2026 8:35:46 MST</pubDate>		
+
+
+		<item><title>HiPOD: Impact-Related Flows in Margaritifer Terra</title><link>https://uahirise.org/hipod/ESP_069643_1605</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_069643_1605.jpg' alt='HiRISE Picture of the Day for Sun, 1 Nov 2026' border='0' width='960' height='720' /><br />Our rationale for acquiring this image it to observe how the surface flow patterns in the area vary with distance from the crater. This is one of several flow feature observations suggested in the vicinity of the well-preserved crater to the south. Margaritifer Terra is centered just south of the Martian equator and with chaotic terrain, outflow channels and alluvial plains.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
