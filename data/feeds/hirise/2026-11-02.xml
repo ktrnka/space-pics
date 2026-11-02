@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Mon, 2 Nov 2026 8:39:24 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Lava Flow near the Elysium Rise</title><link>https://uahirise.org/ESP_093280_2095</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_093280_2095.jpg' alt='HiRISE Picture of the Day for Mon, 2 Nov 2026' border='0' width='960' height='720' /><br />This image is of the perimeter of a lava flow found on the western slope of the Elysium Volcanic region.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
