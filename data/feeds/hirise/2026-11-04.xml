@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Wed, 4 Nov 2026 8:37:53 MST</pubDate>		
+
+
+		<item><title>HiPOD: Layering and Cross-Cutting Bands</title><link>https://uahirise.org/hipod/ESP_072874_2055</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_072874_2055.jpg' alt='HiRISE Picture of the Day for Wed, 4 Nov 2026' border='0' width='960' height='720' /><br />This mound exhibits layering and cross-cutting bands that correspond to an iron/magnesium  phyllosilicate composition elsewhere in mounds in Chryse Planitia. This particular mesa has a large surface area and excellent exposure, which is ideal for observations of stratigraphic relationships.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
