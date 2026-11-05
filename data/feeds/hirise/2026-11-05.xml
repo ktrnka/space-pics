@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Thu, 5 Nov 2026 8:37:59 MST</pubDate>		
+
+
+		<item><title>HiPOD: The Beauty of Inverted Channels</title><link>https://uahirise.org/hipod/ESP_065390_1610</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065390_1610.jpg' alt='HiRISE Picture of the Day for Thu, 5 Nov 2026' border='0' width='960' height='720' /><br />This observation was public suggestion from HiWish: to image an area within an eroded impact crater that shows very clear layers and inverted channels exposed in the distal ends of two alluvial fans. Inverted channels are made from deposits that wind up being more resistant to erosion than the surrounding terrain and so remain higher-standing.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
