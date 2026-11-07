@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sat, 7 Nov 2026 8:36:59 MST</pubDate>		
+
+
+		<item><title>HiPOD: Esker Candidates in Mamers Valles</title><link>https://uahirise.org/hipod/ESP_065710_2170</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065710_2170.jpg' alt='HiRISE Picture of the Day for Sat, 7 Nov 2026' border='0' width='960' height='720' /><br />An esker is a long ridge of sediment deposited by meltwater from a retreating glacier or ice sheet. Although glaciers are common on Mars, in the prevailing very cold and dry climate they are thought to be almost exclusively cold-based systems, which do not experience subglacial melt. These candidate eskers could be important to our understanding of non-climatic drivers of meltwater production and, potentially, habitability.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
