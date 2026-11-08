@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 8 Nov 2026 8:36:23 MST</pubDate>		
+
+
+		<item><title>HiPOD: Sinuous Ridges and Possible Layers</title><link>https://uahirise.org/hipod/ESP_065711_1545</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_065711_1545.jpg' alt='HiRISE Picture of the Day for Sun, 8 Nov 2026' border='0' width='960' height='720' /><br />A Context Camera image shows sinuous ridges and possible layers at this location, which is within an alluvial-fan-bearing crater. One possible interpretation is that erosion has formed inverted channels and incised them into distal alluvial fan or deltaic materials. A derived 3D image can help look for &ldquo;double ridges&rdquo; that might be bracketing inverted channels.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
