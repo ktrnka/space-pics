@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Thu, 12 Nov 2026 8:36:59 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Ridge in Claritas Fossae</title><link>https://uahirise.org/hipod/ESP_077440_1510</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077440_1510.jpg' alt='HiRISE Picture of the Day for Thu, 12 Nov 2026' border='0' width='960' height='720' /><br />From HiWish: &ldquo;This image covers a ridge in Claritas Fossae that seems to be superposed on the older fractures and that is a part of a more numerous assemblage of similarly looking edifices within this region. We propose that this ridge might be volcanic in origin and by using the HiRISE, we can observe details that might support or disprove such claim.&rdquo;  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
