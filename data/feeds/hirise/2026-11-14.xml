@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sat, 14 Nov 2026 8:36:42 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Light-Toned Exposure in Tyrrhena Terra</title><link>https://uahirise.org/hipod/ESP_076259_1680</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_076259_1680.jpg' alt='HiRISE Picture of the Day for Sat, 14 Nov 2026' border='0' width='960' height='720' /><br />The objective of this observation is to determine the nature of an exposure of light-toned material. This material appears in different spots in a Context Camera image. This picture is one of the most intense spots: that is, it shows quite a contrast with the surrounding ground. Pictures like these may be combined with CRISM data to better understand what is going on in this region.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
