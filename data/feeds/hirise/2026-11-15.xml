@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sun, 15 Nov 2026 8:37:08 MST</pubDate>		
+
+
+		<item><title>HiPOD: Ridges and Channels in Memnonia Sulci</title><link>https://uahirise.org/hipod/ESP_066456_1690</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_066456_1690.jpg' alt='HiRISE Picture of the Day for Sun, 15 Nov 2026' border='0' width='960' height='720' /><br />These ridges and channels in Memnonia Sulci may be part of a fan complex on the dichotomy boundary of Amazonis Planitia and Terra Sirenum. This target was requested to deduce the history of fluvial activity in the region and the relationship of the fans to the Medusa Fossae Formation to the east of here.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
