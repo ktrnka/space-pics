@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Mon, 16 Nov 2026 8:43:17 MST</pubDate>		
+
+
+		<item><title>HiPOD: Tales of a Sinuous Ridge</title><link>https://uahirise.org/hipod/ESP_074328_1070</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_074328_1070.jpg' alt='HiRISE Picture of the Day for Mon, 16 Nov 2026' border='0' width='960' height='720' /><br />This previously unidentified sinuous ridge from a recent global survey is part of a follow-up to test for a possible fluvial origin and determine the depositional setting of previously unmapped ridges across Mars. Identifying these types of fluvial ridges outside of craters is key for reconstructing ancient sedimentary basins as well learning about the past climate.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
