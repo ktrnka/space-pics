@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Tue, 17 Nov 2026 8:36:48 MST</pubDate>		
+
+
+		<item><title>HiPOD: A Ridge Runs through It</title><link>https://uahirise.org/hipod/ESP_071869_1720</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_071869_1720.jpg' alt='HiRISE Picture of the Day for Tue, 17 Nov 2026' border='0' width='960' height='720' /><br />Also visible in a Context Camera image, our objective for this observation is to determine the nature of this long ridge to the northeast of Huygens Crater, itself to the west of the massive Hellas impact basin. The ridge is mostly straight, and it might be a dike, but is unlikely to be volcanic in origin.   (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
