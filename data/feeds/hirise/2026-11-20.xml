@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Fri, 20 Nov 2026 8:36:51 MST</pubDate>		
+
+
+		<item><title>HiPOD: Dust Devil Tracks on Bright Dunes</title><link>https://uahirise.org/hipod/ESP_077477_1280</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_077477_1280.jpg' alt='HiRISE Picture of the Day for Fri, 20 Nov 2026' border='0' width='960' height='720' /><br />This image features dark dust devil tracks on bright dunes that have an odd distribution. The dunes look wind eroded: striations or layering? A false color contrast between dunes and dust devil tracks may provide information to understand dune formation, shape, and dust devil initiation. This footprint is in Galle Crater.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
