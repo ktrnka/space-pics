@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Tue, 24 Nov 2026 8:36:59 MST</pubDate>		
+
+
+		<item><title>HiPOD: Wonders of Mawrth</title><link>https://uahirise.org/hipod/ESP_071041_2060</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_071041_2060.jpg' alt='HiRISE Picture of the Day for Tue, 24 Nov 2026' border='0' width='960' height='720' /><br />Often appearing as a candidate landing site, Mawrth Vallis is a topographical wonderland of inverted channels, light-toned rocks and clays. Clay minerals have implications for past wet environments along with the potential to preserve biosignatures. This public request was made to investigate the regional stratigraphy and reasons for the topographic inversion.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
