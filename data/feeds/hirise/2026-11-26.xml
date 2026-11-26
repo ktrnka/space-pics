@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Thu, 26 Nov 2026 8:37:41 MST</pubDate>		
+
+
+		<item><title>HiPOD: First Light Illuminates Sand Dunes</title><link>https://uahirise.org/ESP_094249_2530</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_094249_2530.jpg' alt='HiRISE Picture of the Day for Thu, 26 Nov 2026' border='0' width='960' height='720' /><br />The high north latitudes of Mars&rsquo; polar terrains are shrouded in darkness for most of the winter. That season brings extensive frost and ice, which fall out of the atmosphere and coat dunes and other surfaces.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
