@@ -1,0 +1,23 @@
+
+<rss version="0.91">
+	<channel>
+		<title>HiRISE: High Resolution Imaging Science Experiment (NASA)</title>
+		<link>https://uahirise.org</link>
+		<description>Updates from the HiRISE camera onboard the Mars Reconnaissance Orbiter (MRO/NASA). We are based at the University of Arizona in Tucson, Ariz.</description>
+		<language>en-us</language>
+		<managingEditor>editor@uahirise.org (Ari)</managingEditor>
+		<pubDate>Sat, 28 Nov 2026 8:36:18 MST</pubDate>		
+
+
+		<item><title>HiPOD: On the Rim of Oudemans Crater</title><link>https://uahirise.org/hipod/ESP_066453_1710</link><description><![CDATA[<img src='https://static.uahirise.org/hipod/ESP_066453_1710.jpg' alt='HiRISE Picture of the Day for Sat, 28 Nov 2026' border='0' width='960' height='720' /><br />The purpose of this observation is to image the degraded rim of Oudemans Crater to the northeast. Specifically, we wish to observe the possible impact melt rock on the floor of Oudemans that may have flowed into the canyons to the northeast of the crater. Unlike some craters, Oudemans Crater does not have alluvial fans on its floor. In places, its rim has a terrace. It was named for Dutch astronomer  Jean Abraham Chrétien Oudemans.  (NASA/JPL-Caltech/University of Arizona)]]></description></item>
+		
+
+		
+
+		
+		
+
+
+	</channel>
+</rss>
+
